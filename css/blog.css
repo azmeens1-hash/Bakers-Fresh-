@@ -1,0 +1,265 @@
+/* ─────────────────────────────────────────────
+   blog.css  —  Baker's Fresh  |  Blog
+   ───────────────────────────────────────────── */
+
+/* ── FEATURED LAYOUT ────────────────────────── */
+.blog-feat {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+  align-items: start;     /* columns size to their own content */
+}
+
+/* right-column wrapper: natural height, stack cards */
+.blog-feat-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── CARD BASE ───────────────────────────────── */
+.bcard {
+  background: var(--surface);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all .38s;
+  cursor: pointer;
+
+  /* flex column so .bmeta always sits at the bottom */
+  display: flex;
+  flex-direction: column;
+}
+.bcard:hover { transform: translateY(-9px); box-shadow: var(--cshadow); }
+
+.bcard-iw { overflow: hidden; flex-shrink: 0; }
+.bcard-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;           /* kill inline gap */
+  object-fit: cover;
+  transition: transform .55s;
+}
+.bcard:hover .bcard-img { transform: scale(1.07); }
+
+/* ── CARD BODY ───────────────────────────────── */
+.bcard-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;                  /* body stretches to fill card height */
+}
+
+.bcat {
+  font-size: .63rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: #C07828;
+  margin-bottom: 9px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.btitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.38;
+  transition: color .25s;
+  flex-shrink: 0;
+}
+.bcard:hover .btitle { color: #C07828; }
+
+.bexcerpt {
+  font-size: .79rem;
+  color: var(--text3);
+  line-height: 1.72;
+  margin-bottom: 16px;
+  flex: 1;                  /* pushes .bmeta to the bottom */
+}
+
+/* ── META ROW ────────────────────────────────── */
+.bmeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;         /* anchors meta to the bottom of body */
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.bauthor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;             /* allow text to truncate if needed */
+}
+.bauthor img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.bauthor span {
+  font-size: .71rem;
+  font-weight: 500;
+  color: var(--text2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bdate {
+  font-size: .69rem;
+  color: var(--text3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* featured left card: taller image ratio */
+.blog-feat > .bcard .bcard-img { aspect-ratio: 4 / 3; }
+
+/* featured side cards: standard ratio */
+.blog-feat-side .bcard .bcard-img { aspect-ratio: 16 / 9; }
+
+/* side cards: natural height, no stretching */
+.blog-feat-side .bcard { flex: none; }
+
+/* ── LATEST POSTS GRID ───────────────────────── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════════ */
+
+/* ── ≥ 1280px ── */
+@media (min-width: 1280px) {
+  .blog-feat   { grid-template-columns: 1.5fr 1fr; gap: 30px; margin-bottom: 48px; }
+
+  .bcard-body  { padding: 28px; }
+  .btitle      { font-size: 1.22rem; }
+  .bexcerpt    { font-size: .82rem; }
+  .bcat        { font-size: .65rem; margin-bottom: 11px; }
+  .bauthor img { width: 30px; height: 30px; }
+  .bauthor span { font-size: .74rem; }
+  .bdate       { font-size: .71rem; }
+
+  .blog-grid   { gap: 30px; }
+}
+
+/* ── 1024–1279px ── */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .blog-feat   { grid-template-columns: 1.35fr 1fr; gap: 20px; margin-bottom: 30px; }
+
+  .bcard-body  { padding: 18px; }
+  .btitle      { font-size: 1.08rem; }
+  .bexcerpt    { font-size: .77rem; }
+
+  .blog-grid   { gap: 18px; }
+}
+
+/* ── 640–1023px (tablet) ── */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .ph       { height: 44vh; min-height: 280px; padding-bottom: 38px; }
+  .ph-inner { padding: 0 30px; }
+  .ph-title { font-size: clamp(1.9rem, 5vw, 3rem); }
+  .ph-sub   { font-size: .87rem; }
+
+  .wrap { padding: 0 30px; }
+  .sec  { padding: 68px 0; }
+
+  /* featured: stack vertically */
+  .blog-feat {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  /* side wrapper becomes a row on tablet so both side cards sit side-by-side */
+  .blog-feat-side {
+    flex-direction: row;
+    gap: 18px;
+  }
+  .blog-feat-side .bcard { flex: 1 1 0; min-width: 0; }
+
+  .bcard-body   { padding: 20px; }
+  .btitle       { font-size: 1.1rem; }
+  .bexcerpt     { font-size: .78rem; }
+  .bcard-img    { aspect-ratio: 16 / 9; }
+
+  /* restore featured left card aspect ratio */
+  .blog-feat > .bcard .bcard-img { aspect-ratio: 16 / 9; }
+  .blog-feat > .bcard .btitle { font-size: 1.3rem; }
+
+  .blog-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .blog-grid .bcard:nth-child(3) {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    justify-self: center;
+  }
+
+  .nl          { padding: 56px 0; }
+  .nl-inner h2 { font-size: 1.85rem; }
+
+  .foot-grid   { grid-template-columns: 1fr 1fr; gap: 26px; }
+}
+
+/* ── ≤ 639px (mobile) ── */
+@media (max-width: 639px) {
+  .wrap { padding: 0 18px; }
+  .sec  { padding: 56px 0; }
+  .sec-head { margin-bottom: 32px; }
+
+  .ph       { height: 40vh; min-height: 240px; padding-bottom: 30px; }
+  .ph-inner { padding: 0 18px; }
+  .ph-title { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+  .ph-sub   { font-size: .82rem; max-width: 100%; }
+
+  .blog-feat {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  /* side wrapper stacks on mobile */
+  .blog-feat-side { flex-direction: column; gap: 14px; }
+  .blog-feat-side .bcard { flex: none; }
+
+  .bcard        { border-radius: 16px; }
+  .bcard-img    { aspect-ratio: 16 / 9; }
+  /* restore featured card ratio on mobile */
+  .blog-feat > .bcard .bcard-img { aspect-ratio: 16 / 9; }
+  .bcard-body   { padding: 16px; }
+  .bcat         { font-size: .61rem; margin-bottom: 7px; }
+  .btitle       { font-size: 1.05rem; line-height: 1.35; margin-bottom: 7px; }
+  .bexcerpt     { font-size: .76rem; line-height: 1.68; margin-bottom: 13px; }
+  .bmeta        { padding-top: 11px; }
+  .bauthor img  { width: 24px; height: 24px; }
+  .bauthor span { font-size: .68rem; }
+  .bdate        { font-size: .66rem; }
+
+  .blog-feat > .bcard .btitle { font-size: 1.15rem; }
+
+  .blog-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  .nl          { padding: 48px 0; }
+  .nl-inner h2 { font-size: 1.65rem; }
+  .nl-form     { max-width: 100%; }
+
+  .foot-grid   { grid-template-columns: 1fr; gap: 24px; }
+  .foot-bottom { flex-direction: column; text-align: center; }
+}
+
+/* ── RTL ─────────────────────────────────────── */
+[dir="rtl"] .bmeta   { flex-direction: row-reverse; }
+[dir="rtl"] .bauthor { flex-direction: row-reverse; }

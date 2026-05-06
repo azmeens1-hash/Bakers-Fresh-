@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Baker's Fresh</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────── -->
+<nav id="nav">
+  <a class="logo" href="index.html">Baker's <span>Fresh</span></a>
+  <ul class="nav-links">
+    <li class="has-drop">
+      <a href="index.html">Home</a>
+      <div class="nav-dropdown">
+        <a class="dd-item" href="index.html">Home I</a>
+        <a class="dd-item" href="home2.html">Home II</a>
+      </div>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="menu.html">Menu &amp; Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">🌙</button>
+    <button class="rtl-btn"  id="rtl-btn"   onclick="toggleRTL()"   title="RTL / LTR">RTL</button>
+    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+    <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ── MOBILE NAV ───────────────────────────── -->
+<div class="mob-nav" id="mob-nav">
+  <button class="mob-dd-toggle" onclick="toggleMobDrop(this)">Home <span class="mob-dd-chevron">▼</span></button>
+  <div class="mob-dropdown">
+    <a href="index.html"  onclick="closeMob()">Home I</a>
+    <a href="home2.html"  onclick="closeMob()">Home II</a>
+  </div>
+  <a href="about.html"    onclick="closeMob()">About</a>
+  <a href="services.html" onclick="closeMob()">Services</a>
+  <a href="menu.html"     onclick="closeMob()">Menu &amp; Pricing</a>
+  <a href="blog.html"     onclick="closeMob()">Blog</a>
+  <a href="contact.html"  onclick="closeMob()">Contact</a>
+  <a href="dashboard.html"onclick="closeMob()">Dashboard</a>
+  <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+</div>
+
+<!-- ── PAGE HERO ─────────────────────────────── -->
+<div class="ph">
+  <div class="ph-bg" style="background-image:url('Images/cake.jpg')"></div>
+  <div class="ph-inner">
+    <div class="crumb">
+      <span class="cl" onclick="location.href='index.html'">Home</span>
+      <span>›</span>
+      <span>Blog</span>
+    </div>
+    <h1 class="ph-title">Baking <em>Stories</em></h1>
+    <p class="ph-sub">Recipes, tips and sweet inspiration from our kitchen to yours.</p>
+  </div>
+</div>
+
+<!-- ── MAIN SECTION ──────────────────────────── -->
+<section class="sec">
+  <div class="wrap">
+
+    <!-- Featured posts: left big card + right side column -->
+    <div class="blog-feat reveal">
+
+      <!-- Left: large featured post -->
+      <a href="blog-detail.html" class="bcard">
+        <div class="bcard-iw">
+          <img class="bcard-img" src="Images/white velvet.jpg" alt="Wedding Blog" loading="lazy">
+        </div>
+        <div class="bcard-body">
+          <span class="bcat">Wedding Inspiration</span>
+          <div class="btitle" style="font-size:1.48rem;line-height:1.25">10 Stunning Wedding Cake Trends for 2026 — Elegance Redefined</div>
+          <div class="bexcerpt">From minimalist marble tiers to lush floral cascades, here are the wedding cake styles stealing hearts this year...</div>
+          <div class="bmeta">
+            <div class="bauthor">
+              <img src="Images/founder img.jpg" alt="Lakshmi" loading="lazy">
+              <span>Lakshmi Reddy</span>
+            </div>
+            <span class="bdate">March 28, 2026</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Right: side column — uses .blog-feat-side instead of inline style -->
+      <div class="blog-feat-side">
+        <a href="blog-detail.html" class="bcard">
+          <div class="bcard-iw">
+            <img class="bcard-img" src="Images/chocolate dream.jpg" alt="Chocolate Cake" loading="lazy">
+          </div>
+          <div class="bcard-body">
+            <span class="bcat">Baking Tips</span>
+            <div class="btitle">The Secret to a Perfectly Moist Chocolate Cake Every Time</div>
+            <div class="bexcerpt">After 10 years of baking, here's the one technique that changes everything...</div>
+            <div class="bmeta">
+              <div class="bauthor">
+                <img src="Images/cake artist.jpg" alt="Arjun" loading="lazy">
+                <span>Arjun Mehta</span>
+              </div>
+              <span class="bdate">March 15, 2026</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div><!-- /blog-feat -->
+
+    <!-- Latest Posts -->
+    <div class="sec-head reveal" style="margin-top:60px">
+      <div class="sec-tag">✦ Latest Posts</div>
+      <h2 class="sec-title">From Our <em>Kitchen</em></h2>
+    </div>
+
+    <div class="blog-grid">
+
+      <a href="blog-detail.html" class="bcard reveal">
+        <div class="bcard-iw">
+          <img class="bcard-img" src="Images/birthday.jpg" alt="Birthday Cake Themes" loading="lazy">
+        </div>
+        <div class="bcard-body">
+          <span class="bcat">Birthday Ideas</span>
+          <div class="btitle">Birthday Cake Themes That Kids Absolutely Love in 2026</div>
+          <div class="bexcerpt">From space exploration to underwater worlds, discover the themes making kids squeal with delight.</div>
+          <div class="bmeta">
+            <div class="bauthor">
+              <img src="Images/pastry chef.jpg" alt="Sunita" loading="lazy">
+              <span>Sunita Patel</span>
+            </div>
+            <span class="bdate">March 10, 2026</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog-detail.html" class="bcard reveal rd1">
+        <div class="bcard-iw">
+          <img class="bcard-img" src="Images/butter croissant.jpg" alt="Croissant" loading="lazy">
+        </div>
+        <div class="bcard-body">
+          <span class="bcat">Recipes</span>
+          <div class="btitle">How to Make Authentic French Croissants at Home — Step by Step</div>
+          <div class="bexcerpt">Our master baker reveals the laminated dough technique that gives croissants their signature flaky layers.</div>
+          <div class="bmeta">
+            <div class="bauthor">
+              <img src="Images/founder img.jpg" alt="Lakshmi" loading="lazy">
+              <span>Lakshmi Reddy</span>
+            </div>
+            <span class="bdate">Feb 28, 2026</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog-detail.html" class="bcard reveal rd2">
+        <div class="bcard-iw">
+          <img class="bcard-img" src="Images/strawberry.jpg" alt="Strawberry Pastry" loading="lazy">
+        </div>
+        <div class="bcard-body">
+          <span class="bcat">Seasonal</span>
+          <div class="btitle">Strawberry Season is Here — Our Favourite Fresh Cream Pastry Recipe</div>
+          <div class="bexcerpt">When strawberries are at their ripest, this is the pastry recipe that celebrates them best.</div>
+          <div class="bmeta">
+            <div class="bauthor">
+              <img src="Images/cake artist.jpg" alt="Arjun" loading="lazy">
+              <span>Arjun Mehta</span>
+            </div>
+            <span class="bdate">Feb 14, 2026</span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /blog-grid -->
+
+  </div><!-- /wrap -->
+</section>
+
+<!-- ── NEWSLETTER ─────────────────────────────── -->
+<div class="nl">
+  <div class="nl-inner reveal">
+    <h2>Never Miss a <em>Recipe</em></h2>
+    <p>Subscribe for weekly baking tips, new cake reveals and exclusive offers.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="Your email…">
+      <button>Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="foot-logo" href="index.html">Baker's <span>Fresh</span></a>
+        <p>Freshly baked cakes &amp; pastries crafted with love for your special celebrations in Hyderabad.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Quicklinks</h5>
+        <ul>
+          <li><a href="index.html">Home I</a></li>
+          <li><a href="home2.html">Home II</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="service-detail.html">Birthday Cakes</a></li>
+          <li><a href="service-detail.html">Wedding Cakes</a></li>
+          <li><a href="service-detail.html">Custom Theme Cakes</a></li>
+          <li><a href="service-detail.html">Daily Bakes</a></li>
+          <li><a href="service-detail.html">Corporate Gifting</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Banjara Hills, Hyderabad</a></li>
+          <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>+91 96768 43210</a></li>
+          <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@bakersfresh.com</a></li>
+          <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Sat 8am–9pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Baker's Fresh. All rights reserved.</span>
+      <span>Made with ♥ in Hyderabad</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/global.js"></script>
+<script src="js/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Cakes — Baker's Fresh</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+ 
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/service-detail.css">
+</head>
+<body>
+
+
+<nav id="nav">
+  <a class="logo" href="index.html">Baker's <span>Fresh</span></a>
+  <ul class="nav-links">
+    <li class="has-drop">
+      <a href="index.html">Home</a>
+      <div class="nav-dropdown">
+        <a class="dd-item" href="index.html">Home I</a>
+        <a class="dd-item" href="home2.html">Home II</a>
+      </div>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="menu.html">Menu &amp; Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">🌙</button>
+    <button class="rtl-btn"  id="rtl-btn"   onclick="toggleRTL()"   title="RTL / LTR">RTL</button>
+    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+    <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+
+<div class="mob-nav" id="mob-nav">
+  <button class="mob-dd-toggle" onclick="toggleMobDrop(this)">
+    Home <span class="mob-dd-chevron">▼</span>
+  </button>
+  <div class="mob-dropdown">
+    <a href="index.html"  onclick="closeMob()">Home I</a>
+    <a href="home2.html"  onclick="closeMob()">Home II</a>
+  </div>
+  <a href="about.html"    onclick="closeMob()">About</a>
+  <a href="services.html" onclick="closeMob()">Services</a>
+  <a href="menu.html"     onclick="closeMob()">Menu &amp; Pricing</a>
+  <a href="blog.html"     onclick="closeMob()">Blog</a>
+  <a href="contact.html"  onclick="closeMob()">Contact</a>
+  <a href="dashboard.html"onclick="closeMob()">Dashboard</a>
+  <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+</div>
+
+
+<div class="ph" style="height:44vh;min-height:300px">
+  <div class="ph-bg" style="background-image:url('Images/wedding.jpg')"></div>
+  <div class="ph-inner">
+    <div class="crumb">
+      <span class="cl" onclick="location.href='index.html'">Home</span>
+      <span>›</span>
+      <span class="cl" onclick="location.href='services.html'">Services</span>
+      <span>›</span>
+      <span>Wedding Cakes</span>
+    </div>
+    <h1 class="ph-title" style="font-size:clamp(1.8rem,4vw,3rem)">Wedding <em>Cakes</em></h1>
+  </div>
+</div>
+
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sd-wrap">
+
+     
+      <div class="reveal">
+        <img src="Images/wedding.jpg" alt="Wedding Cake" class="sd-hero" loading="lazy">
+
+        <h1 class="sd-title">Wedding Cakes — A Centrepiece as Unforgettable as Your Day</h1>
+
+        <div class="sd-meta">
+          <div class="sd-meta-i"><strong>5–14 Days</strong> Lead Time</div>
+          <div class="sd-meta-i"> <strong>Multi-Tier</strong> Masterpieces</div>
+          <div class="sd-meta-i"> <strong>White Glove</strong> Delivery</div>
+          <div class="sd-meta-i"><strong>Free Design</strong> Consultation</div>
+        </div>
+
+        <div class="sd-body">
+          <p>Your wedding cake is more than dessert — it is the living centrepiece of your most important day, photographed from every angle, admired by every guest, and remembered for years to come. At Baker's Fresh, we approach every wedding cake as a bespoke work of edible art, crafted from scratch to reflect your story, your style, and your celebration.</p>
+          <p>From intimate two-tier cakes draped in hand-painted watercolour florals, to towering five-tier showstoppers adorned with sugar flowers and real gold leaf — our team of dedicated cake artists will translate your vision into something genuinely breathtaking. No template. No shortcuts. Every cake is designed exclusively for you.</p>
+          <p>We use only premium, fresh ingredients — imported Belgian chocolate, real Chantilly cream, farm-sourced eggs and natural food colours — ensuring every slice tastes as spectacular as the cake looks. Because on your wedding day, nothing should be anything less than perfect.</p>
+        </div>
+
+        
+        <div class="sd-feats">
+          <h4>What's Included</h4>
+          <div class="feat-list">
+            <div class="feat-row">Complimentary 1-hour design consultation with our lead cake artist</div>
+            <div class="feat-row">Bespoke design — no two Baker's Fresh wedding cakes are ever alike</div>
+            <div class="feat-row">Multiple tier options — 2, 3, 4 and 5+ tier configurations available</div>
+            <div class="feat-row">Choice of 12+ premium flavours — chocolate, vanilla, red velvet, pistachio, mango &amp; more</div>
+            <div class="feat-row">Buttercream, fondant or semi-naked finish — your choice</div>
+            <div class="feat-row">Fresh or sugar-crafted floral decorations, gold leaf and custom toppers</div>
+            <div class="feat-row">Personalised monogram or inscription on cake</div>
+            <div class="feat-row">Temperature-controlled white-glove delivery to your venue</div>
+            <div class="feat-row">On-site assembly and setup by our team</div>
+            <div class="feat-row">Complimentary cake cutting guide and serving instructions</div>
+          </div>
+        </div>
+
+        
+        <div class="sd-feats" style="margin-top:32px">
+          <h4>Popular Wedding Cake Styles</h4>
+          <div class="feat-list">
+            <div class="feat-row">Minimalist Marble &amp; Stone — slate grey fondant with gold leaf accents</div>
+            <div class="feat-row">Pressed Flower Cascade — edible fresh or dried florals draped across tiers</div>
+            <div class="feat-row">Naked &amp; Semi-Naked — rustic sponge layers with minimal frosting</div>
+            <div class="feat-row">Royal Luxury — full fondant with hand-painted motifs and metallic lustre</div>
+            <div class="feat-row">Floral Garden — cascading sugar flowers in your wedding colour palette</div>
+            <div class="feat-row">Modern Geometric — architectural panels with sharp lines and metallic accents</div>
+          </div>
+        </div>
+
+       
+        <div class="sd-gallery">
+          <img src="Images/wedding.jpg" alt="Wedding Cake Gallery 1" loading="lazy">
+          <img src="Images/white velvet.jpg" alt="Wedding Cake Gallery 2" loading="lazy">
+        </div>
+
+       
+        <div class="sd-feats" style="margin-top:32px">
+          <h4>Our Wedding Cake Process</h4>
+          <div class="feat-list">
+            <div class="feat-row"><strong style="color:var(--text);margin-inline-end:6px">01 · Enquire</strong> Share your wedding date, guest count and initial style ideas with us.</div>
+            <div class="feat-row"><strong style="color:var(--text);margin-inline-end:6px">02 · Consult</strong> We meet (in person or virtually) for a 1-hour design and tasting session.</div>
+            <div class="feat-row"><strong style="color:var(--text);margin-inline-end:6px">03 · Design</strong> Our artist creates a bespoke design sketch for your approval.</div>
+            <div class="feat-row"><strong style="color:var(--text);margin-inline-end:6px">04 · Craft</strong> Your cake is handcrafted over 3–5 days using fresh premium ingredients.</div>
+            <div class="feat-row"><strong style="color:var(--text);margin-inline-end:6px">05 · Deliver</strong> White-glove delivery, assembly and setup at your venue on the day.</div>
+          </div>
+        </div>
+
+      </div><!-- end article -->
+
+      
+      <div class="sd-sidebar reveal rd2">
+        <div class="sb-price">Starting ₹4,999</div>
+        <div class="sb-note">Final price based on tiers, design complexity &amp; guest count</div>
+
+        <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;display:flex;margin-bottom:11px">
+          Book a Consultation
+        </a>
+        <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;display:flex">
+          Ask a Question
+        </a>
+
+        <div class="sb-feats">
+          <div class="sb-feat">Free 1-hour design consultation</div>
+          <div class="sb-feat">Bespoke design — exclusively yours</div>
+          <div class="sb-feat">5–14 business days lead time</div>
+          <div class="sb-feat">White-glove venue delivery &amp; setup</div>
+          <div class="sb-feat">100% fresh, premium ingredients</div>
+          <div class="sb-feat">Satisfaction guaranteed</div>
+        </div>
+
+        
+        <div style="margin-top:18px;padding:15px;background:var(--bg3);border-radius:12px;border:1px solid var(--border)">
+          <div style="font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:12px">Pricing Guide</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;justify-content:space-between;font-size:.79rem">
+              <span style="color:var(--text2)">2-Tier (35–50 guests)</span>
+              <span style="font-family:'Playfair Display',serif;font-weight:700;color:#C07828">₹4,999+</span>
+            </div>
+            <div style="height:1px;background:var(--border)"></div>
+            <div style="display:flex;justify-content:space-between;font-size:.79rem">
+              <span style="color:var(--text2)">3-Tier (60–80 guests)</span>
+              <span style="font-family:'Playfair Display',serif;font-weight:700;color:#C07828">₹7,999+</span>
+            </div>
+            <div style="height:1px;background:var(--border)"></div>
+            <div style="display:flex;justify-content:space-between;font-size:.79rem">
+              <span style="color:var(--text2)">4-Tier (100+ guests)</span>
+              <span style="font-family:'Playfair Display',serif;font-weight:700;color:#C07828">₹12,999+</span>
+            </div>
+            <div style="height:1px;background:var(--border)"></div>
+            <div style="display:flex;justify-content:space-between;font-size:.79rem">
+              <span style="color:var(--text2)">5+ Tier (Custom)</span>
+              <span style="font-family:'Playfair Display',serif;font-weight:700;color:#C07828">₹24,999+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sb-contact" style="margin-top:14px">
+          <div class="lbl">Need Help Planning?</div>
+          <p>Our wedding cake specialists are available Mon–Sat, 9am–6pm to guide you through every detail.</p>
+          <a href="tel:+919676843210">📞 +91 96768 43210</a>
+        </div>
+      </div>
+
+    </div><!-- end sd-wrap -->
+  </div>
+</section>
+
+
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">✦ More Services</div>
+      <h2 class="sec-title">You Might Also <em>Love</em></h2>
+    </div>
+    <div class="svc-grid">
+      <a href="service-detail.html" class="svc reveal">
+        <div class="svc-iw"><img class="svc-img" src="Images/birthday theme.jpg" alt="Birthday" loading="lazy"></div>
+        <div class="svc-body">
+          
+          <div class="svc-title">Birthday Cakes</div>
+          <div class="svc-desc">Custom birthday cakes with creative themes for all ages — from cartoon cakes to elegant adult designs.</div>
+          <div class="svc-link">Explore <span>→</span></div>
+        </div>
+      </a>
+      <a href="service-detail.html" class="svc reveal rd1">
+        <div class="svc-iw"><img class="svc-img" src="Images/anniversary.jpg" alt="Anniversary" loading="lazy"></div>
+        <div class="svc-body">
+          
+          <div class="svc-title">Anniversary Cakes</div>
+          <div class="svc-desc">Romantic, personalised anniversary cakes designed to celebrate your unique love story.</div>
+          <div class="svc-link">Explore <span>→</span></div>
+        </div>
+      </a>
+      <a href="service-detail.html" class="svc reveal rd2">
+        <div class="svc-iw"><img class="svc-img" src="Images/custom theme.jpg" alt="Custom" loading="lazy"></div>
+        <div class="svc-body">
+         
+          <div class="svc-title">Custom Theme Cakes</div>
+          <div class="svc-desc">Any theme, any character — brought to life in stunning edible art form.</div>
+          <div class="svc-link">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<div class="nl">
+  <div class="nl-inner reveal">
+    <h2>Plan Your <em>Perfect Wedding</em></h2>
+    <p>Get exclusive wedding cake inspiration, seasonal offers and early booking discounts straight to your inbox.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="Enter your email address…">
+      <button>Subscribe</button>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="foot-logo" href="index.html">Baker's <span>Fresh</span></a>
+        <p>Freshly baked cakes &amp; pastries crafted with love for your special celebrations in Hyderabad.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Quicklinks</h5>
+        <ul>
+          <li><a href="index.html">Home I</a></li>
+          <li><a href="home2.html">Home II</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="menu.html">Menu &amp; Pricing</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="service-detail.html">Birthday Cakes</a></li>
+          <li><a href="wedding-cake-detail1.html">Wedding Cakes</a></li>
+          <li><a href="service-detail.html">Custom Theme Cakes</a></li>
+          <li><a href="service-detail.html">Daily Bakes</a></li>
+          <li><a href="service-detail.html">Corporate Gifting</a></li>
+        </ul>
+      </div>
+       <div class="foot-col"><h5>Contact</h5><ul>
+        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Banjara Hills, Hyderabad</a></li>
+        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>+91 96768 43210</a></li>
+        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@bakersfresh.com</a></li>
+        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Sat 8am–9pm</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Baker's Fresh. All rights reserved.</span><span>Made with ♥ in Hyderabad</span></div>
+  </div>
+</footer>
+<script src="js/global.js"></script>
+<script src="js/service-detail.js"></script>
+</body>
+</html>

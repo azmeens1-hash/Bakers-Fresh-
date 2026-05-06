@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Baker's Fresh</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="index.html">Baker's <span>Fresh</span></a>
+  <ul class="nav-links">
+
+    <li class="has-drop">
+      <a href="index.html">Home</a>
+      <div class="nav-dropdown">
+        <a class="dd-item" href="index.html">Home I</a>
+        <a class="dd-item" href="home2.html">Home II</a>
+      </div>
+    </li>
+
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="menu.html">Menu &amp; Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+  </ul>
+
+  <div class="nav-r">
+    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">🌙</button>
+    <button class="rtl-btn"  id="rtl-btn"   onclick="toggleRTL()"   title="RTL / LTR">RTL</button>
+    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+    <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob-nav" id="mob-nav">
+  <button class="mob-dd-toggle" onclick="toggleMobDrop(this)">
+    Home <span class="mob-dd-chevron">▼</span>
+  </button>
+  <div class="mob-dropdown">
+    <a href="index.html"  onclick="closeMob()">Home I</a>
+    <a href="home2.html"  onclick="closeMob()">Home II</a>
+  </div>
+  <a href="about.html"    onclick="closeMob()">About</a>
+  <a href="services.html" onclick="closeMob()">Services</a>
+  <a href="menu.html"     onclick="closeMob()">Menu &amp; Pricing</a>
+  <a href="blog.html"     onclick="closeMob()">Blog</a>
+  <a href="contact.html"  onclick="closeMob()">Contact</a>
+  <a href="dashboard.html"onclick="closeMob()">Dashboard</a>
+  <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+</div>
+
+<div class="ph"><div class="ph-bg" style="background-image:url('Images/hero image.jpg')"></div><div class="ph-inner"><div class="crumb"><span class="cl" onclick="location.href='index.html'">Home</span><span>›</span><span>About</span></div><h1 class="ph-title">Our <em>Sweet</em> Story</h1><p class="ph-sub">A decade of baking love, one cake at a time — from a tiny kitchen to Hyderabad's most beloved artisan bakery.</p></div></div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="about-story">
+      <div class="about-imgs reveal">
+        <img src="Images/mission.jpg" alt="Bakery" class="aimg-main" loading="lazy">
+        <img src="Images/about.jpg" alt="Baking" class="aimg-sm" loading="lazy">
+        <div class="a-badge"><b>10</b><small>Years of Baking</small></div>
+      </div>
+      <div class="about-txt reveal rd1">
+        <div class="sec-tag">✦ Our Story</div>
+        <h2>Baked with <em>Passion</em>,<br>Served with Pride</h2>
+        <p style="margin-top:6px">Baker's Fresh was born in 2015 from a tiny kitchen in Banjara Hills, Hyderabad. Founder Lakshmi Reddy believed every celebration deserves a cake that's as special as the moment itself — not just delicious, but visually breathtaking.</p>
+        <p>What started as weekend orders for friends and family quickly grew into Hyderabad's most-loved artisan bakery. Today, we serve over 500 families, crafting everything from intimate anniversary cakes to grand multi-tiered wedding showstoppers.</p>
+        <p>Our philosophy: where visual inspiration meets logistical precision. We don't just bake — we create experiences that last far longer than the last crumb.</p>
+        <div class="vals">
+          <div class="val"><div class="val-txt"><h5>Fresh Ingredients</h5><p>Sourced daily from trusted local farms.</p></div></div>
+          <div class="val"><div class="val-txt"><h5>Artistic Vision</h5><p>Every design is unique — no two cakes alike.</p></div></div>
+          <div class="val"><div class="val-txt"><h5>Made with Love</h5><p>Passion drives every recipe and every layer.</p></div></div>
+          <div class="val"><div class="val-txt"><h5>Reliable Delivery</h5><p>Your celebration is our priority — on time.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="sec-tag">✦ The Bakers</div><h2 class="sec-title">Meet Our <em>Team</em></h2><p class="sec-sub">The talented hands behind every beautiful, delicious creation.</p></div>
+    <div class="team-grid">
+      <div class="team-card reveal"><img src="Images/founder img.jpg" alt="Lakshmi" loading="lazy"><div class="team-info"><div class="team-name">Lakshmi Reddy</div><div class="team-role">Founder &amp; Head Baker</div></div></div>
+      <div class="team-card reveal rd1"><img src="Images/cake artist.jpg" alt="Arjun" loading="lazy"><div class="team-info"><div class="team-name">Arjun Mehta</div><div class="team-role">Cake Artist &amp; Designer</div></div></div>
+      <div class="team-card reveal rd2"><img src="Images/pastry chef.jpg" alt="Sunita" loading="lazy"><div class="team-info"><div class="team-name">Sunita Patel</div><div class="team-role">Pastry Chef</div></div></div>
+      <div class="team-card reveal rd3"><img src="Images/deliver ops.jpg" alt="Vikram" loading="lazy"><div class="team-info"><div class="team-name">Vikram Singh</div><div class="team-role">Delivery &amp; Operations</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="stats-bar" style="border-radius:20px;overflow:hidden;border:1px solid var(--border)">
+      <div class="stat-item reveal"><span class="stat-n">500+</span><span class="stat-l">Happy Customers</span></div>
+      <div class="stat-item reveal rd1"><span class="stat-n">10k+</span><span class="stat-l">Cakes Delivered</span></div>
+      <div class="stat-item reveal rd2"><span class="stat-n">30+</span><span class="stat-l">Flavour Varieties</span></div>
+      <div class="stat-item reveal rd3"><span class="stat-n">4.9★</span><span class="stat-l">Google Rating</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="sec-tag">✦ Customer Love</div><h2 class="sec-title">What They <em>Say</em></h2></div>
+    <div class="tgrid">
+      <div class="tcard reveal"><div class="stars">★★★★★</div><div class="tquote">"The wedding cake was absolutely stunning. Every guest was amazed. Baker's Fresh turned our dream into reality — on time and flawlessly."</div><div class="tauthor"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" class="tav" alt="Priya" loading="lazy"><div><div class="tav-name">Priya Sharma</div><div class="tav-sub">Wedding Client, Hyderabad</div></div></div></div>
+      <div class="tcard reveal rd1"><div class="stars">★★★★★</div><div class="tquote">"Ordered a Spider-Man cake for my son's birthday. The detail was incredible! He was speechless. Will always order from Baker's Fresh!"</div><div class="tauthor"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" class="tav" alt="Rahul" loading="lazy"><div><div class="tav-name">Rahul Verma</div><div class="tav-sub">Birthday Order, Secunderabad</div></div></div></div>
+      <div class="tcard reveal rd2"><div class="stars">★★★★★</div><div class="tquote">"The croissants are life-changing. I order every week. Nothing comes close to the freshness and buttery flavour. Absolute perfection!"</div><div class="tauthor"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" class="tav" alt="Meera" loading="lazy"><div><div class="tav-name">Meera Pillai</div><div class="tav-sub">Regular Customer, Banjara Hills</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="foot-logo" href="index.html">Baker's <span>Fresh</span></a>
+        <p>Freshly baked cakes &amp; pastries crafted with love for your special celebrations in Hyderabad.</p>
+       </div>
+      <div class="foot-col"><h5>Quicklinks</h5><ul><li><a href="index.html">Home I</a></li>
+        <li><a href="home2.html">Home II</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="menu.html">Menu &amp; Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        
+        <ul>
+          <li><a href="service-detail.html">Birthday Cakes</a></li>
+          <li><a href="service-detail.html">Wedding Cakes</a></li>
+          <li><a href="service-detail.html">Custom Theme Cakes</a></li>
+          <li><a href="service-detail.html">Daily Bakes</a></li>
+          <li><a href="service-detail.html">Corporate Gifting</a></li>
+        </ul>
+      </div>
+       <div class="foot-col"><h5>Contact</h5><ul>
+        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Banjara Hills, Hyderabad</a></li>
+        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>+91 96768 43210</a></li>
+        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@bakersfresh.com</a></li>
+        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Sat 8am–9pm</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Baker's Fresh. All rights reserved.</span><span>Made with ♥ in Hyderabad</span></div>
+  </div>
+</footer>
+     
+<script src="js/global.js"></script>
+<script src="js/about.js"></script>
+</body></html>
