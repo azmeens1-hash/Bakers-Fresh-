@@ -484,4 +484,78 @@ footer { background: var(--bg2); color: rgba(255,255,255,.52); padding: 64px 0 2
      .rtl-btn    { display: flex; }
    }
  
-  
+  /* ── DATA-PAGE BASED ACTIVE NAV — most reliable method ── */
+ 
+/* Home I & Home II — highlight parent "Home" link */
+[data-page="home1"] .nav-links li.has-drop > a,
+[data-page="home2"] .nav-links li.has-drop > a { color: #C07828; }
+[data-page="home1"] .nav-links li.has-drop > a::before,
+[data-page="home2"] .nav-links li.has-drop > a::before {
+  background: rgba(192,120,40,.15);
+  border-color: rgba(192,120,40,.35);
+}
+[data-page="home1"] .nav-links li.has-drop > a::after,
+[data-page="home2"] .nav-links li.has-drop > a::after { width: 18px; }
+ 
+/* Home I dropdown item */
+[data-page="home1"] .nav-dropdown a[href="index.html"] { color: #C07828; }
+/* Home II dropdown item */
+[data-page="home2"] .nav-dropdown a[href="home2.html"] { color: #C07828; }
+ 
+/* About */
+[data-page="about"] .nav-links a[href="about.html"] { color: #C07828; }
+[data-page="about"] .nav-links a[href="about.html"]::before {
+  background: rgba(192,120,40,.15); border-color: rgba(192,120,40,.35);
+}
+[data-page="about"] .nav-links a[href="about.html"]::after { width: 18px; }
+ 
+/* Services */
+[data-page="services"] .nav-links a[href="services.html"] { color: #C07828; }
+[data-page="services"] .nav-links a[href="services.html"]::before {
+  background: rgba(192,120,40,.15); border-color: rgba(192,120,40,.35);
+}
+[data-page="services"] .nav-links a[href="services.html"]::after { width: 18px; }
+ 
+/* Menu */
+[data-page="menu"] .nav-links a[href="menu.html"] { color: #C07828; }
+[data-page="menu"] .nav-links a[href="menu.html"]::before {
+  background: rgba(192,120,40,.15); border-color: rgba(192,120,40,.35);
+}
+[data-page="menu"] .nav-links a[href="menu.html"]::after { width: 18px; }
+ 
+/* Blog */
+[data-page="blog"] .nav-links a[href="blog.html"] { color: #C07828; }
+[data-page="blog"] .nav-links a[href="blog.html"]::before {
+  background: rgba(192,120,40,.15); border-color: rgba(192,120,40,.35);
+}
+[data-page="blog"] .nav-links a[href="blog.html"]::after { width: 18px; }
+ 
+/* Contact */
+[data-page="contact"] .nav-links a[href="contact.html"] { color: #C07828; }
+[data-page="contact"] .nav-links a[href="contact.html"]::before {
+  background: rgba(192,120,40,.15); border-color: rgba(192,120,40,.35);
+}
+[data-page="contact"] .nav-links a[href="contact.html"]::after { width: 18px; }
+ 
+/* Dashboard */
+[data-page="dashboard"] .nav-links a[href="dashboard.html"] { color: #C07828; }
+[data-page="dashboard"] .nav-links a[href="dashboard.html"]::before {
+  background: rgba(192,120,40,.15); border-color: rgba(192,120,40,.35);
+}
+[data-page="dashboard"] .nav-links a[href="dashboard.html"]::after { width: 18px; }
+ 
+/* ── Mobile nav active links via data-page ── */
+[data-page="home1"]    .mob-nav a[href="index.html"],
+[data-page="home2"]    .mob-nav a[href="home2.html"],
+[data-page="about"]    .mob-nav a[href="about.html"],
+[data-page="services"] .mob-nav a[href="services.html"],
+[data-page="menu"]     .mob-nav a[href="menu.html"],
+[data-page="blog"]     .mob-nav a[href="blog.html"],
+[data-page="contact"]  .mob-nav a[href="contact.html"],
+[data-page="dashboard"] .mob-nav a[href="dashboard.html"] {
+  color: #C07828;
+  background: rgba(192,120,40,.10);
+  padding-left: 18px;
+  border-left: 2px solid #C07828;
+}
+ 
