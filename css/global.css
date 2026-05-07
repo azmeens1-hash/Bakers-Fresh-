@@ -97,7 +97,9 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .btn-lg { padding: 15px 36px; font-size: .85rem; }
 .btn-sm { padding: 9px 20px; font-size: .73rem; }
 
-/* ── NAV ── */
+/* ══════════════════════════════════════════
+   NAV
+   ══════════════════════════════════════════ */
 #nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   height: 70px;
@@ -110,6 +112,8 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
   border-top: 1px solid rgba(255,255,255,.18);
   box-shadow: var(--glass-shadow);
   transition: background .4s ease, box-shadow .3s ease, border-color .4s ease;
+  /* CRITICAL: overflow visible so dropdown panel can overflow nav bounds */
+  overflow: visible;
 }
 #nav.stuck {
   background: var(--glass-bg);
@@ -126,8 +130,13 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 }
 .logo span { font-style: italic; color: var(--text); }
 
-/* ── NAV LINKS ── */
-.nav-links { display: flex; gap: 4px; align-items: center; }
+/* ── NAV LINKS LIST ── */
+.nav-links {
+  display: flex; gap: 4px; align-items: center;
+  /* CRITICAL: overflow visible so dropdown is not clipped */
+  overflow: visible;
+  position: relative; z-index: 1001;
+}
 .nav-links a {
   font-size: .72rem; font-weight: 500;
   letter-spacing: .1em; text-transform: uppercase;
@@ -151,7 +160,7 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .nav-links a:hover,
 .nav-links a.act { color: #C07828; }
 
-/* Active underline dot — only for non-dropdown links */
+/* Underline dot — for regular links */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -163,22 +172,30 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .nav-links a.act::after   { width: 18px; }
 .nav-links a:hover::after { width: 18px; }
 
-/* ── DROPDOWN LI ── */
-.nav-links li { position: relative; list-style: none; }
+/* ── HAS-DROP LI ── */
+.nav-links li {
+  position: relative;
+  list-style: none;
+  overflow: visible;
+}
 
 .nav-links li.has-drop {
-  /* Raise above siblings so hover area isn't clipped */
+  /* Extended downward hit-area bridges the gap to the dropdown panel.
+     Mouse travel from link to panel stays within the li so :hover never drops. */
+  padding-bottom: 18px;
+  margin-bottom: -18px;
   z-index: 10;
-  /* Extend hit-area downward to bridge gap to dropdown panel */
-  padding-bottom: 14px;
-  margin-bottom: -14px;
 }
-/* Elevate further when actively hovered */
-.nav-links li.has-drop:hover { z-index: 1100; }
+.nav-links li.has-drop:hover,
+.nav-links li.has-drop.open {
+  z-index: 1100;
+}
 
-/* Dropdown chevron */
-.nav-links li.has-drop > a::after {
-  content: '';
+/* Suppress the underline dot on the dropdown parent link */
+.nav-links li.has-drop > a::after { display: none !important; }
+
+/* Chevron inside the parent link — use a <span class="drop-chevron"> in HTML */
+.drop-chevron {
   display: inline-block;
   width: 0; height: 0;
   border-left: 3.5px solid transparent;
@@ -187,24 +204,21 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
   margin-inline-start: 5px;
   vertical-align: middle;
   transition: transform .25s;
-  position: static;
-  bottom: auto; left: auto;
-  transform: none;
-  background: none;
-  border-radius: 0;
+  pointer-events: none;
 }
-.nav-links li.has-drop:hover > a::after { transform: rotate(180deg); }
-
-/* JS-driven open class — primary trigger (reliable at all widths) */
-.nav-links li.has-drop.open > a::after { transform: rotate(180deg); }
+.nav-links li.has-drop:hover > a .drop-chevron,
+.nav-links li.has-drop.open  > a .drop-chevron {
+  transform: rotate(180deg);
+}
 
 /* ── DROPDOWN PANEL ── */
 .nav-dropdown {
   position: absolute;
-  top: calc(100% + 0px);  /* flush — gap bridged by li padding-bottom */
+  /* Flush to bottom of li — the 18px padding-bottom bridges the visual gap */
+  top: calc(100% - 16px);
   left: 50%;
   transform: translateX(-50%) translateY(-6px);
-  min-width: 160px;
+  min-width: 164px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -213,32 +227,33 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity .22s, transform .22s, visibility .22s;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+  /* Above everything else */
   z-index: 2000;
 }
 
-/* Gap bridge pseudo-element */
+/* Invisible upward pseudo-bridge — catches mouse in the gap between
+   the bottom edge of the link text and the top of the panel */
 .nav-dropdown::before {
   content: '';
   position: absolute;
   bottom: 100%;
   left: 0; right: 0;
-  height: 18px;
+  height: 20px;
   background: transparent;
   pointer-events: auto;
 }
 
-/* CSS :hover trigger (desktop, works when pointer is precise) */
-.nav-links li.has-drop:hover > .nav-dropdown,
-.nav-links li.has-drop > .nav-dropdown:hover {
+/* OPEN: JS .open class — primary trigger, works at ALL viewport widths */
+.nav-links li.has-drop.open > .nav-dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
 
-/* JS .open class trigger (reliable fallback for all breakpoints) */
-.nav-links li.has-drop.open > .nav-dropdown {
+/* OPEN: CSS :hover — progressive enhancement */
+.nav-links li.has-drop:hover > .nav-dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -247,33 +262,20 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 
 .dd-item {
   display: block;
-  padding: 10px 14px;
+  padding: 10px 16px;
   border-radius: 9px;
   font-size: .78rem; font-weight: 500;
   letter-spacing: .08em; text-transform: uppercase;
   color: var(--text2); text-decoration: none;
   transition: background .2s, color .2s;
   white-space: nowrap;
+  /* Must be above nav-dropdown z-index to be clickable */
+  position: relative;
+  z-index: 2001;
+  cursor: pointer;
 }
 .dd-item:hover { background: rgba(192,120,40,.10); color: #C07828; }
-.dd-item.act   { color: #C07828; }
-
-/* ── MOBILE DROPDOWN TOGGLE ── */
-.mob-dd-wrap { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
-.mob-dd-toggle {
-  display: flex; align-items: center; justify-content: space-between;
-  width: 100%; background: none; border: none;
-  padding: 12px 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: .8rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--text2); cursor: pointer; text-align: start; transition: color .2s;
-}
-.mob-dd-toggle:hover { color: #C07828; }
-.mob-dd-chevron { font-size: .6rem; color: var(--text3); transition: transform .25s; }
-.mob-dd-toggle.open .mob-dd-chevron { transform: rotate(180deg); }
-.mob-dropdown { display: none; flex-direction: column; background: rgba(192,120,40,.04); }
-.mob-dropdown a { padding: 10px 10px 10px 26px; border: none; font-size: .76rem; color: var(--text2); transition: color .2s, padding-inline-start .2s; }
-.mob-dropdown a:hover { color: #C07828; padding-inline-start: 32px; }
+.dd-item.act   { color: #C07828; font-weight: 600; }
 
 /* ── NAV RIGHT ── */
 .nav-r { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
@@ -336,6 +338,23 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .mob-nav a:hover { color: #C07828; padding-left: 18px; background: rgba(192,120,40,.08); }
 .mob-nav a.act  { color: #C07828; }
 [dir="rtl"] .mob-nav a:hover { padding-left: 10px; padding-right: 18px; }
+
+/* ── MOBILE DROPDOWN TOGGLE ── */
+.mob-dd-wrap { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
+.mob-dd-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; background: none; border: none;
+  padding: 12px 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .8rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text2); cursor: pointer; text-align: start; transition: color .2s;
+}
+.mob-dd-toggle:hover { color: #C07828; }
+.mob-dd-chevron { font-size: .6rem; color: var(--text3); transition: transform .25s; }
+.mob-dd-toggle.open .mob-dd-chevron { transform: rotate(180deg); }
+.mob-dropdown { display: none; flex-direction: column; background: rgba(192,120,40,.04); }
+.mob-dropdown a { padding: 10px 10px 10px 26px; border: none; font-size: .76rem; color: var(--text2); transition: color .2s, padding-inline-start .2s; }
+.mob-dropdown a:hover { color: #C07828; padding-inline-start: 32px; }
 
 /* ── PAGE HERO ── */
 .ph { position: relative; height: 52vh; min-height: 360px; display: flex; align-items: flex-end; overflow: hidden; padding-bottom: 52px; }
@@ -429,34 +448,53 @@ footer { background: var(--bg2); color: rgba(255,255,255,.52); padding: 64px 0 2
 [dir="rtl"] .feat-row:hover   { transform: translateX(-4px); }
 [dir="rtl"] .ci:hover         { transform: translateX(-5px); }
 
-/* ── RESPONSIVE ── */
-/* ── DESKTOP RESET — ensure hamburger never shows above mobile breakpoint ── */
+/* ══════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════ */
+
+/* ── DESKTOP ≥ 769px: desktop nav always visible, hamburger always hidden ── */
 @media (min-width: 769px) {
   .ham        { display: none !important; }
-  .nav-links  { display: flex; }
-  .nav-r .btn { display: inline-flex; }
-  .rtl-btn    { display: flex; }
+  .nav-links  { display: flex !important; }
+  .nav-r .btn { display: inline-flex !important; }
+  .rtl-btn    { display: flex !important; }
 }
 
-@media (max-width: 1060px) {
-  .wrap { padding: 0 30px; }
-  .foot-grid { grid-template-columns: 1fr 1fr; gap: 26px; }
-  .ph-inner { padding: 0 30px; }
-  .cta-inner { padding: 60px 30px; }
-  #nav { padding: 0 28px; }
+/* ── LARGE DESKTOP ≥ 1280px ── */
+@media (min-width: 1280px) {
+  #nav { padding: 0 52px; }
+  .nav-links a { padding: 7px 16px; font-size: .74rem; }
+  .wrap { padding: 0 64px; }
+}
+
+/* ── MEDIUM DESKTOP 1024px – 1279px: tighter nav, dropdown still fully functional ── */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  #nav { padding: 0 32px; }
   .nav-links { gap: 0; }
-  .nav-links a { padding: 7px 10px; font-size: .68rem; }
-
-  /* Keep dropdown z-index elevated at tighter nav widths */
-  .nav-links li.has-drop { z-index: 10; }
-  .nav-links li.has-drop:hover { z-index: 1100; }
+  .nav-links a { padding: 7px 10px; font-size: .69rem; }
+  .wrap { padding: 0 36px; }
+  /* Guarantee dropdown layering at this breakpoint */
+  .nav-links li.has-drop        { z-index: 10; }
+  .nav-links li.has-drop:hover,
+  .nav-links li.has-drop.open   { z-index: 1100; }
+  .nav-dropdown                 { z-index: 2000; }
+  .dd-item                      { z-index: 2001; }
 }
 
+/* ── TABLET-DESKTOP 769px – 1023px ── */
+@media (min-width: 769px) and (max-width: 1023px) {
+  #nav { padding: 0 24px; }
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 6px 8px; font-size: .64rem; }
+  .wrap { padding: 0 24px; }
+}
+
+/* ── MOBILE ≤ 768px ── */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-  .ham { display: flex; }
-  .nav-r .btn { display: none; }   /* hides Login button only */
-  .rtl-btn { display: flex; }      /* RTL toggle always visible */
+  .nav-links { display: none !important; }
+  .ham { display: flex !important; }
+  .nav-r .btn { display: none !important; }
+  .rtl-btn { display: flex; }
   .wrap { padding: 0 18px; }
   .sec { padding: 60px 0; }
   .feat-grid { grid-template-columns: 1fr; }
@@ -469,19 +507,3 @@ footer { background: var(--bg2); color: rgba(255,255,255,.52); padding: 64px 0 2
   .cta-inner { padding: 40px 20px; }
   #nav { padding: 0 18px; }
 }
-  @media (min-width: 769px) {
-     .ham        { display: none !important; }
-     .nav-links  { display: flex; }
-     .nav-r .btn { display: inline-flex; }
-     .rtl-btn    { display: flex; }
-   }
- 
-  
-   @media (min-width: 1024px) {
-     .ham        { display: none !important; }
-     .nav-links  { display: flex; }
-     .nav-r .btn { display: inline-flex; }
-     .rtl-btn    { display: flex; }
-   }
- 
-  

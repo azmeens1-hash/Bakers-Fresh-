@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════
-   Baker's Fresh — global.js  (v5 — final fix)
+   Baker's Fresh — global.js  (v6 — dropdown fix)
    ══════════════════════════════════════════ */
 
 /* ── THEME + DIR: apply before first paint to avoid flash ── */
@@ -88,73 +88,95 @@ function initHamburger() {
   if (!ham) return;
 
   function applyLayout() {
-    const desk = window.innerWidth >= 1024;
-    ham.style.display = desk ? 'none' : 'flex';
-    if (navLinks) desk ? navLinks.style.removeProperty('display') : navLinks.style.display = 'none';
-    if (loginBtn) desk ? loginBtn.style.removeProperty('display') : loginBtn.style.display = 'none';
-    if (themeBtn) desk ? themeBtn.style.removeProperty('display') : themeBtn.style.display = 'flex';
-    if (rtlBtn)   desk ? rtlBtn.style.removeProperty('display')   : rtlBtn.style.display   = 'flex';
+    const desk = window.innerWidth >= 769;
+    ham.style.display      = desk ? 'none' : 'flex';
+    if (navLinks) { desk ? navLinks.style.removeProperty('display') : (navLinks.style.display = 'none'); }
+    if (loginBtn) { desk ? loginBtn.style.removeProperty('display') : (loginBtn.style.display = 'none'); }
+    if (themeBtn) { desk ? themeBtn.style.removeProperty('display') : (themeBtn.style.display = 'flex'); }
+    if (rtlBtn)   { desk ? rtlBtn.style.removeProperty('display')   : (rtlBtn.style.display   = 'flex'); }
     if (!desk) { mobNav?.classList.remove('open'); ham.classList.remove('open'); }
   }
   applyLayout();
   window.addEventListener('resize', applyLayout, { passive: true });
 }
 
-/* ── DROPDOWN (desktop) ── */
+/* ══════════════════════════════════════════
+   DESKTOP DROPDOWN
+   ──────────────────────────────────────────
+   Uses mouseenter/mouseleave with a short
+   close-delay so the mouse can travel from
+   the nav link to the dropdown panel without
+   the menu snapping shut mid-journey.
+   This is the most reliable pattern across
+   all desktop widths including exactly 1024px.
+   ══════════════════════════════════════════ */
 function initDropdowns() {
-  document.querySelectorAll('.nav-links li.has-drop').forEach(li => {
-    const trigger = li.querySelector(':scope > a');
-    if (!trigger) return;
-    trigger.addEventListener('click', e => {
-      if (!trigger.getAttribute('href') || trigger.getAttribute('href') === '#') {
-        e.preventDefault();
-        const open = li.classList.contains('open');
-        document.querySelectorAll('.nav-links li.has-drop').forEach(l => l.classList.remove('open'));
-        if (!open) li.classList.add('open');
-      }
-    });
+  document.querySelectorAll('.nav-links li.has-drop').forEach(function (li) {
+    var closeTimer = null;
+
+    function openMenu() {
+      clearTimeout(closeTimer);
+      /* Close any other open dropdowns first */
+      document.querySelectorAll('.nav-links li.has-drop.open').forEach(function (other) {
+        if (other !== li) other.classList.remove('open');
+      });
+      li.classList.add('open');
+    }
+
+    function scheduleClose() {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(function () {
+        li.classList.remove('open');
+      }, 120); /* 120 ms grace window — enough for mouse travel */
+    }
+
+    /* Hover on the li (includes the parent link) */
+    li.addEventListener('mouseenter', openMenu);
+    li.addEventListener('mouseleave', scheduleClose);
+
+    /* Hover directly on the dropdown panel keeps it open */
+    var panel = li.querySelector('.nav-dropdown');
+    if (panel) {
+      panel.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
+      panel.addEventListener('mouseleave', scheduleClose);
+    }
+
+    /* Click on the parent <a> — only intercept if it has no real href */
+    var trigger = li.querySelector(':scope > a');
+    if (trigger) {
+      trigger.addEventListener('click', function (e) {
+        var href = trigger.getAttribute('href');
+        if (!href || href === '#') {
+          e.preventDefault();
+          li.classList.contains('open') ? li.classList.remove('open') : openMenu();
+        }
+        /* If the link has a real href (e.g. index.html) let it navigate normally */
+      });
+    }
   });
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.nav-links li.has-drop'))
-      document.querySelectorAll('.nav-links li.has-drop.open').forEach(l => l.classList.remove('open'));
+
+  /* Click outside closes all dropdowns */
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-links li.has-drop')) {
+      document.querySelectorAll('.nav-links li.has-drop.open').forEach(function (l) {
+        l.classList.remove('open');
+      });
+    }
   });
 }
 
 /* ══════════════════════════════════════════
-   ACTIVE NAV  —  v5
-   
-   ROOT CAUSE (confirmed from about.html):
-     Your HTML files have data-page on <body>:  <body data-page="about">
-     Your CSS rules target <html>:              [data-page="about"] .nav-links a { }
-     Previous JS was setting on <html> but
-     reading from URL — which failed on
-     published hosts.
-
-   THE FIX:
-     1. Read data-page directly from <body>
-        (already set correctly in every HTML file — no HTML edits needed)
-     2. Copy it up to <html> so the CSS rules
-        [data-page="..."] fire correctly
-     3. Use it to add .act class to the right
-        nav links for JS-driven styles too
+   ACTIVE NAV  —  v6
    ══════════════════════════════════════════ */
 function setActiveNav() {
-
-  /* ── Step 1: Read data-page from <body> (the source of truth) ── */
   const pageKey = document.body.getAttribute('data-page') || '';
+  if (!pageKey) return;
 
-  if (!pageKey) {
-    console.warn('[BF Nav] No data-page found on <body>. Add data-page="pagename" to your <body> tag.');
-    return;
-  }
-
-  /* ── Step 2: Mirror it onto <html> so CSS [data-page="..."] rules fire ── */
   document.documentElement.setAttribute('data-page', pageKey);
 
-  /* ── Step 3: Which nav href should be highlighted for this page? ── */
   const PAGE_TO_HREF = {
     'home1':     'index.html',
-    'home2':     'index.html',   // "Home" parent link covers both home pages
+    'home2':     'index.html',
     'about':     'about.html',
     'services':  'services.html',
     'menu':      'menu.html',
@@ -166,38 +188,38 @@ function setActiveNav() {
   const activeHref = PAGE_TO_HREF[pageKey];
   if (!activeHref) return;
 
-  /* ── Step 4: Desktop nav — top-level links ── */
-  document.querySelectorAll('.nav-links > li > a').forEach(a => {
-    const href = (a.getAttribute('href') || '').split('/').pop();
+  /* Desktop top-level links */
+  document.querySelectorAll('.nav-links > li > a').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').split('/').pop();
     a.classList.toggle('act', href === activeHref);
   });
 
-  /* ── Step 5: Desktop nav — dropdown items (Home I / Home II exact match) ── */
-  const DD_EXACT = { 'home1': 'index.html', 'home2': 'home2.html' };
-  const ddHref = DD_EXACT[pageKey];
-  document.querySelectorAll('.nav-dropdown .dd-item').forEach(a => {
-    const href = (a.getAttribute('href') || '').split('/').pop();
+  /* Desktop dropdown items (Home I / Home II exact match) */
+  var DD_EXACT = { 'home1': 'index.html', 'home2': 'home2.html' };
+  var ddHref = DD_EXACT[pageKey];
+  document.querySelectorAll('.nav-dropdown .dd-item').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').split('/').pop();
     a.classList.toggle('act', !!ddHref && href === ddHref);
   });
 
-  /* ── Step 6: Mobile nav links ── */
-  document.querySelectorAll('.mob-nav a:not(.btn)').forEach(a => {
-    const href = (a.getAttribute('href') || '').split('/').pop();
+  /* Mobile nav links */
+  document.querySelectorAll('.mob-nav a:not(.btn)').forEach(function (a) {
+    var href = (a.getAttribute('href') || '').split('/').pop();
     a.classList.toggle('act', href === activeHref);
   });
 }
 
 /* ── INIT ── */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
 
-  // Sync theme button icon with current theme
-  const curTheme = document.documentElement.getAttribute('data-theme') || 'light';
-  const themeBtn = document.getElementById('theme-btn');
+  /* Sync theme button icon */
+  var curTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  var themeBtn = document.getElementById('theme-btn');
   if (themeBtn) themeBtn.textContent = curTheme === 'dark' ? '☀️' : '🌙';
 
-  // Sync RTL button label
-  const curDir = document.documentElement.getAttribute('dir') || 'ltr';
-  const rtlBtn = document.getElementById('rtl-btn');
+  /* Sync RTL button label */
+  var curDir = document.documentElement.getAttribute('dir') || 'ltr';
+  var rtlBtn = document.getElementById('rtl-btn');
   if (rtlBtn) rtlBtn.textContent = curDir === 'rtl' ? 'LTR' : 'RTL';
 
   initNav();
