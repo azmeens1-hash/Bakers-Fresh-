@@ -68,56 +68,71 @@ function doCopy(btn, code) {
 }
 
 /* ══════════════════════════════════════════
-   HAMBURGER VISIBILITY
-   The CSS breakpoint across all pages is
-   1024px — hamburger appears below 1024px,
-   full nav appears at 1024px and above.
-   This JS mirrors that exactly and also
-   handles window resize (e.g. DevTools
-   toggling between mobile/desktop views).
+   HAMBURGER + NAV LAYOUT
    ══════════════════════════════════════════ */
 function initHamburger() {
   const ham      = document.getElementById('ham');
   const navLinks = document.querySelector('.nav-links');
   const loginBtn = document.querySelector('.nav-r .btn-primary');
+  const themeBtn = document.getElementById('theme-btn');
+  const rtlBtn   = document.getElementById('rtl-btn');
   const mobNav   = document.getElementById('mob-nav');
-
   if (!ham) return;
 
-  const BREAKPOINT = 1024;
-
   function applyLayout() {
-    const isDesktop = window.innerWidth >= BREAKPOINT;
-
+    const isDesktop = window.innerWidth >= 1024;
     if (isDesktop) {
-      // ── Desktop: hide hamburger, show nav links + login
       ham.style.display = 'none';
-      if (navLinks) navLinks.style.removeProperty('display');  // let CSS handle it (flex)
-      if (loginBtn) loginBtn.style.removeProperty('display');
-
-      // Close mobile menu if it was open
-      if (mobNav) mobNav.classList.remove('open');
+      if (navLinks)  navLinks.style.removeProperty('display');
+      if (loginBtn)  loginBtn.style.removeProperty('display');
+      if (themeBtn)  themeBtn.style.removeProperty('display');
+      if (rtlBtn)    rtlBtn.style.removeProperty('display');
+      if (mobNav)    mobNav.classList.remove('open');
       ham.classList.remove('open');
     } else {
-      // ── Mobile/Tablet: show hamburger, hide nav links + login
       ham.style.display = 'flex';
-      if (navLinks) navLinks.style.display = 'none';
-      if (loginBtn) loginBtn.style.display = 'none';
+      if (navLinks)  navLinks.style.display = 'none';
+      if (loginBtn)  loginBtn.style.display = 'none';
+      if (themeBtn)  themeBtn.style.display = 'flex';
+      if (rtlBtn)    rtlBtn.style.display   = 'flex';
     }
   }
-
   applyLayout();
   window.addEventListener('resize', applyLayout, { passive: true });
 }
 
 /* ══════════════════════════════════════════
    AUTO ACTIVE NAV LINK
+   Works on: local file://, GitHub Pages,
+   Netlify, shared hosting, subfolders — any
+   environment.
    ══════════════════════════════════════════ */
 function setActiveNav() {
-  const path    = window.location.pathname;
-  const current = path.split('/').pop() || 'index.html';
 
-  const isHomeOne   = current === 'index.html' || current === '';
+  /* ── Step 1: Get current page filename ──────────────────
+     Handles all these cases:
+       http://site.com/index.html        → "index.html"
+       http://site.com/                  → "index.html"
+       http://site.com/about.html        → "about.html"
+       http://site.com/folder/about.html → "about.html"
+       file:///C:/project/about.html     → "about.html"
+  ─────────────────────────────────────────────────────── */
+  const fullPath = window.location.href;           // full URL
+  const filename = fullPath
+    .split('?')[0]                                 // strip query string
+    .split('#')[0]                                 // strip hash
+    .split('/')                                    // split by slash
+    .filter(Boolean)                               // remove empty parts
+    .pop()                                         // last segment = filename
+    || 'index.html';                               // fallback for root "/"
+
+  // Normalise: "index.html" covers both "/" and "index.html"
+  const current = (filename === '' || filename === 'index.html')
+    ? 'index.html'
+    : filename;
+
+  /* ── Step 2: Define page groups ── */
+  const isHomeOne   = current === 'index.html';
   const isHomeTwo   = current === 'home2.html';
   const isHome      = isHomeOne || isHomeTwo;
   const isAbout     = current === 'about.html';
@@ -128,46 +143,72 @@ function setActiveNav() {
   const isContact   = current === 'contact.html';
   const isDashboard = current === 'dashboard.html';
 
-  /* ── Desktop nav ── */
+  /* ── Step 3: Helper — does this link match current page? ── */
+  function linkMatches(href) {
+    if (!href) return false;
+    // Get just the filename from the href
+    const linkFile = href
+      .split('?')[0]
+      .split('#')[0]
+      .split('/')
+      .filter(Boolean)
+      .pop() || 'index.html';
+    return linkFile === current;
+  }
+
+  /* ── Step 4: Desktop nav — clear all, then set correct ── */
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('act'));
 
-  // Top-level parent links only (not dropdown items)
+  // Top-level parent links (li > a, NOT dropdown items)
   document.querySelectorAll('.nav-links > li > a').forEach(a => {
-    const href = (a.getAttribute('href') || '').split('/').pop();
-    if (isHome      && href === 'index.html')     a.classList.add('act');
-    if (isAbout     && href === 'about.html')     a.classList.add('act');
-    if (isServices  && href === 'services.html')  a.classList.add('act');
-    if (isMenu      && href === 'menu.html')      a.classList.add('act');
-    if (isBlog      && href === 'blog.html')      a.classList.add('act');
-    if (isContact   && href === 'contact.html')   a.classList.add('act');
-    if (isDashboard && href === 'dashboard.html') a.classList.add('act');
+    const href = a.getAttribute('href') || '';
+    const file = href.split('/').pop() || 'index.html';
+
+    if (isHome      && file === 'index.html')     a.classList.add('act');
+    if (isAbout     && file === 'about.html')     a.classList.add('act');
+    if (isServices  && file === 'services.html')  a.classList.add('act');
+    if (isMenu      && file === 'menu.html')      a.classList.add('act');
+    if (isBlog      && file === 'blog.html')      a.classList.add('act');
+    if (isContact   && file === 'contact.html')   a.classList.add('act');
+    if (isDashboard && file === 'dashboard.html') a.classList.add('act');
   });
 
-  // Dropdown items (Home I / Home II)
+  // Dropdown items — Home I / Home II
   document.querySelectorAll('.nav-dropdown .dd-item').forEach(a => {
-    const href = (a.getAttribute('href') || '').split('/').pop();
-    if (isHomeOne && href === 'index.html') a.classList.add('act');
-    if (isHomeTwo && href === 'home2.html') a.classList.add('act');
+    const file = (a.getAttribute('href') || '').split('/').pop() || 'index.html';
+    if (isHomeOne && file === 'index.html')  a.classList.add('act');
+    if (isHomeTwo && file === 'home2.html')  a.classList.add('act');
   });
 
-  /* ── Mobile nav ── */
+  /* ── Step 5: Mobile nav — clear all, then set correct ── */
   document.querySelectorAll('.mob-nav a').forEach(a => a.classList.remove('act'));
 
   document.querySelectorAll('.mob-nav a:not(.btn)').forEach(a => {
-    const href = (a.getAttribute('href') || '').split('/').pop();
-    if (isHomeOne   && href === 'index.html')     a.classList.add('act');
-    if (isHomeTwo   && href === 'home2.html')     a.classList.add('act');
-    if (isAbout     && href === 'about.html')     a.classList.add('act');
-    if (isServices  && href === 'services.html')  a.classList.add('act');
-    if (isMenu      && href === 'menu.html')      a.classList.add('act');
-    if (isBlog      && href === 'blog.html')      a.classList.add('act');
-    if (isContact   && href === 'contact.html')   a.classList.add('act');
-    if (isDashboard && href === 'dashboard.html') a.classList.add('act');
+    const file = (a.getAttribute('href') || '').split('/').pop() || 'index.html';
+
+    if (isHomeOne   && file === 'index.html')     a.classList.add('act');
+    if (isHomeTwo   && file === 'home2.html')     a.classList.add('act');
+    if (isAbout     && file === 'about.html')     a.classList.add('act');
+    if (isServices  && file === 'services.html')  a.classList.add('act');
+    if (isMenu      && file === 'menu.html')      a.classList.add('act');
+    if (isBlog      && file === 'blog.html')      a.classList.add('act');
+    if (isContact   && file === 'contact.html')   a.classList.add('act');
+    if (isDashboard && file === 'dashboard.html') a.classList.add('act');
   });
+
+  /* ── Step 6: Debug log (remove after confirming it works) ── */
+  console.log('[BF Nav] current page:', current);
+  console.log('[BF Nav] active group:',
+    isHomeOne ? 'Home I' : isHomeTwo ? 'Home II' :
+    isAbout ? 'About' : isServices ? 'Services' :
+    isMenu ? 'Menu' : isBlog ? 'Blog' :
+    isContact ? 'Contact' : isDashboard ? 'Dashboard' : 'UNKNOWN'
+  );
 }
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
+
   // Restore saved theme
   const savedTheme = localStorage.getItem('bf-theme');
   if (savedTheme) {
