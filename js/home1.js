@@ -1,8 +1,4 @@
-/* ══════════════════════════════════════════
-   Baker's Fresh — home1.js
-   ══════════════════════════════════════════ */
 
-/* ── SMOOTH SCROLL UTILITY ── */
 function scrollToSection(id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -10,9 +6,7 @@ function scrollToSection(id) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* Parallax removed — hero background is static */
-
-  /* ── ADD TO CART BUTTON FEEDBACK ── */
+  
   document.querySelectorAll('.padd').forEach(btn => {
     btn.addEventListener('click', function () {
       this.textContent = '✓';
@@ -28,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── THEME CAKE CARDS → navigate to service detail ── */
+ 
   document.querySelectorAll('.tcake').forEach((card, i) => {
     card.addEventListener('click', () => {
       const pages = [
@@ -64,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!entry.isIntersecting) return;
       const el  = entry.target;
       const raw = el.textContent.trim();
-      // Extract numeric part and suffix (e.g. "500+" → 500, "+")
+    
       const match = raw.match(/^(\d+(?:\.\d+)?)(.*)/);
       if (!match) return;
       const target = parseFloat(match[1]);
@@ -91,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.6 });
   statNums.forEach(n => statObs.observe(n));
 
-  /* ── NEWSLETTER FORM FEEDBACK ── */
   const nlForm = document.querySelector('.nl-form');
   if (nlForm) {
     const input = nlForm.querySelector('input[type="email"]');
@@ -114,13 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 3000);
     });
 
-    // Also fire on Enter key
+   
     input.addEventListener('keydown', e => {
       if (e.key === 'Enter') btn.click();
     });
   }
 
-  /* ── FEATURE CARDS — staggered entrance on scroll ── */
+ 
   const fcardObs = new IntersectionObserver(entries => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -133,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15 });
   document.querySelectorAll('.fcard').forEach(c => fcardObs.observe(c));
 
-  /* ── PROMO BAR — pulsing attention ── */
+
   const promo = document.querySelector('.promo');
   if (promo) {
     const promoObs = new IntersectionObserver(entries => {
@@ -150,13 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
     promoObs.observe(promo);
   }
 
-  /* ── TESTIMONIAL CARDS AUTO-CYCLE ON MOBILE ── */
+  
   if (window.innerWidth < 640) {
     const tgrid  = document.querySelector('.tgrid');
     const tcards = document.querySelectorAll('.tcard');
     if (tgrid && tcards.length > 1) {
       let current = 0;
-      // Show only one card at a time on small mobile by adding a dim class
+     
       const setActive = idx => {
         tcards.forEach((c, i) => {
           c.style.opacity  = i === idx ? '1' : '0.45';
