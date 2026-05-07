@@ -1,207 +1,165 @@
-/* ─────────────────────────────────────────────
-   global.js  —  Baker's Fresh
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════
+   Baker's Fresh — global.js
+   ══════════════════════════════════════════ */
 
-/* ── THEME & DIR: apply before paint ────────── */
-(function () {
-  const theme = localStorage.getItem('bf-theme') || 'light';
-  const dir   = localStorage.getItem('bf-dir')   || 'ltr';
-  document.documentElement.setAttribute('data-theme', theme);
-  document.documentElement.setAttribute('dir',        dir);
-})();
-
-/* ── ACTIVE NAV ──────────────────────────────── */
-function setActiveNav() {
-  // Get current filename; handle trailing slash, empty string, SPA roots
-  const raw  = window.location.pathname;
-  const page = raw.split('/').pop() || 'index.html';
-
-  document.querySelectorAll('.nav-links a, .mob-nav a').forEach(a => {
-    const href = a.getAttribute('href') || '';
-    // Exact match OR both resolve to index
-    const match =
-      href === page ||
-      (page === '' && (href === 'index.html' || href === '/')) ||
-      (page === 'index.html' && href === '/');
-    a.classList.toggle('act', match);
-  });
-}
-
-/* ── THEME TOGGLE ────────────────────────────── */
+/* ── THEME ── */
 function toggleTheme() {
-  const html   = document.documentElement;
+  const html = document.documentElement;
   const isDark = html.getAttribute('data-theme') === 'dark';
-  const next   = isDark ? 'light' : 'dark';
-  html.setAttribute('data-theme', next);
-  localStorage.setItem('bf-theme', next);
-  const btn = document.getElementById('theme-btn');
-  if (btn) btn.textContent = isDark ? '🌙' : '☀️';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('theme-btn').textContent = isDark ? '🌙' : '☀️';
+  localStorage.setItem('bf-theme', isDark ? 'light' : 'dark');
 }
 
-/* ── RTL TOGGLE ──────────────────────────────── */
+/* ── RTL ── */
 function toggleRTL() {
-  const html  = document.documentElement;
+  const html = document.documentElement;
   const isRTL = html.getAttribute('dir') === 'rtl';
-  const next  = isRTL ? 'ltr' : 'rtl';
-  html.setAttribute('dir', next);
-  localStorage.setItem('bf-dir', next);
-  const btn = document.getElementById('rtl-btn');
-  if (btn) btn.textContent = isRTL ? 'RTL' : 'LTR';
+  html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+  document.getElementById('rtl-btn').textContent = isRTL ? 'RTL' : 'LTR';
+  localStorage.setItem('bf-dir', isRTL ? 'ltr' : 'rtl');
 }
 
-/* ── MOBILE HAMBURGER ────────────────────────── */
-let _mobOpen = false;
-
+/* ── MOBILE NAV ── */
 function toggleMob() {
-  _mobOpen = !_mobOpen;
-  const menu  = document.getElementById('mob-nav');
-  const ham   = document.getElementById('ham');
-  const spans = ham.querySelectorAll('span');
-
-  menu.classList.toggle('open', _mobOpen);
-
-  if (_mobOpen) {
-    spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
-    spans[1].style.opacity   = '0';
-    spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
-  } else {
-    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-  }
+  const nav = document.getElementById('mob-nav');
+  const ham = document.getElementById('ham');
+  nav.classList.toggle('open');
+  ham.classList.toggle('open');
 }
-
 function closeMob() {
-  _mobOpen = false;
-  const menu  = document.getElementById('mob-nav');
-  const ham   = document.getElementById('ham');
-  if (!menu || !ham) return;
-  menu.classList.remove('open');
-  ham.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  document.getElementById('mob-nav').classList.remove('open');
+  document.getElementById('ham').classList.remove('open');
 }
-
-/* Auto-close mobile menu when resizing above mobile breakpoint */
-window.addEventListener('resize', () => {
-  /* Match the CSS breakpoint — hide menu and reset hamburger above 768px */
-  if (window.innerWidth >= 769 && _mobOpen) closeMob();
-}, { passive: true });
-
-/* Close mobile menu on outside click */
-document.addEventListener('click', e => {
-  const nav  = document.getElementById('nav');
-  const menu = document.getElementById('mob-nav');
-  if (_mobOpen && nav && menu && !nav.contains(e.target) && !menu.contains(e.target)) {
-    closeMob();
-  }
-});
-
-/* ── MOBILE DROPDOWN ACCORDION ───────────────── */
 function toggleMobDrop(btn) {
   btn.classList.toggle('open');
-  const dd = btn.nextElementSibling;
-  if (!dd) return;
-  dd.classList.toggle('open');
-  dd.style.display = dd.classList.contains('open') ? 'flex' : 'none';
+  const drop = btn.nextElementSibling;
+  if (drop) drop.style.display = drop.style.display === 'flex' ? 'none' : 'flex';
 }
 
-/* ── DESKTOP DROPDOWN INIT ───────────────────── */
-/*
-  CSS :hover alone is unreliable at cramped widths (e.g. 1024px) because
-  the cursor can exit the <li> hit-area before reaching the panel.
-  We add a JS click-toggle (.open class) as the primary trigger so the
-  dropdown works at every desktop width without hover race conditions.
-
-  Mobile accordion remains handled by the inline onclick="toggleMobDrop(this)".
-*/
-function initDropdowns() {
-  document.querySelectorAll('.nav-links li.has-drop').forEach(li => {
-    const link = li.querySelector(':scope > a');
-    if (!link) return;
-
-    link.addEventListener('click', e => {
-      /* Only intercept on desktop — mobile uses the mob-nav instead */
-      if (window.innerWidth < 769) return;
-
-      const isOpen = li.classList.contains('open');
-
-      /* Close all other open dropdowns first */
-      document.querySelectorAll('.nav-links li.has-drop.open').forEach(other => {
-        if (other !== li) other.classList.remove('open');
-      });
-
-      if (isOpen) {
-        /* Already open — clicking again navigates to href normally */
-        li.classList.remove('open');
-      } else {
-        /* Open this dropdown, prevent navigation on first click */
-        e.preventDefault();
-        li.classList.add('open');
-      }
-    });
-  });
-
-  /* Close open dropdowns when clicking anywhere outside the nav */
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.nav-links')) {
-      document.querySelectorAll('.nav-links li.has-drop.open').forEach(li => {
-        li.classList.remove('open');
-      });
-    }
-  });
-
-  /* Close open dropdowns on Escape key */
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.nav-links li.has-drop.open').forEach(li => {
-        li.classList.remove('open');
-      });
-    }
-  });
+/* ── SCROLL REVEAL ── */
+function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
 }
 
-/* ── STICKY NAV ──────────────────────────────── */
-function initStickyNav() {
+/* ── STICKY NAV ── */
+function initNav() {
   const nav = document.getElementById('nav');
   if (!nav) return;
-  const onScroll = () => nav.classList.toggle('stuck', window.scrollY > 30);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // apply immediately on load
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('stuck', window.scrollY > 40);
+  }, { passive: true });
 }
 
-/* ── SCROLL REVEAL ───────────────────────────── */
-function initReveal() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-}
-
-/* ── PROMO CODE COPY ─────────────────────────── */
+/* ── PROMO CODE COPY ── */
 function doCopy(btn, code) {
-  navigator.clipboard.writeText(code)
-    .then(() => {
-      btn.textContent = '✓ Copied!';
-      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
-    })
-    .catch(() => {
-      btn.textContent = '✓';
-      setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+  navigator.clipboard.writeText(code).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = orig, 1800);
+  });
+}
+
+/* ══════════════════════════════════════════
+   AUTO ACTIVE NAV LINK
+   Sets .act on the nav link that matches
+   the current page — works on all pages
+   automatically after publishing.
+   ══════════════════════════════════════════ */
+function setActiveNav() {
+  // Get current filename e.g. "about.html" or "" / "index.html"
+  const path = window.location.pathname;
+  const page = path.split('/').pop() || 'index.html';
+
+  // ── Desktop nav links ──
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(a => {
+    a.classList.remove('act');
+    const href = a.getAttribute('href') || '';
+    const linkPage = href.split('/').pop();
+
+    // Dropdown items (Home I / Home II)
+    if (a.classList.contains('dd-item')) {
+      if (
+        (linkPage === 'index.html' && (page === 'index.html' || page === '')) ||
+        (linkPage === page && page !== '')
+      ) {
+        a.classList.add('act');
+      }
+      return;
+    }
+
+    // Top-level "Home" parent — active on both home pages
+    if (href === 'index.html' && (page === 'index.html' || page === '' || page === 'home2.html')) {
+      a.classList.add('act');
+      return;
+    }
+
+    // All other top-level links
+    if (linkPage === page && page !== 'index.html' && page !== '') {
+      a.classList.add('act');
+    }
+  });
+
+  // ── Mobile nav links ──
+  const mobLinks = document.querySelectorAll('.mob-nav a:not(.btn)');
+  mobLinks.forEach(a => {
+    a.classList.remove('act');
+    const href = a.getAttribute('href') || '';
+    const linkPage = href.split('/').pop();
+
+    if (
+      (linkPage === 'index.html' && (page === 'index.html' || page === '')) ||
+      (linkPage === page && page !== '')
+    ) {
+      a.classList.add('act');
+    }
+  });
+
+  // ── Special: service-detail pages — highlight "Services" ──
+  const servicePages = ['service-detail.html', 'service-detail1.html', 'service-detail2.html'];
+  if (servicePages.includes(page)) {
+    navLinks.forEach(a => {
+      if ((a.getAttribute('href') || '').includes('services.html')) {
+        a.classList.add('act');
+      }
     });
+  }
+
+  // ── Special: blog-detail page — highlight "Blog" ──
+  if (page === 'blog-detail.html') {
+    navLinks.forEach(a => {
+      if ((a.getAttribute('href') || '').includes('blog.html')) {
+        a.classList.add('act');
+      }
+    });
+  }
 }
 
-/* ── SYNC ICON BUTTONS with stored state ─────── */
-function syncButtons() {
-  const theme = document.documentElement.getAttribute('data-theme');
-  const dir   = document.documentElement.getAttribute('dir');
-  const tb = document.getElementById('theme-btn');
-  const rb = document.getElementById('rtl-btn');
-  if (tb) tb.textContent = theme === 'dark' ? '☀️' : '🌙';
-  if (rb) rb.textContent = dir   === 'rtl'  ? 'LTR' : 'RTL';
-}
-
-/* ── INIT ────────────────────────────────────── */
+/* ── INIT ON DOM READY ── */
 document.addEventListener('DOMContentLoaded', () => {
-  setActiveNav();
-  syncButtons();
-  initStickyNav();
+  // Restore saved theme
+  const savedTheme = localStorage.getItem('bf-theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    const btn = document.getElementById('theme-btn');
+    if (btn) btn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  }
+
+  // Restore saved direction
+  const savedDir = localStorage.getItem('bf-dir');
+  if (savedDir) {
+    document.documentElement.setAttribute('dir', savedDir);
+    const btn = document.getElementById('rtl-btn');
+    if (btn) btn.textContent = savedDir === 'rtl' ? 'LTR' : 'RTL';
+  }
+
+  initNav();
   initReveal();
-  initDropdowns();   /* defined above — no longer throws */
+  setActiveNav();   // ← auto-highlights correct nav link on every page
 });
