@@ -10,14 +10,15 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/home1.css">
 </head>
-<body>
+<body data-page="home1">
+
 <nav id="nav">
   <a class="logo" href="index.html">Baker's <span>Fresh</span></a>
   <ul class="nav-links">
     <li class="has-drop">
-      <a href="index.html"class="act">Home</a>
+      <a href="index.html" class="act">Home <span class="drop-chevron"></span></a>
       <div class="nav-dropdown">
-        <a class="dd-item act" href="index.html"class="act">Home I</a>
+        <a class="dd-item act" href="index.html">Home I</a>
         <a class="dd-item" href="home2.html">Home II</a>
       </div>
     </li>
@@ -39,7 +40,7 @@
 <div class="mob-nav" id="mob-nav">
   <button class="mob-dd-toggle" onclick="toggleMobDrop(this)">Home <span class="mob-dd-chevron">▼</span></button>
   <div class="mob-dropdown">
-    <a href="index.html" onclick="closeMob()"  class="act">Home I</a>
+    <a href="index.html" onclick="closeMob()" class="act">Home I</a>
     <a href="home2.html" onclick="closeMob()">Home II</a>
   </div>
   <a href="about.html" onclick="closeMob()">About</a>
@@ -156,6 +157,7 @@
     <div class="nl-form"><input type="email" placeholder="Enter your email address…"><button>Subscribe</button></div>
   </div>
 </div>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -190,6 +192,7 @@
     <div class="foot-bottom"><span>© 2026 Baker's Fresh. All rights reserved.</span><span>Made with ♥ in Hyderabad</span></div>
   </div>
 </footer>
+
 <script src="js/global.js"></script>
 <script src="js/home1.js"></script>
 </body>
