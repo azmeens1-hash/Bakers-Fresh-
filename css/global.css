@@ -469,3 +469,19 @@ footer { background: var(--bg2); color: rgba(255,255,255,.52); padding: 64px 0 2
   .cta-inner { padding: 40px 20px; }
   #nav { padding: 0 18px; }
 }
+  @media (min-width: 769px) {
+     .ham        { display: none !important; }
+     .nav-links  { display: flex; }
+     .nav-r .btn { display: inline-flex; }
+     .rtl-btn    { display: flex; }
+   }
+ 
+  
+   @media (min-width: 1024px) {
+     .ham        { display: none !important; }
+     .nav-links  { display: flex; }
+     .nav-r .btn { display: inline-flex; }
+     .rtl-btn    { display: flex; }
+   }
+ 
+  

@@ -42,7 +42,9 @@ function initReveal() {
   const els = document.querySelectorAll('.reveal');
   if (!els.length) return;
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
   }, { threshold: 0.12 });
   els.forEach(el => io.observe(el));
 }
@@ -66,82 +68,105 @@ function doCopy(btn, code) {
 }
 
 /* ══════════════════════════════════════════
-   AUTO ACTIVE NAV LINK
-   Sets .act on the nav link that matches
-   the current page — works on all pages
-   automatically after publishing.
+   HAMBURGER VISIBILITY
+   The CSS breakpoint across all pages is
+   1024px — hamburger appears below 1024px,
+   full nav appears at 1024px and above.
+   This JS mirrors that exactly and also
+   handles window resize (e.g. DevTools
+   toggling between mobile/desktop views).
    ══════════════════════════════════════════ */
-function setActiveNav() {
-  // Get current filename e.g. "about.html" or "" / "index.html"
-  const path = window.location.pathname;
-  const page = path.split('/').pop() || 'index.html';
+function initHamburger() {
+  const ham      = document.getElementById('ham');
+  const navLinks = document.querySelector('.nav-links');
+  const loginBtn = document.querySelector('.nav-r .btn-primary');
+  const mobNav   = document.getElementById('mob-nav');
 
-  // ── Desktop nav links ──
-  const navLinks = document.querySelectorAll('.nav-links a');
-  navLinks.forEach(a => {
-    a.classList.remove('act');
-    const href = a.getAttribute('href') || '';
-    const linkPage = href.split('/').pop();
+  if (!ham) return;
 
-    // Dropdown items (Home I / Home II)
-    if (a.classList.contains('dd-item')) {
-      if (
-        (linkPage === 'index.html' && (page === 'index.html' || page === '')) ||
-        (linkPage === page && page !== '')
-      ) {
-        a.classList.add('act');
-      }
-      return;
+  const BREAKPOINT = 1024;
+
+  function applyLayout() {
+    const isDesktop = window.innerWidth >= BREAKPOINT;
+
+    if (isDesktop) {
+      // ── Desktop: hide hamburger, show nav links + login
+      ham.style.display = 'none';
+      if (navLinks) navLinks.style.removeProperty('display');  // let CSS handle it (flex)
+      if (loginBtn) loginBtn.style.removeProperty('display');
+
+      // Close mobile menu if it was open
+      if (mobNav) mobNav.classList.remove('open');
+      ham.classList.remove('open');
+    } else {
+      // ── Mobile/Tablet: show hamburger, hide nav links + login
+      ham.style.display = 'flex';
+      if (navLinks) navLinks.style.display = 'none';
+      if (loginBtn) loginBtn.style.display = 'none';
     }
-
-    // Top-level "Home" parent — active on both home pages
-    if (href === 'index.html' && (page === 'index.html' || page === '' || page === 'home2.html')) {
-      a.classList.add('act');
-      return;
-    }
-
-    // All other top-level links
-    if (linkPage === page && page !== 'index.html' && page !== '') {
-      a.classList.add('act');
-    }
-  });
-
-  // ── Mobile nav links ──
-  const mobLinks = document.querySelectorAll('.mob-nav a:not(.btn)');
-  mobLinks.forEach(a => {
-    a.classList.remove('act');
-    const href = a.getAttribute('href') || '';
-    const linkPage = href.split('/').pop();
-
-    if (
-      (linkPage === 'index.html' && (page === 'index.html' || page === '')) ||
-      (linkPage === page && page !== '')
-    ) {
-      a.classList.add('act');
-    }
-  });
-
-  // ── Special: service-detail pages — highlight "Services" ──
-  const servicePages = ['service-detail.html', 'service-detail1.html', 'service-detail2.html'];
-  if (servicePages.includes(page)) {
-    navLinks.forEach(a => {
-      if ((a.getAttribute('href') || '').includes('services.html')) {
-        a.classList.add('act');
-      }
-    });
   }
 
-  // ── Special: blog-detail page — highlight "Blog" ──
-  if (page === 'blog-detail.html') {
-    navLinks.forEach(a => {
-      if ((a.getAttribute('href') || '').includes('blog.html')) {
-        a.classList.add('act');
-      }
-    });
-  }
+  applyLayout();
+  window.addEventListener('resize', applyLayout, { passive: true });
 }
 
-/* ── INIT ON DOM READY ── */
+/* ══════════════════════════════════════════
+   AUTO ACTIVE NAV LINK
+   ══════════════════════════════════════════ */
+function setActiveNav() {
+  const path    = window.location.pathname;
+  const current = path.split('/').pop() || 'index.html';
+
+  const isHomeOne   = current === 'index.html' || current === '';
+  const isHomeTwo   = current === 'home2.html';
+  const isHome      = isHomeOne || isHomeTwo;
+  const isAbout     = current === 'about.html';
+  const isServices  = ['services.html', 'service-detail.html',
+                        'service-detail1.html', 'service-detail2.html'].includes(current);
+  const isMenu      = current === 'menu.html';
+  const isBlog      = current === 'blog.html' || current === 'blog-detail.html';
+  const isContact   = current === 'contact.html';
+  const isDashboard = current === 'dashboard.html';
+
+  /* ── Desktop nav ── */
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('act'));
+
+  // Top-level parent links only (not dropdown items)
+  document.querySelectorAll('.nav-links > li > a').forEach(a => {
+    const href = (a.getAttribute('href') || '').split('/').pop();
+    if (isHome      && href === 'index.html')     a.classList.add('act');
+    if (isAbout     && href === 'about.html')     a.classList.add('act');
+    if (isServices  && href === 'services.html')  a.classList.add('act');
+    if (isMenu      && href === 'menu.html')      a.classList.add('act');
+    if (isBlog      && href === 'blog.html')      a.classList.add('act');
+    if (isContact   && href === 'contact.html')   a.classList.add('act');
+    if (isDashboard && href === 'dashboard.html') a.classList.add('act');
+  });
+
+  // Dropdown items (Home I / Home II)
+  document.querySelectorAll('.nav-dropdown .dd-item').forEach(a => {
+    const href = (a.getAttribute('href') || '').split('/').pop();
+    if (isHomeOne && href === 'index.html') a.classList.add('act');
+    if (isHomeTwo && href === 'home2.html') a.classList.add('act');
+  });
+
+  /* ── Mobile nav ── */
+  document.querySelectorAll('.mob-nav a').forEach(a => a.classList.remove('act'));
+
+  document.querySelectorAll('.mob-nav a:not(.btn)').forEach(a => {
+    const href = (a.getAttribute('href') || '').split('/').pop();
+    if (isHomeOne   && href === 'index.html')     a.classList.add('act');
+    if (isHomeTwo   && href === 'home2.html')     a.classList.add('act');
+    if (isAbout     && href === 'about.html')     a.classList.add('act');
+    if (isServices  && href === 'services.html')  a.classList.add('act');
+    if (isMenu      && href === 'menu.html')      a.classList.add('act');
+    if (isBlog      && href === 'blog.html')      a.classList.add('act');
+    if (isContact   && href === 'contact.html')   a.classList.add('act');
+    if (isDashboard && href === 'dashboard.html') a.classList.add('act');
+  });
+}
+
+/* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
   // Restore saved theme
   const savedTheme = localStorage.getItem('bf-theme');
@@ -161,5 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initNav();
   initReveal();
-  setActiveNav();   // ← auto-highlights correct nav link on every page
+  initHamburger();
+  setActiveNav();
 });
