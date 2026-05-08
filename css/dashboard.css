@@ -1,8 +1,4 @@
-/* ══════════════════════════════════════════
-   Baker's Fresh — dashboard.css
-   ══════════════════════════════════════════ */
 
-/* ── THEME TOKENS ── */
 [data-theme="light"] {
   --bg:        #FDF7F0; --bg2: #FFF9F3; --bg3: #F5EAD8;
   --surface:   #FFFFFF; --surface2: #FFF4E8;
@@ -20,7 +16,7 @@
   --cshadow:   0 12px 48px rgba(0,0,0,.45);
 }
 
-/* ── RESET ── */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -28,7 +24,7 @@ body {
   background: var(--bg); color: var(--text);
   transition: background .35s, color .35s;
   line-height: 1.6;
-  /* KEY FIX: never hide overflow on body */
+ 
   overflow-x: hidden;
   overflow-y: auto;
   min-height: 100vh;
@@ -561,20 +557,21 @@ img { max-width: 100%; display: block; }
 
 /* ── SMALL MOBILE max 479px (360px target) ── */
 @media (max-width: 479px) {
-  /* Sidebar: full overlay on tiny screens */
-  .sidebar {
-    position: fixed; inset: 0;
-    width: 100%;
-    transform: translateX(-100%); z-index: 200;
-    height: 100%; /* full screen */
-    overflow-y: auto;
-  }
+
+.sidebar {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 280px;
+  transform: translateX(-100%); z-index: 200;
+  height: 100%;
+  overflow-y: auto;
+  box-shadow: 4px 0 24px rgba(0,0,0,.22);
+}
   [dir="rtl"] .sidebar { transform: translateX(100%); }
   .sidebar.open { transform: translateX(0); }
 
-  /* KEY FIXES for 360px scroll */
+  
   .dash-wrap {
-    display: block; /* drop flex — flex causes overflow issues at 360px */
+    display: block; 
     min-height: 100vh;
   }
   .dash-main {
@@ -605,7 +602,6 @@ img { max-width: 100%; display: block; }
     width: 100%;
   }
 
-  /* Stat cards: 2 columns at 360px */
   .stat-row {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -627,13 +623,12 @@ img { max-width: 100%; display: block; }
   .card-title { font-size: .98rem; }
   .card-action { font-size: .68rem; }
 
-  /* Orders table: hide less important columns */
   .orders-table th:nth-child(3),
   .orders-table td:nth-child(3),
   .orders-table th:nth-child(4),
   .orders-table td:nth-child(4) { display: none; }
   .orders-table th, .orders-table td { padding: 9px 10px; font-size: .75rem; }
-  .order-cake-sub { display: none; } /* hide sub-text on tiny screens */
+  .order-cake-sub { display: none; }
   .order-cake-ico { width: 28px; height: 28px; font-size: .85rem; border-radius: 7px; }
   .order-cake-name { font-size: .78rem; }
   .order-id { font-size: .7rem; }
