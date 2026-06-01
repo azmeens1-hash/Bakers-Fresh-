@@ -97,7 +97,9 @@ footer { background: var(--bg2); padding: 64px 0 0; }
 [data-theme="dark"] .foot-bottom { border-top-color: rgba(255,255,255,.10); color: rgba(255,255,255,.30); }
 
 
-
+/* ════════════════════════════════════════════════════════
+   1. LARGE DESKTOP ≥ 1280px
+   ════════════════════════════════════════════════════════ */
 @media (min-width: 1280px) {
   .ham { display: none !important; }
   .nav-links { display: flex !important; gap: 6px; }
@@ -136,7 +138,9 @@ footer { background: var(--bg2); padding: 64px 0 0; }
 }
 
 
-
+/* ════════════════════════════════════════════════════════
+   2. LAPTOP 1024px – 1279px
+   ════════════════════════════════════════════════════════ */
 @media (min-width: 1024px) and (max-width: 1279px) {
   .ham { display: none !important; }
   .nav-links { display: flex !important; gap: 2px; }
@@ -171,7 +175,9 @@ footer { background: var(--bg2); padding: 64px 0 0; }
 }
 
 
-
+/* ════════════════════════════════════════════════════════
+   3. TABLET 640px – 1023px
+   ════════════════════════════════════════════════════════ */
 @media (min-width: 640px) and (max-width: 1023px) {
   #nav { padding: 0 22px; }
   .nav-links { display: none !important; }
@@ -231,7 +237,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
 
 @media (max-width: 639px) {
 
-  
+  /* CRITICAL — force all .reveal elements visible on mobile */
   .reveal,
   .reveal.rd1,
   .reveal.rd2,
@@ -339,14 +345,36 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .cta-btns { flex-direction: column; gap: 10px; }
   .cta-btns .btn { width: 100%; justify-content: center; }
 
-  /* newsletter */
-  .nl { padding: 48px 0; }
-  .nl-inner { padding: 0 16px; }
+  /* ── newsletter — horizontal pill, matches menu.css ── */
+  .nl          { padding: 48px 0; }
+  .nl-inner    { padding: 0 16px; }
   .nl-inner h2 { font-size: 1.5rem; }
   .nl-inner p  { font-size: .82rem; }
-  .nl-form { flex-direction: column; border-radius: 14px; max-width: 100%; }
-  .nl-form input  { padding: 13px 16px; border-bottom: 1px solid #EAD8C2; border-radius: 14px 14px 0 0; text-align: center; font-size: .82rem; }
-  .nl-form button { padding: 13px 16px; border-radius: 0 0 14px 14px; font-size: .7rem; }
+  .nl-form {
+    flex-direction: row;
+    border-radius: 100px;
+    overflow: hidden;
+    background: #fff;
+    max-width: 100%;
+    gap: 0;
+  }
+  .nl-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 16px;
+    font-size: .82rem;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: #1C0F06;
+    text-align: left;
+  }
+  .nl-form button {
+    padding: 0 18px;
+    font-size: .7rem;
+    border-radius: 0;
+    white-space: nowrap;
+  }
 
   /* footer */
   .foot-grid   { grid-template-columns: 1fr; gap: 26px; }
@@ -357,7 +385,9 @@ footer { background: var(--bg2); padding: 64px 0 0; }
 }
 
 
-
+/* ════════════════════════════════════════════════════════
+   5. SMALL MOBILE ≤ 400px
+   ════════════════════════════════════════════════════════ */
 @media (max-width: 400px) {
 
   /* nav */
@@ -438,22 +468,22 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .tav-name { font-size: .76rem; }
   .tav-sub  { font-size: .63rem; }
 
-
+  /* cta */
   .cta-fw    { min-height: 280px; }
   .cta-inner { padding: 28px 13px; }
   .cta-inner h2 { font-size: clamp(1.3rem,7.5vw,1.7rem); }
   .cta-inner p  { font-size: .78rem; margin-bottom: 22px; }
   .cta-btns  { gap: 9px; }
 
-  /* newsletter */
+  /* newsletter — keep pill at ≤400px too */
   .nl          { padding: 36px 0; }
   .nl-inner    { padding: 0 13px; }
   .nl-inner h2 { font-size: 1.35rem; }
   .nl-inner p  { font-size: .79rem; margin-bottom: 20px; }
   .nl-form input  { padding: 11px 14px; font-size: .79rem; }
-  .nl-form button { padding: 11px 14px; font-size: .67rem; }
+  .nl-form button { padding: 0 14px; font-size: .67rem; }
 
-
+  /* footer */
   footer       { padding: 36px 0 0; }
   .foot-grid   { gap: 20px; }
   .foot-logo   { font-size: 1.18rem; margin-bottom: 10px; }
