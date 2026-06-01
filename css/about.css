@@ -160,9 +160,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   [dir="rtl"] .a-badge { inset-inline-end: 0; inset-inline-start: auto; }
 }
 
-/* ════════════════════════════════════════════════════════
-   MOBILE  < 640px
-   ════════════════════════════════════════════════════════ */
+
 @media (max-width: 639px) {
   .ph { height: 44vh; min-height: 260px; padding-bottom: 36px; }
   .ph-inner { padding: 0 18px; }
@@ -213,9 +211,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   [dir="rtl"] .a-badge { inset-inline-end: 0; inset-inline-start: auto; }
 }
 
-/* ════════════════════════════════════════════════════════
-   SMALL MOBILE  ≤ 400px
-   ════════════════════════════════════════════════════════ */
+
 @media (max-width: 400px) {
   footer       { padding: 44px 0 0; }
   .foot-grid   { gap: 20px; }

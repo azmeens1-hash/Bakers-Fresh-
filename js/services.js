@@ -1,10 +1,8 @@
-/* ══════════════════════════════════════════
-   Baker's Fresh — services.js
-   ══════════════════════════════════════════ */
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── SERVICE CARD HOVER — animate Explore arrow ── */
+ 
   document.querySelectorAll('.svc').forEach(card => {
     card.addEventListener('mouseenter', () => {
       const link = card.querySelector('.svc-link');

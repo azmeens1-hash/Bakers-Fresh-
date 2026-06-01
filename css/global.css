@@ -37,7 +37,6 @@
   --glass-logo:   rgba(255,255,255,0.08);
 }
 
-/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -97,19 +96,7 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .btn-lg { padding: 15px 36px; font-size: .85rem; }
 .btn-sm { padding: 9px 20px; font-size: .73rem; }
 
-/* ══════════════════════════════════════════════════════════
-   NAV
-   Critical rules that make the dropdown work at ALL widths:
-   1. #nav             — overflow: visible (never clip children)
-   2. .nav-links       — overflow: visible
-   3. .nav-links li    — overflow: visible
-   4. .nav-dropdown    — pointer-events: auto ALWAYS (no toggling)
-                         visibility controls interaction blocking,
-                         NOT pointer-events
-   5. .has-drop li     — large padding-bottom to bridge hover gap
-   6. JS (global.js)   — mouseenter/leave + 250ms close timer
-                         (longer than the 200ms CSS transition)
-   ══════════════════════════════════════════════════════════ */
+/* ── NAV ── */
 #nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   height: 70px;
@@ -122,7 +109,6 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
   border-top: 1px solid rgba(255,255,255,.18);
   box-shadow: var(--glass-shadow);
   transition: background .4s ease, box-shadow .3s ease, border-color .4s ease;
-  /* RULE 1: never clip dropdown children */
   overflow: visible;
 }
 #nav.stuck {
@@ -140,180 +126,77 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 }
 .logo span { font-style: italic; color: var(--text); }
 
-/* RULE 2 */
 .nav-links {
   display: flex; gap: 4px; align-items: center;
-  overflow: visible;
-  position: relative; z-index: 1001;
+  overflow: visible; position: relative; z-index: 1001;
 }
-
 .nav-links a {
   font-size: .72rem; font-weight: 500;
   letter-spacing: .1em; text-transform: uppercase;
   color: var(--text);
-  position: relative;
-  padding: 7px 14px;
-  border-radius: 100px;
-  transition: color .22s, background .22s;
-  white-space: nowrap;
+  position: relative; padding: 7px 14px; border-radius: 100px;
+  transition: color .22s, background .22s; white-space: nowrap;
 }
 .nav-links a::before {
-  content: '';
-  position: absolute; inset: 0;
-  border-radius: 100px;
-  background: transparent;
-  border: 1px solid transparent;
-  transition: background .22s, border-color .22s;
-  pointer-events: none;
+  content: ''; position: absolute; inset: 0; border-radius: 100px;
+  background: transparent; border: 1px solid transparent;
+  transition: background .22s, border-color .22s; pointer-events: none;
 }
 .nav-links a:hover::before { background: rgba(192,120,40,.10); border-color: rgba(192,120,40,.22); }
 .nav-links a.act::before   { background: rgba(192,120,40,.15); border-color: rgba(192,120,40,.35); }
 .nav-links a:hover,
 .nav-links a.act { color: #C07828; }
-
-/* Underline dot for regular links */
 .nav-links a::after {
-  content: '';
-  position: absolute;
+  content: ''; position: absolute;
   bottom: 5px; left: 50%; transform: translateX(-50%);
   width: 0; height: 2px;
   background: #C07828; border-radius: 2px;
-  transition: width .25s cubic-bezier(.25,.8,.25,1);
-  pointer-events: none;
+  transition: width .25s cubic-bezier(.25,.8,.25,1); pointer-events: none;
 }
 .nav-links a.act::after   { width: 18px; }
 .nav-links a:hover::after { width: 18px; }
-
-/* RULE 3 */
-.nav-links li {
-  position: relative;
-  list-style: none;
-  overflow: visible;
-}
-
-/* ── HAS-DROP ── */
-.nav-links li.has-drop {
-  /*
-   * padding-bottom creates a LARGE invisible hit-area below the link text.
-   * Without this, moving the mouse downward toward the dropdown panel
-   * exits the <li> and fires mouseleave before the panel is reached.
-   * margin-bottom compensates so layout is unchanged.
-   */
-  padding-bottom: 22px;
-  margin-bottom: -22px;
-  z-index: 10;
-}
+.nav-links li { position: relative; list-style: none; overflow: visible; }
+.nav-links li.has-drop { padding-bottom: 22px; margin-bottom: -22px; z-index: 10; }
 .nav-links li.has-drop:hover,
 .nav-links li.has-drop.open { z-index: 1100; }
-
-/* No underline dot on the dropdown parent */
 .nav-links li.has-drop > a::after { display: none !important; }
 
-/* Chevron via a <span class="drop-chevron"> inside the <a> */
 .drop-chevron {
-  display: inline-block;
-  width: 0; height: 0;
-  border-left: 3.5px solid transparent;
-  border-right: 3.5px solid transparent;
+  display: inline-block; width: 0; height: 0;
+  border-left: 3.5px solid transparent; border-right: 3.5px solid transparent;
   border-top: 4.5px solid currentColor;
-  margin-inline-start: 5px;
-  vertical-align: middle;
-  transition: transform .25s;
-  pointer-events: none;
+  margin-inline-start: 5px; vertical-align: middle;
+  transition: transform .25s; pointer-events: none;
 }
 .nav-links li.has-drop:hover > a .drop-chevron,
 .nav-links li.has-drop.open  > a .drop-chevron { transform: rotate(180deg); }
 
-/* ── DROPDOWN PANEL ── */
 .nav-dropdown {
-  position: absolute;
-  /*
-   * top: 100% puts the panel flush at the bottom of the li.
-   * The li's padding-bottom (22px) means 100% includes that padding,
-   * so the panel actually appears 22px below the link text — perfect spacing.
-   */
-  top: 100%;
-  left: 50%;
+  position: absolute; top: 100%; left: 50%;
   transform: translateX(-50%) translateY(-8px);
-  min-width: 164px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 6px;
-  box-shadow: 0 16px 48px var(--shadow);
-  z-index: 2000;
-
-  /*
-   * RULE 4 — THE CRITICAL FIX:
-   * We NEVER set pointer-events: none here.
-   * visibility: hidden already blocks all interaction when closed.
-   * Setting pointer-events: none on top of that causes a race condition
-   * where fast mouse movement hits the panel during the opacity transition
-   * but the click/hover falls through because pointer-events is still none.
-   *
-   * By keeping pointer-events: auto at all times, the panel responds to
-   * mouse events the instant visibility switches to visible — no race.
-   */
-  pointer-events: auto;
-
-  /* Animate opacity + transform only. visibility switches instantly (no delay). */
-  opacity: 0;
-  visibility: hidden;
+  min-width: 164px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 14px; padding: 6px;
+  box-shadow: 0 16px 48px var(--shadow); z-index: 2000;
+  pointer-events: auto; opacity: 0; visibility: hidden;
   transition: opacity .18s ease, transform .18s ease;
-  /* visibility has NO transition — it switches instantly */
 }
-
-/*
- * Invisible upward bridge pseudo-element.
- * Extends 22px above the panel top edge, covering the gap between
- * the bottom of the link text and the top of the panel.
- * Keeps the mouse "inside" the hover zone during downward travel.
- */
 .nav-dropdown::before {
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 0; right: 0;
-  height: 22px;
-  background: transparent;
-  /* pointer-events: auto so this area also catches mouse events */
-  pointer-events: auto;
+  content: ''; position: absolute; bottom: 100%; left: 0; right: 0;
+  height: 22px; background: transparent; pointer-events: auto;
 }
-
-/* OPEN STATE — JS .open class — works at every viewport width */
-.nav-links li.has-drop.open > .nav-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* OPEN STATE — CSS :hover — progressive enhancement */
+.nav-links li.has-drop.open > .nav-dropdown,
 .nav-links li.has-drop:hover > .nav-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
 }
-
 .dd-item {
-  display: block;
-  padding: 10px 16px;
-  border-radius: 9px;
-  font-size: .78rem; font-weight: 500;
-  letter-spacing: .08em; text-transform: uppercase;
-  color: var(--text2);
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  /* Above the panel z-index so clicks always register */
-  position: relative;
-  z-index: 2001;
-  transition: background .15s, color .15s;
-  /* No pointer-events toggle — always clickable when panel is visible */
+  display: block; padding: 10px 16px; border-radius: 9px;
+  font-size: .78rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--text2); text-decoration: none; white-space: nowrap;
+  cursor: pointer; position: relative; z-index: 2001; transition: background .15s, color .15s;
 }
 .dd-item:hover { background: rgba(192,120,40,.10); color: #C07828; }
 .dd-item.act   { color: #C07828; font-weight: 600; }
 
-/* ── NAV RIGHT ── */
 .nav-r { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
 .icon-btn {
   width: 37px; height: 37px; border-radius: 50%;
@@ -344,19 +227,13 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .ham:hover { background: rgba(192,120,40,.15); border-color: rgba(192,120,40,.3); }
 .ham span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
 
-/* ── MOBILE NAV ── */
 .mob-nav {
-  display: none;
-  position: fixed; top: 70px; left: 8px; right: 8px;
-  border-radius: 18px;
-  background: var(--glass-mob);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  display: none; position: fixed; top: 70px; left: 8px; right: 8px;
+  border-radius: 18px; background: var(--glass-mob);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   box-shadow: 0 16px 48px rgba(0,0,0,.18), 0 1px 0 rgba(255,255,255,.5) inset;
-  flex-direction: column; z-index: 999;
-  padding: 10px 20px 18px;
-  overflow: hidden;
+  flex-direction: column; z-index: 999; padding: 10px 20px 18px; overflow: hidden;
 }
 .mob-nav.open { display: flex; animation: mobIn .25s ease both; }
 @keyframes mobIn {
@@ -367,22 +244,19 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
   font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
   color: var(--text2); padding: 13px 10px;
   border-bottom: 1px solid rgba(192,120,40,.12);
-  transition: color .2s, padding-left .2s;
-  border-radius: 8px; margin: 1px 0;
+  transition: color .2s, padding-left .2s; border-radius: 8px; margin: 1px 0;
 }
 .mob-nav a:last-child { border-bottom: none; }
 .mob-nav a:hover { color: #C07828; padding-left: 18px; background: rgba(192,120,40,.08); }
 .mob-nav a.act  { color: #C07828; }
 [dir="rtl"] .mob-nav a:hover { padding-left: 10px; padding-right: 18px; }
 
-/* ── MOBILE DROPDOWN TOGGLE ── */
 .mob-dd-wrap { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
 .mob-dd-toggle {
   display: flex; align-items: center; justify-content: space-between;
-  width: 100%; background: none; border: none;
-  padding: 12px 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: .8rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  width: 100%; background: none; border: none; padding: 12px 10px;
+  font-family: 'DM Sans', sans-serif; font-size: .8rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
   color: var(--text2); cursor: pointer; text-align: start; transition: color .2s;
 }
 .mob-dd-toggle:hover { color: #C07828; }
@@ -392,44 +266,120 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .mob-dropdown a { padding: 10px 10px 10px 26px; border: none; font-size: .76rem; color: var(--text2); transition: color .2s, padding-inline-start .2s; }
 .mob-dropdown a:hover { color: #C07828; padding-inline-start: 32px; }
 
-/* ── PAGE HERO ── */
-.ph { position: relative; height: 52vh; min-height: 360px; display: flex; align-items: flex-end; overflow: hidden; padding-bottom: 52px; }
-.ph-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
-.ph-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,4,0,.88) 0%, rgba(10,4,0,.35) 100%); }
-.ph-inner { position: relative; z-index: 2; padding: 0 60px; animation: slideUp .8s ease both; }
-.crumb { display: flex; align-items: center; gap: 8px; font-size: .66rem; color: rgba(255,255,255,.5); letter-spacing: .08em; margin-bottom: 12px; }
+/* ══════════════════════════════════════════════════════
+   PAGE HERO (.ph)
+   ──────────────────────────────────────────────────────
+   ≥ 1280px  →  75vh / 600px min
+   1024–1279 →  70vh / 540px min
+   640–1023  →  65vh / 460px min
+   < 640     →  58vh / 380px min  (was 44vh / 260px)
+══════════════════════════════════════════════════════ */
+.ph {
+  position: relative;
+  height: 75vh;
+  min-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: 64px;
+}
+.ph-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.ph-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,4,0,.88) 0%, rgba(10,4,0,.30) 100%);
+}
+.ph-inner {
+  position: relative; z-index: 2;
+  padding: 0 60px;
+  animation: slideUp .8s ease both;
+}
+.crumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .66rem; color: rgba(255,255,255,.5);
+  letter-spacing: .08em; margin-bottom: 12px;
+}
 .crumb .cl { cursor: pointer; transition: color .2s; }
 .crumb .cl:hover { color: rgba(255,255,255,.85); }
-.ph-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: #fff; line-height: 1.12; margin-bottom: 10px; }
+.ph-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 800; color: #fff;
+  line-height: 1.1; margin-bottom: 12px;
+}
 .ph-title em { font-style: italic; color: #D4A853; }
-.ph-sub { font-size: .9rem; color: rgba(255,255,255,.7); max-width: 520px; line-height: 1.75; }
+.ph-sub {
+  font-size: .92rem; color: rgba(255,255,255,.72);
+  max-width: 540px; line-height: 1.78;
+}
 
 /* ── STATS BAR ── */
-.stats-bar { display: grid; grid-template-columns: repeat(4,1fr); background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.stat-item { padding: 36px 20px; text-align: center; border-right: 1px solid var(--border); transition: background .25s; cursor: default; }
+.stats-bar {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stat-item {
+  padding: 36px 20px; text-align: center;
+  border-right: 1px solid var(--border);
+  transition: background .25s; cursor: default;
+}
 .stat-item:last-child { border-right: none; }
 .stat-item:hover { background: var(--surface2); }
-.stat-n { font-family: 'Playfair Display', serif; font-size: 2.7rem; font-weight: 800; color: #C07828; line-height: 1; display: block; margin-bottom: 5px; }
+.stat-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.7rem; font-weight: 800; color: #C07828;
+  line-height: 1; display: block; margin-bottom: 5px;
+}
 .stat-l { font-size: .67rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text3); }
 
-/* ── PROMO BAR ── */
-.promo { background: linear-gradient(125deg, #C07828 0%, #E09040 100%); padding: 32px 48px; display: flex; align-items: center; justify-content: center; gap: 26px; flex-wrap: wrap; text-align: center; position: relative; overflow: hidden; }
+/* ── PROMO ── */
+.promo {
+  background: linear-gradient(125deg, #C07828 0%, #E09040 100%);
+  padding: 32px 48px; display: flex; align-items: center;
+  justify-content: center; gap: 26px; flex-wrap: wrap;
+  text-align: center; position: relative; overflow: hidden;
+}
 .promo-txt { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 700; color: #fff; }
-.code-box { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,.18); border: 1.5px dashed rgba(255,255,255,.55); padding: 8px 18px; border-radius: 9px; }
+.code-box {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,.18); border: 1.5px dashed rgba(255,255,255,.55);
+  padding: 8px 18px; border-radius: 9px;
+}
 .code-box strong { font-size: .92rem; color: #fff; letter-spacing: .12em; }
-.code-copy { background: rgba(255,255,255,.22); border: none; color: #fff; padding: 3px 11px; border-radius: 5px; font-size: .65rem; font-weight: 600; cursor: pointer; transition: background .2s; text-transform: uppercase; letter-spacing: .06em; }
+.code-copy {
+  background: rgba(255,255,255,.22); border: none; color: #fff;
+  padding: 3px 11px; border-radius: 5px; font-size: .65rem; font-weight: 600;
+  cursor: pointer; transition: background .2s; text-transform: uppercase; letter-spacing: .06em;
+}
 .code-copy:hover { background: rgba(255,255,255,.4); }
 
 /* ── FEATURE CARDS ── */
 .feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 26px; }
-.fcard { padding: 36px 28px; border-radius: 22px; text-align: center; background: var(--surface); border: 1px solid var(--border); transition: all .38s; position: relative; overflow: hidden; }
-.fcard::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,#C07828,#D4A853); transform: scaleX(0); transition: transform .38s; transform-origin: left; }
+.fcard {
+  padding: 36px 28px; border-radius: 22px; text-align: center;
+  background: var(--surface); border: 1px solid var(--border);
+  transition: all .38s; position: relative; overflow: hidden;
+}
+.fcard::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg,#C07828,#D4A853);
+  transform: scaleX(0); transition: transform .38s; transform-origin: left;
+}
 .fcard:hover { transform: translateY(-7px); box-shadow: var(--cshadow); }
 .fcard:hover::after { transform: scaleX(1); }
-.ficon { width: 60px; height: 60px; border-radius: 14px; background: var(--bg3); margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; transition: all .38s; }
+.ficon {
+  width: 60px; height: 60px; border-radius: 14px; background: var(--bg3);
+  margin: 0 auto 18px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.7rem; transition: all .38s;
+}
 .fcard:hover .ficon { background: #C07828; transform: scale(1.12); }
 .ftitle { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 9px; }
-.fdesc { font-size: .82rem; color: var(--text3); line-height: 1.75; }
+.fdesc  { font-size: .82rem; color: var(--text3); line-height: 1.75; }
 
 /* ── CTA FULL WIDTH ── */
 .cta-fw { position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden; }
@@ -464,7 +414,11 @@ footer { background: var(--bg2); color: rgba(255,255,255,.52); padding: 64px 0 2
 .foot-col ul { display: flex; flex-direction: column; gap: 8px; }
 .foot-col a { font-size: .79rem; color: var(--text3); transition: color .2s; }
 .foot-col a:hover { color: #D4A853; }
-.foot-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; font-size: .72rem; color: rgba(255,255,255,.26); flex-wrap: wrap; gap: 8px; }
+.foot-bottom {
+  border-top: 1px solid rgba(255,255,255,.08); padding-top: 22px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: .72rem; color: rgba(255,255,255,.26); flex-wrap: wrap; gap: 8px;
+}
 
 /* ── ANIMATIONS ── */
 @keyframes slideUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
@@ -484,34 +438,35 @@ footer { background: var(--bg2); color: rgba(255,255,255,.52); padding: 64px 0 2
 [dir="rtl"] .feat-row:hover{ transform: translateX(-4px); }
 [dir="rtl"] .ci:hover      { transform: translateX(-5px); }
 
-/* ══════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════ */
 
-/* Desktop ≥ 769px — always show desktop nav */
-@media (min-width: 769px) {
-  .ham        { display: none !important; }
-  .nav-links  { display: flex !important; }
-  .nav-r .btn { display: inline-flex !important; }
-  .rtl-btn    { display: flex !important; }
-}
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+════════════════════════════════════════════════════════ */
 
-/* Large desktop ≥ 1280px */
+/* ── ≥ 1280px ── */
 @media (min-width: 1280px) {
   #nav { padding: 0 52px; }
   .nav-links a { padding: 7px 16px; font-size: .74rem; }
   .wrap { padding: 0 64px; }
+
+  .ph            { height: 75vh; min-height: 600px; padding-bottom: 72px; }
+  .ph-title      { font-size: clamp(2.6rem, 5vw, 4.2rem); }
+  .ph-sub        { font-size: .95rem; max-width: 580px; }
 }
 
-/* Medium desktop 1024px–1279px */
+/* ── 1024px – 1279px ── */
 @media (min-width: 1024px) and (max-width: 1279px) {
   #nav { padding: 0 32px; }
   .nav-links { gap: 0; }
   .nav-links a { padding: 7px 10px; font-size: .69rem; }
   .wrap { padding: 0 36px; }
+
+  .ph            { height: 70vh; min-height: 540px; padding-bottom: 60px; }
+  .ph-inner      { padding: 0 40px; }
+  .ph-title      { font-size: clamp(2.2rem, 4.5vw, 3.6rem); }
 }
 
-/* Tablet-desktop 769px–1023px */
+/* ── 640px – 1023px ── */
 @media (min-width: 769px) and (max-width: 1023px) {
   #nav { padding: 0 24px; }
   .nav-links { gap: 0; }
@@ -519,7 +474,22 @@ footer { background: var(--bg2); color: rgba(255,255,255,.52); padding: 64px 0 2
   .wrap { padding: 0 24px; }
 }
 
-/* Mobile ≤ 768px */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .ph            { height: 65vh; min-height: 460px; padding-bottom: 52px; }
+  .ph-inner      { padding: 0 32px; }
+  .ph-title      { font-size: clamp(2rem, 5vw, 3rem); }
+  .ph-sub        { font-size: .88rem; max-width: 480px; }
+}
+
+/* ── ≥ 769px: show desktop nav ── */
+@media (min-width: 769px) {
+  .ham        { display: none !important; }
+  .nav-links  { display: flex !important; }
+  .nav-r .btn { display: inline-flex !important; }
+  .rtl-btn    { display: flex !important; }
+}
+
+/* ── ≤ 768px: mobile ── */
 @media (max-width: 768px) {
   .nav-links { display: none !important; }
   .ham { display: flex !important; }
@@ -536,4 +506,21 @@ footer { background: var(--bg2); color: rgba(255,255,255,.52); padding: 64px 0 2
   .ph-inner { padding: 0 20px; }
   .cta-inner { padding: 40px 20px; }
   #nav { padding: 0 18px; }
+}
+
+/* ── < 640px ── */
+@media (max-width: 639px) {
+  .ph            { height: 58vh; min-height: 380px; padding-bottom: 40px; }
+  .ph-title      { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+  .ph-sub        { font-size: .82rem; max-width: 100%; }
+}
+
+/* ── ≤ 400px ── */
+@media (max-width: 400px) {
+  footer       { padding: 44px 0 0; }
+  .foot-grid   { gap: 20px; }
+  .foot-logo   { font-size: 1.25rem; }
+  .foot-col h5 { font-size: .82rem; margin-bottom: 12px; }
+  .foot-col a  { font-size: .75rem; }
+  .foot-bottom { font-size: .68rem; gap: 6px; padding: 16px 0; }
 }

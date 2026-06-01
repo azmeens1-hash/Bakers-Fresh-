@@ -1,26 +1,23 @@
-/* ══════════════════════════════════════════
-   Baker's Fresh — home2.js
-   ══════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── MASONRY CARD CLICK → relevant page ── */
+ 
   document.querySelectorAll('.mc').forEach((card, i) => {
     card.addEventListener('click', () => {
       const destinations = [
-        'service-detail.html',   // Birthday Extravaganza
-        'service-detail.html',   // Chocolate Dream
-        'service-detail.html',   // Strawberry Cloud
-        'service-detail.html',   // Artisan Croissant
-        'service-detail.html',   // Wedding Elegance
-        'service-detail2.html',  // Anniversary Romance
-        'service-detail.html',   // Baby Shower Bliss
+        'service-detail.html',  
+        'service-detail.html',   
+        'service-detail.html',   
+        'service-detail.html',   
+        'service-detail.html',   
+        'service-detail2.html',  
+        'service-detail.html',  
       ];
       window.location.href = destinations[i] || 'services.html';
     });
   });
 
-  /* ── STEP HOVER: highlight connector line ── */
+
   document.querySelectorAll('.step').forEach(step => {
     step.addEventListener('mouseenter', () => {
       const steps = document.querySelector('.steps');
@@ -32,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── NEWSLETTER FORM FEEDBACK ── */
+  
   const nlForm = document.querySelector('.nl-form');
   if (nlForm) {
     const input = nlForm.querySelector('input[type="email"]');

@@ -1,4 +1,4 @@
-/* ── SERVICE CARDS GRID ── */
+
 .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: stretch; }
 .svc {
   border-radius: 24px; overflow: hidden;
@@ -207,7 +207,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .foot-bottom { flex-direction: column; text-align: center; }
 }
 
-/* ── SMALL MOBILE ≤ 400px ── */
+
 @media (max-width: 400px) {
   footer       { padding: 44px 0 0; }
   .foot-grid   { gap: 20px; }

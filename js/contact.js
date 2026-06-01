@@ -1,6 +1,3 @@
-/* ══════════════════════════════════════════
-   Baker's Fresh — contact.js
-   ══════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -10,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!form) return;
 
-  /* ── FIELD VALIDATION HELPERS ── */
+ 
   function showError(input, msg) {
     input.style.borderColor = '#e05050';
     input.style.boxShadow   = '0 0 0 3px rgba(224,80,80,.12)';
@@ -31,13 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (err) err.remove();
   }
 
-  /* ── CLEAR ERRORS ON INPUT ── */
+ 
   form.querySelectorAll('input, select, textarea').forEach(el => {
     el.addEventListener('input', () => clearError(el));
     el.addEventListener('change', () => clearError(el));
   });
 
-  /* ── FORM SUBMIT ── */
+ 
   form.addEventListener('submit', e => {
     e.preventDefault();
 
@@ -69,18 +66,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (!valid) {
-      // Scroll to first error
+     
       const firstErr = form.querySelector('[style*="border-color: rgb(224"]');
       if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
-    /* ── LOADING STATE ── */
+  
     submitBtn.textContent = 'Sending…';
     submitBtn.disabled    = true;
     submitBtn.style.opacity = '0.7';
 
-    // Simulate send (replace with real API call if needed)
+   
     setTimeout(() => {
       form.style.display         = 'none';
       successBox.style.display   = 'block';
@@ -88,24 +85,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1200);
   });
 
-  /* ── PHONE NUMBER FORMATTING ── */
+  
   const phone = form.querySelector('input[type="tel"]');
   if (phone) {
     phone.addEventListener('input', function () {
-      // Allow only digits, spaces, +, -
+      
       this.value = this.value.replace(/[^\d\s+\-()]/g, '');
     });
   }
 
-  /* ── DATE INPUT: Prevent past dates ── */
   const dateInput = form.querySelector('input[type="date"]');
   if (dateInput) {
     const today = new Date().toISOString().split('T')[0];
     dateInput.setAttribute('min', today);
   }
 
-  /* ── CONTACT ITEM CLICK TO ACTION ── */
-  // Make phone number clickable
+  
   document.querySelectorAll('.ci-txt').forEach(item => {
     const h5 = item.querySelector('h5');
     const p  = item.querySelector('p');
@@ -125,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ── TEXTAREA AUTO RESIZE ── */
+  
   const textarea = form.querySelector('textarea');
   if (textarea) {
     textarea.addEventListener('input', function () {

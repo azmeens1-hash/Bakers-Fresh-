@@ -555,7 +555,7 @@ img { max-width: 100%; display: block; }
   .dash-header-right { gap: 6px; }
 }
 
-/* ── SMALL MOBILE max 479px (360px target) ── */
+
 @media (max-width: 479px) {
 
 .sidebar {
@@ -656,7 +656,7 @@ img { max-width: 100%; display: block; }
   /* Buttons */
   .btn-primary { padding: 9px 16px; font-size: .72rem; white-space: nowrap; }
 
-  /* Welcome row */
+
   .anim-1 > div:first-child p:first-of-type { font-size: 1.1rem; }
   .anim-1 > div:first-child p:last-of-type { font-size: .76rem; }
   .anim-1 { flex-direction: column; align-items: flex-start !important; gap: 12px; }

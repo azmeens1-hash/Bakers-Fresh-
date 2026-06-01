@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── PRODUCT CARD HOVER TILT ── */
+  
   document.querySelectorAll('.pcard').forEach(card => {
     card.addEventListener('mousemove', e => {
       const rect   = card.getBoundingClientRect();
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── STATS COUNTER ANIMATION ── */
+
   const statNums = document.querySelectorAll('.stat-n');
   const statObs  = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           promo.style.animation = 'none';
-          // small flash effect
+         
           promo.style.opacity = '0.85';
           setTimeout(() => { promo.style.opacity = '1'; }, 180);
           promoObs.unobserve(promo);

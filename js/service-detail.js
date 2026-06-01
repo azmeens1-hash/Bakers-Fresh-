@@ -1,7 +1,7 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* ── STICKY SIDEBAR SCROLL INDICATOR ── */
+
   const sidebar = document.querySelector('.sd-sidebar');
   const hero    = document.querySelector('.sd-hero');
   if (sidebar && hero) {

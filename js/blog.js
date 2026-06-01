@@ -1,6 +1,3 @@
-/* ─────────────────────────────────────────────
-   blog.js  —  Baker's Fresh  |  Blog
-   ───────────────────────────────────────────── */
 
 document.addEventListener('DOMContentLoaded', () => {
 

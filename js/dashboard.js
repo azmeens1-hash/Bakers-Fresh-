@@ -1,8 +1,4 @@
-/* ══════════════════════════════════════════
-   Baker's Fresh — dashboard.js
-   ══════════════════════════════════════════ */
 
-/* ── THEME ── */
 (function () {
   const theme = localStorage.getItem('bf-theme') || 'light';
   const dir   = localStorage.getItem('bf-dir')   || 'ltr';
@@ -184,7 +180,7 @@ function animateStats() {
   document.querySelectorAll('.stat-n[data-target]').forEach(n => observer.observe(n));
 }
 
-/* ── INIT ── */
+
 document.addEventListener('DOMContentLoaded', () => {
   syncButtons();
   drawDonut();

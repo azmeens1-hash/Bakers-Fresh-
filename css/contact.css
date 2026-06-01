@@ -172,11 +172,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
 }
 [data-theme="dark"] .foot-bottom { border-top-color: rgba(255,255,255,.10); color: rgba(255,255,255,.30); }
 
-/* ════════════════════════════════════════
-   RESPONSIVE
-   ════════════════════════════════════════ */
 
-/* ── LARGE DESKTOP ≥ 1280px ── */
 @media (min-width: 1280px) {
   .contact-grid { gap: 80px; padding: 72px 0 56px; }
   .contact-info h2 { font-size: 2.4rem; }
@@ -193,7 +189,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .foot-logo { font-size: 1.65rem; }
 }
 
-/* ── LAPTOP 1024–1279px ── */
+
 @media (min-width: 1024px) and (max-width: 1279px) {
   .contact-grid { gap: 48px; padding: 52px 0 40px; }
   .contact-info h2 { font-size: 1.95rem; }
@@ -203,7 +199,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .foot-grid { gap: 36px; }
 }
 
-/* ── TABLET 640–1023px ── */
+
 @media (min-width: 640px) and (max-width: 1023px) {
   .nav-links  { display: none; }
   .ham        { display: flex; }
@@ -217,7 +213,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 26px; }
 }
 
-/* ── MOBILE ≤ 639px ── */
+
 @media (max-width: 639px) {
   .wrap { padding: 0 18px; }
   .sec  { padding: 56px 0; }
@@ -240,7 +236,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .foot-bottom { flex-direction: column; text-align: center; }
 }
 
-/* ── SMALL MOBILE ≤ 400px ── */
+
 @media (max-width: 400px) {
   footer       { padding: 44px 0 0; }
   .foot-grid   { gap: 20px; }

@@ -1,8 +1,4 @@
-/* ─────────────────────────────────────────────
-   menu.css  —  Baker's Fresh  |  Menu & Pricing
-   ───────────────────────────────────────────── */
 
-/* ── TABS ───────────────────────────────────── */
 .menu-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -342,11 +338,11 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .seasonal-txt p  { font-size: .84rem; }
   .nl       { padding: 56px 0; }
   .nl-inner h2 { font-size: 1.85rem; }
-  /* Footer — 2-col */
+  
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 26px; }
 }
 
-/* ── ≤ 639px (mobile) ── */
+
 @media (max-width: 639px) {
   .wrap { padding: 0 18px; }
   .sec  { padding: 56px 0; }
@@ -401,7 +397,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .foot-bottom { flex-direction: column; text-align: center; }
 }
 
-/* ── ≤ 400px (small mobile) ── */
+
 @media (max-width: 400px) {
   footer       { padding: 44px 0 0; }
   .foot-grid   { gap: 20px; }
