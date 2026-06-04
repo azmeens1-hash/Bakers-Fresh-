@@ -68,13 +68,13 @@
 /* ── FOOTER (matches Home 1 exactly) ── */
 footer { background: var(--bg2); padding: 64px 0 0; }
 .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 48px; }
-.foot-logo { font-family: 'Playfair Display', serif; font-size: 1.48rem; font-weight: 800; color: #D4A853; display: inline-block; margin-bottom: 14px; }
+.foot-logo { font-family: 'Playfair Display', serif; font-size: 1.48rem; font-weight: 800; color: #C07828; display: inline-block; margin-bottom: 14px; }
 .foot-logo span { font-style: italic; color: var(--text); }
 .foot-brand p { font-size: .79rem; line-height: 1.85; color: var(--text3); }
-.foot-col h5 { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 600; color: #D4A853; margin-bottom: 16px; }
+.foot-col h5 { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 600; color: #C07828; margin-bottom: 16px; }
 .foot-col ul { display: flex; flex-direction: column; gap: 8px; }
 .foot-col a { font-size: .79rem; color: var(--text3); transition: color .2s; }
-.foot-col a:hover { color: #D4A853; }
+.foot-col a:hover { color: #C07828; }
 .foot-bottom {
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 8px; padding: 22px 0;
