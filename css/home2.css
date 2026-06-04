@@ -49,11 +49,29 @@
 [dir="rtl"] .h2-btns { justify-content: flex-start; }
 
 
-.masonry { display: grid; grid-template-columns: repeat(4,1fr); grid-auto-rows: 200px; gap: 14px; }
-.mc { border-radius: 17px; overflow: hidden; cursor: pointer; position: relative; transition: transform .38s, box-shadow .38s; }
+/* ── SWEET GALLERY ── */
+.masonry {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.mc {
+  border-radius: 17px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  aspect-ratio: 1 / 1;        /* every card is a perfect square */
+  transition: transform .38s, box-shadow .38s;
+}
 .mc:hover { transform: scale(1.03); box-shadow: var(--cshadow); }
-.mc:nth-child(1), .mc:nth-child(6) { grid-row: span 2; }
-.mc img { width: 100%; height: 100%; transition: transform .5s, opacity .4s; }
+.mc img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* crop to fill, no stretching */
+  object-position: center;
+  display: block;
+  transition: transform .5s, opacity .4s;
+}
 .mc:hover img { transform: scale(1.07); opacity: .7; }
 .mc-info {
   position: absolute; inset: 0;
@@ -167,8 +185,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .h2-btns .btn-lg { padding: 17px 42px; font-size: .88rem; }
   .stat-n    { font-size: 3rem; }
   .stat-item { padding: 42px 24px; }
-  .masonry { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 16px; }
-  .mc:nth-child(1), .mc:nth-child(6) { grid-row: span 2; }
+  .masonry { grid-template-columns: repeat(4, 1fr); gap: 16px; }
   .steps { gap: 0; }
   .step-n { width: 72px; height: 72px; font-size: 1.55rem; }
   .step-title { font-size: 1.1rem; }
@@ -199,8 +216,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .h2-cnt p  { font-size: .95rem; max-width: 440px; }
   .stat-n    { font-size: 2.5rem; }
   .stat-item { padding: 32px 18px; }
-  .masonry { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 190px; gap: 12px; }
-  .mc:nth-child(1), .mc:nth-child(6) { grid-row: span 2; }
+  .masonry { grid-template-columns: repeat(4, 1fr); gap: 12px; }
   .steps { grid-template-columns: repeat(4, 1fr); }
   .steps::before { display: block; }
   .step-n { width: 62px; height: 62px; font-size: 1.3rem; }
@@ -237,8 +253,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .stat-item:nth-last-child(-n+2) { border-bottom: none; }
   .stat-n    { font-size: 2.2rem; }
   .stat-item { padding: 26px 16px; }
-  .masonry { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; gap: 12px; }
-  .mc:nth-child(1), .mc:nth-child(6) { grid-row: auto; }
+  .masonry { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .steps { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
   .steps::before { display: none; }
   .step { padding: 0 10px; }
@@ -294,8 +309,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .stat-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
   .stat-n { font-size: 1.85rem; }
   .stat-l { font-size: .6rem; }
-  .masonry { grid-template-columns: 1fr; grid-auto-rows: 200px; gap: 10px; }
-  .mc:nth-child(1), .mc:nth-child(6) { grid-row: auto; }
+  .masonry { grid-template-columns: 1fr 1fr; gap: 10px; }
   .mc { border-radius: 14px; }
   .mc-info { padding: 14px; }
   .mc-info h4 { font-size: .9rem; }
@@ -314,7 +328,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .promo { flex-direction: column; gap: 14px; padding: 22px 16px; text-align: center; }
   .promo-txt { font-size: 1.05rem; }
 
-  /* ── newsletter — horizontal pill, matches home1.css ── */
+  /* ── newsletter — horizontal pill ── */
   .nl          { padding: 48px 0; }
   .nl-inner    { padding: 0 16px; }
   .nl-inner h2 { font-size: 1.5rem; }
@@ -370,7 +384,6 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .foot-col a  { font-size: .75rem; }
   .foot-bottom { font-size: .68rem; gap: 6px; padding: 16px 0; }
 
-  /* newsletter — keep pill at ≤400px too */
   .nl          { padding: 36px 0; }
   .nl-inner    { padding: 0 13px; }
   .nl-inner h2 { font-size: 1.35rem; }
