@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Account — Baker's Fresh</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="shortcut icon" href="favicon.svg">
-<link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/auth-center.css">
@@ -15,20 +15,37 @@
 
   <div class="auth-card">
 
+    
     <div class="card-topbar">
       <span class="card-switch">
         Have an account? <a href="login.html">Sign in →</a>
       </span>
       <div class="card-controls">
-        <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">🌙</button>
-        <button class="rtl-btn"  id="rtl-btn"   onclick="toggleRTL()"   title="RTL / LTR">RTL</button>
+        <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">
+          <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+        <button class="rtl-btn" id="rtl-btn" onclick="toggleRTL()" title="RTL / LTR">RTL</button>
       </div>
     </div>
 
+    
     <div class="card-brand">
-      <a class="card-logo" href="index.html">Baker's <span>Fresh</span></a>
+      <a class="logo" href="index.html">
+        <img src="Images/logo-light.png" alt="Baker's Fresh" class="logo-img logo-img--light">
+        <img src="Images/logo-dark.png"  alt="Baker's Fresh" class="logo-img logo-img--dark">
+      </a>
     </div>
 
+   
     <div class="step-dots" id="step-dots">
       <div class="sdot act" id="d0"></div>
       <div class="sdot"     id="d1"></div>
@@ -38,40 +55,22 @@
 
     <div class="auth-msg" id="auth-msg"></div>
 
+  
     <div class="step on" id="s0">
       <div class="sec-tag">✦ Get Started</div>
       <h1 class="auth-heading">Create <em>Account</em></h1>
       <p class="auth-sub">Quick and easy — just a few details to begin.</p>
 
-      <div class="social-btns">
-        <button class="social-btn" onclick="socialClick(this,'google')">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          Google
-        </button>
-        <button class="social-btn" onclick="socialClick(this,'facebook')">
-          <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          Facebook
-        </button>
-        <button class="social-btn" onclick="socialClick(this,'apple')">
-          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" fill="currentColor"/></svg>
-          Apple
-        </button>
-      </div>
-
-      <div class="auth-divider"><span>or sign up with email</span></div>
-
       <div class="fg-row">
         <div class="fg">
           <label for="fname">First Name</label>
           <div class="input-wrap">
-            <span class="input-icon">👤</span>
             <input type="text" id="fname" placeholder="First name" required autocomplete="given-name">
           </div>
         </div>
         <div class="fg">
           <label for="lname">Last Name</label>
           <div class="input-wrap">
-            <span class="input-icon">👤</span>
             <input type="text" id="lname" placeholder="Last name" required autocomplete="family-name">
           </div>
         </div>
@@ -80,7 +79,6 @@
       <div class="fg">
         <label for="email">Email Address</label>
         <div class="input-wrap">
-          <span class="input-icon">✉️</span>
           <input type="email" id="email" placeholder="your@email.com" required autocomplete="email">
         </div>
       </div>
@@ -88,14 +86,40 @@
       <div class="fg">
         <label for="phone">Phone Number</label>
         <div class="input-wrap">
-          <span class="input-icon">📞</span>
           <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" autocomplete="tel">
         </div>
       </div>
 
       <button type="button" class="auth-btn" onclick="nextStep(0)">Continue →</button>
+
+     
+      <div class="auth-divider"><span>or continue with</span></div>
+      <div class="social-btns">
+        <button class="social-btn" onclick="socialClick(this,'google')">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#C07828"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#C07828"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#C07828"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#C07828"/>
+          </svg>
+          Google
+        </button>
+        <button class="social-btn" onclick="socialClick(this,'facebook')">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#C07828"/>
+          </svg>
+          Facebook
+        </button>
+        <button class="social-btn" onclick="socialClick(this,'apple')">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" fill="#C07828"/>
+          </svg>
+          Apple
+        </button>
+      </div>
     </div>
 
+  
     <div class="step" id="s1">
       <div class="sec-tag">✦ Security</div>
       <h1 class="auth-heading">Set <em>Password</em></h1>
@@ -104,7 +128,6 @@
       <div class="fg">
         <label for="password">Password</label>
         <div class="input-wrap">
-          <span class="input-icon">🔒</span>
           <input type="password" id="password" placeholder="Create a strong password"
                  required data-minlength="8" autocomplete="new-password">
           <button type="button" class="pw-eye" onclick="togglePw('password',this)">👁️</button>
@@ -118,7 +141,6 @@
       <div class="fg">
         <label for="cpw">Confirm Password</label>
         <div class="input-wrap">
-          <span class="input-icon">🔒</span>
           <input type="password" id="cpw" placeholder="Repeat your password"
                  required autocomplete="new-password">
           <button type="button" class="pw-eye" onclick="togglePw('cpw',this)">👁️</button>
@@ -141,39 +163,38 @@
       </div>
     </div>
 
+   
     <div class="step" id="s2">
       <div class="sec-tag">✦ Almost Done</div>
       <h1 class="auth-heading">Your <em>Preferences</em></h1>
       <p class="auth-sub">Help us personalise your Baker's Fresh experience.</p>
 
-      
-
       <div class="fg">
         <label>Occasions You Celebrate</label>
         <div class="occ-grid">
-          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox"><span class="occ-ico">🎂</span>Birthdays</label>
-          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox"><span class="occ-ico">💒</span>Weddings</label>
-          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox"><span class="occ-ico">💝</span>Anniversaries</label>
-          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox"><span class="occ-ico">🏢</span>Corporate</label>
-          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox"><span class="occ-ico">🎓</span>Graduations</label>
-          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox"><span class="occ-ico">🌟</span>Just Because!</label>
+          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox">Birthdays</label>
+          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox">Weddings</label>
+          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox">Anniversaries</label>
+          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox">Corporate</label>
+          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox">Graduations</label>
+          <label class="occ" onclick="toggleOcc(this)"><input type="checkbox">Just Because!</label>
         </div>
       </div>
 
       <div class="fg">
         <label for="city">Your Area in Hyderabad</label>
         <div class="input-wrap">
-          <span class="input-icon">📍</span>
           <input type="text" id="city" placeholder="e.g. Banjara Hills, Gachibowli…">
         </div>
       </div>
 
       <div class="step-nav">
         <button type="button" class="back-btn" onclick="prevStep(2)">← Back</button>
-        <button type="button" class="auth-btn" id="create-btn" onclick="handleSignup()">Create Account </button>
+        <button type="button" class="auth-btn" id="create-btn" onclick="handleSignup()">Create Account</button>
       </div>
     </div>
 
+   
     <div class="success" id="success">
       <span class="success-ico">🎉</span>
       <h2>Welcome to Baker's <em>Fresh</em>!</h2>
@@ -184,88 +205,78 @@
       </div>
     </div>
 
-    <div class="auth-note" id="switch-note">
-      Already have an account? <a href="login.html">Sign in →</a>
-    </div>
-
   </div>
 
-<script src="js/auth-center.js"></script>
-<script>
-  const TOTAL = 3;
-  let cur = 0;
+  <script src="js/auth-center.js"></script>
+  <script>
+    const TOTAL = 3;
+    let cur = 0;
 
-  function updateDots(n) {
-    ['d0','d1','d2'].forEach((id, i) => {
-      const d = document.getElementById(id);
-      d.className = 'sdot';
-      if (i < n)  d.classList.add('done');
-      if (i === n) d.classList.add('act');
-    });
-    document.getElementById('step-lbl').textContent = `Step ${n+1} of ${TOTAL}`;
-  }
-
-  function nextStep(from) {
-    if (!validateStep(from)) return;
-    showMsg('', '');
-    document.getElementById('s'+from).classList.remove('on');
-    cur = from + 1;
-    document.getElementById('s'+cur).classList.add('on');
-    updateDots(cur);
-  }
-
-  function prevStep(from) {
-    document.getElementById('s'+from).classList.remove('on');
-    cur = from - 1;
-    document.getElementById('s'+cur).classList.add('on');
-    updateDots(cur);
-    showMsg('', '');
-  }
-
-  function validateStep(step) {
-    if (step === 0) {
-      const ok = validateField(document.getElementById('fname'))
-               & validateField(document.getElementById('lname'))
-               & validateField(document.getElementById('email'));
-      if (!ok) { showMsg('Please fill in your name and email.', 'error'); return false; }
+    function updateDots(n) {
+      ['d0','d1','d2'].forEach((id, i) => {
+        const d = document.getElementById(id);
+        d.className = 'sdot';
+        if (i < n)  d.classList.add('done');
+        if (i === n) d.classList.add('act');
+      });
+      document.getElementById('step-lbl').textContent = `Step ${n+1} of ${TOTAL}`;
     }
-    if (step === 1) {
-      const pw  = document.getElementById('password');
-      const cpw = document.getElementById('cpw');
-      if (!validateField(pw)|!validateField(cpw)) { showMsg('Please fill in all fields.', 'error'); return false; }
-      if (pw.value.length < 8) { pw.classList.add('err'); showMsg('Password must be at least 8 characters.', 'error'); return false; }
-      if (pw.value !== cpw.value) { cpw.classList.add('err'); showMsg('Passwords do not match.', 'error'); return false; }
-      if (!document.getElementById('terms').checked) { showMsg('Please accept the Terms to continue.', 'error'); return false; }
+
+    function nextStep(from) {
+      if (!validateStep(from)) return;
+      showMsg('', '');
+      document.getElementById('s'+from).classList.remove('on');
+      cur = from + 1;
+      document.getElementById('s'+cur).classList.add('on');
+      updateDots(cur);
     }
-    return true;
-  }
 
-  function pickAv(el) {
-    document.querySelectorAll('.av').forEach(a => a.classList.remove('sel'));
-    el.classList.add('sel');
-  }
+    function prevStep(from) {
+      document.getElementById('s'+from).classList.remove('on');
+      cur = from - 1;
+      document.getElementById('s'+cur).classList.add('on');
+      updateDots(cur);
+      showMsg('', '');
+    }
 
-  function toggleOcc(lbl) {
-    const cb = lbl.querySelector('input');
-    cb.checked = !cb.checked;
-    lbl.classList.toggle('on', cb.checked);
-  }
-
-  function handleSignup() {
-    const btn = document.getElementById('create-btn');
-    btn.textContent = 'Creating account…';
-    btn.classList.add('loading');
-    setTimeout(() => {
-      for (let i = 0; i < TOTAL; i++) {
-        const p = document.getElementById('s'+i);
-        if (p) p.classList.remove('on');
+    function validateStep(step) {
+      if (step === 0) {
+        const ok = validateField(document.getElementById('fname'))
+                 & validateField(document.getElementById('lname'))
+                 & validateField(document.getElementById('email'));
+        if (!ok) { showMsg('Please fill in your name and email.', 'error'); return false; }
       }
-      document.getElementById('step-dots').style.display = 'none';
-      document.getElementById('switch-note').style.display = 'none';
-      document.getElementById('auth-msg').className = 'auth-msg';
-      document.getElementById('success').classList.add('show');
-    }, 1500);
-  }
-</script>
+      if (step === 1) {
+        const pw  = document.getElementById('password');
+        const cpw = document.getElementById('cpw');
+        if (!validateField(pw)|!validateField(cpw)) { showMsg('Please fill in all fields.', 'error'); return false; }
+        if (pw.value.length < 8) { pw.classList.add('err'); showMsg('Password must be at least 8 characters.', 'error'); return false; }
+        if (pw.value !== cpw.value) { cpw.classList.add('err'); showMsg('Passwords do not match.', 'error'); return false; }
+        if (!document.getElementById('terms').checked) { showMsg('Please accept the Terms to continue.', 'error'); return false; }
+      }
+      return true;
+    }
+
+    function toggleOcc(lbl) {
+      const cb = lbl.querySelector('input');
+      cb.checked = !cb.checked;
+      lbl.classList.toggle('on', cb.checked);
+    }
+
+    function handleSignup() {
+      const btn = document.getElementById('create-btn');
+      btn.textContent = 'Creating account…';
+      btn.classList.add('loading');
+      setTimeout(() => {
+        for (let i = 0; i < TOTAL; i++) {
+          const p = document.getElementById('s'+i);
+          if (p) p.classList.remove('on');
+        }
+        document.getElementById('step-dots').style.display = 'none';
+        document.getElementById('auth-msg').className = 'auth-msg';
+        document.getElementById('success').classList.add('show');
+      }, 1500);
+    }
+  </script>
 </body>
 </html>

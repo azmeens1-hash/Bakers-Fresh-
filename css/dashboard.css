@@ -59,13 +59,34 @@ img { max-width: 100%; display: block; }
 
 /* ── SIDEBAR BRAND ── */
 .sb-brand { padding: 24px 20px 12px; border-bottom: 1px solid var(--border); }
-.sb-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.32rem; font-weight: 800; color: #C07828;
-  display: block; margin-bottom: 3px;
+.logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
 }
-.sb-logo span { font-style: italic; color: var(--text); }
-.sb-tagline { font-size: .68rem; color: var(--text3); letter-spacing: .08em; }
+/* Show light logo by default, dark logo in dark mode */
+.logo-img--dark  { display: none; }
+[data-theme="dark"] .logo-img--light { display: none; }
+[data-theme="dark"] .logo-img--dark  { display: block; }
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.52rem;
+  font-weight: 800;
+  color: #C07828;
+  letter-spacing: -.4px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+ 
+
+}.sb-tagline {
+  font-size: .68rem; color: var(--text3); margin-top: 4px;
+}
+
+
+.logo span { font-style: italic; color: var(--text); }
 
 /* ── SIDEBAR USER ── */
 .sb-user {
@@ -183,6 +204,13 @@ img { max-width: 100%; display: block; }
   width: 7px; height: 7px; border-radius: 50%;
   background: #C07828; border: 1.5px solid var(--surface);
 }
+.icon-btn {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--bg);color:var(--text); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; position: relative; transition: all .22s;
+}
+.icon-btn:hover { background: var(--bg3); border-color: rgba(192,120,40,.3); }
 .rtl-btn {
   height: 36px; padding: 0 10px; border-radius: 10px;
   background: var(--bg); border: 1px solid var(--border);
@@ -592,7 +620,7 @@ img { max-width: 100%; display: block; }
   .dash-breadcrumb { display: none; }
   .dash-search { display: none; } /* hidden at 360px */
   .dash-header-right { gap: 5px; }
-  .hdr-btn, .rtl-btn { width: 32px; height: 32px; font-size: .78rem; }
+  .hdr-btn, .rtl-btn { height: 32px; font-size: .78rem; }
   .hdr-avatar { width: 32px; height: 32px; font-size: .95rem; }
 
   /* Body */

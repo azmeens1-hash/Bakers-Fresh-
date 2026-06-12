@@ -6,16 +6,30 @@
   document.documentElement.setAttribute('dir', dir);
 })();
 
+
+
 function toggleTheme() {
-  const html   = document.documentElement;
-  const isDark = html.getAttribute('data-theme') === 'dark';
-  const next   = isDark ? 'light' : 'dark';
+  var html   = document.documentElement;
+  var isDark = html.getAttribute('data-theme') === 'dark';
+  var next   = isDark ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
   localStorage.setItem('bf-theme', next);
-  const btn = document.getElementById('theme-btn');
-  if (btn) btn.textContent = isDark ? '🌙' : '☀️';
+  syncThemeIcon(next);
 }
 
+// ADD this helper function:
+function syncThemeIcon(theme) {
+  var moon = document.getElementById('icon-moon');
+  var sun  = document.getElementById('icon-sun');
+  if (!moon || !sun) return;
+  if (theme === 'dark') {
+    moon.style.display = 'none';
+    sun.style.display  = 'block';
+  } else {
+    moon.style.display = 'block';
+    sun.style.display  = 'none';
+  }
+}
 function toggleRTL() {
   const html  = document.documentElement;
   const isRTL = html.getAttribute('dir') === 'rtl';
@@ -26,15 +40,7 @@ function toggleRTL() {
   if (btn) btn.textContent = isRTL ? 'RTL' : 'LTR';
 }
 
-/* ── SYNC BUTTONS ── */
-function syncButtons() {
-  const theme = document.documentElement.getAttribute('data-theme');
-  const dir   = document.documentElement.getAttribute('dir');
-  const tb = document.getElementById('theme-btn');
-  const rb = document.getElementById('rtl-btn');
-  if (tb) tb.textContent = theme === 'dark' ? '☀️' : '🌙';
-  if (rb) rb.textContent = dir   === 'rtl'  ? 'LTR' : 'RTL';
-}
+
 
 /* ── SIDEBAR TOGGLE ── */
 function toggleSidebar() {
@@ -179,7 +185,11 @@ function animateStats() {
   }, { threshold: 0.5 });
   document.querySelectorAll('.stat-n[data-target]').forEach(n => observer.observe(n));
 }
-
+document.addEventListener('DOMContentLoaded', function() {
+ 
+  var curTheme = document.documentElement.getAttribute('data-theme') || 'light';
+syncThemeIcon(curTheme);
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   syncButtons();

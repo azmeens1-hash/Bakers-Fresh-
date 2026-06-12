@@ -11,16 +11,19 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/home2.css">
 </head>
-<body >
+<body>
 
 <nav id="nav">
-  <a class="logo" href="index.html">Baker's <span>Fresh</span></a>
+  <a class="logo" href="index.html">
+    <img src="Images/logo-light.png" alt="Baker's Fresh" class="logo-img logo-img--light">
+    <img src="Images/logo-dark.png"  alt="Baker's Fresh" class="logo-img logo-img--dark">
+  </a>
   <ul class="nav-links">
     <li class="has-drop">
       <a href="index.html" class="act">Home <span class="drop-chevron"></span></a>
       <div class="nav-dropdown">
         <a class="dd-item" href="index.html">Home I</a>
-        <a class="dd-item " href="home2.html" class="act">Home II</a>
+        <a class="dd-item act" href="home2.html">Home II</a>
       </div>
     </li>
     <li><a href="about.html">About</a></li>
@@ -31,7 +34,18 @@
     <li><a href="dashboard.html">Dashboard</a></li>
   </ul>
   <div class="nav-r">
-    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">🌙</button>
+    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">
+      <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
     <button class="rtl-btn" id="rtl-btn" onclick="toggleRTL()" title="RTL / LTR">RTL</button>
     <a href="login.html" class="btn btn-primary btn-sm">Login</a>
     <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
@@ -54,13 +68,16 @@
 </div>
 
 <div class="h2-sec">
-  <div class="h2-bg"><img src="Images/home2.jpg"></div>
+  <div class="h2-bg"><img src="Images/home2.jpg" alt="Hero"></div>
   <div class="h2-ov"></div>
   <div class="h2-cnt">
-    <div class="eyebrow" style="justify-content:flex-end">✦ Where Celebrations Begin</div>
+    <div class="eyebrow">✦ Where Celebrations Begin</div>
     <h1>Crafted with <em>Love</em>,<br>Baked to Perfection</h1>
     <p>From intimate birthdays to grand weddings — visual inspiration meets logistics precision for every sweet moment in your life.</p>
-    <div class="h2-btns"><a href="contact.html" class="btn btn-primary btn-lg">Book a Cake</a><a href="services.html" class="btn btn-ghost btn-lg">Our Menu →</a></div>
+    <div class="h2-btns">
+      <a href="contact.html" class="btn btn-primary btn-lg">Book a Cake</a>
+      <a href="services.html" class="btn btn-ghost btn-lg">Our Menu →</a>
+    </div>
   </div>
 </div>
 
@@ -73,7 +90,11 @@
 
 <section class="sec sec-alt">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="sec-tag">✦ Our Sweet Gallery</div><h2 class="sec-title">A Gallery of <em>Sweet Art</em></h2><p class="sec-sub">Every cake tells a story — hover to explore our most-loved creations.</p></div>
+    <div class="sec-head reveal">
+      <div class="sec-tag">✦ Our Sweet Gallery</div>
+      <h2 class="sec-title">A Gallery of <em>Sweet Art</em></h2>
+      <p class="sec-sub">Every cake tells a story — hover to explore our most-loved creations.</p>
+    </div>
     <div class="masonry">
       <div class="mc reveal"><img src="Images/birthday.jpg" alt="Birthday" loading="lazy"><div class="mc-info"><h4>Birthday Extravaganza</h4><span>From ₹1,499</span></div></div>
       <div class="mc reveal rd1"><img src="Images/chocolate.jpg" alt="Chocolate" loading="lazy"><div class="mc-info"><h4>Chocolate Dream</h4><span>₹799</span></div></div>
@@ -82,14 +103,18 @@
       <div class="mc reveal rd1"><img src="Images/wedding.jpg" alt="Wedding" loading="lazy"><div class="mc-info"><h4>Wedding Elegance</h4><span>From ₹4,999</span></div></div>
       <div class="mc reveal rd2"><img src="Images/anniversary.jpg" alt="Anniversary" loading="lazy"><div class="mc-info"><h4>Anniversary Romance</h4><span>From ₹1,099</span></div></div>
       <div class="mc reveal rd3"><img src="Images/carporate theme.jpg" alt="Corporate" loading="lazy"><div class="mc-info"><h4>Corporate Celebration</h4><span>From ₹2,499</span></div></div>
-      <div class="mc reveal rd3"><img src="Images/baby shower.jpg" alt="baby shower"><div class="mc-info"><h4>Baby Shower Bliss</h4><span>From ₹2,000</span></div></div>
+      <div class="mc reveal rd3"><img src="Images/baby shower.jpg" alt="Baby Shower" loading="lazy"><div class="mc-info"><h4>Baby Shower Bliss</h4><span>From ₹2,000</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="sec-tag">✦ Simple Process</div><h2 class="sec-title">How It <em>Works</em></h2><p class="sec-sub">From your vision to your doorstep — 4 effortless steps to your dream cake.</p></div>
+    <div class="sec-head reveal">
+      <div class="sec-tag">✦ Simple Process</div>
+      <h2 class="sec-title">How It <em>Works</em></h2>
+      <p class="sec-sub">From your vision to your doorstep — 4 effortless steps to your dream cake.</p>
+    </div>
     <div class="steps">
       <div class="step reveal"><div class="step-n">01</div><div class="step-title">Choose</div><div class="step-desc">Browse our catalogue or describe your dream cake and celebration vision.</div></div>
       <div class="step reveal rd1"><div class="step-n">02</div><div class="step-title">Customise</div><div class="step-desc">Pick flavours, tiers and decorations. Finalise your design with our artists.</div></div>
@@ -99,26 +124,94 @@
   </div>
 </section>
 
-<div class="promo"><div class="promo-txt">🎂 Free Delivery on Orders Above ₹999</div><a href="contact.html" class="btn btn-dark">Order Today</a></div>
+<div class="promo">
+  <div class="promo-txt">🎂 Free Delivery on Orders Above ₹999</div>
+  <a href="contact.html" class="btn btn-dark">Order Today</a>
+</div>
 
 <section class="sec sec-alt">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="sec-tag">✦ Our Promise</div><h2 class="sec-title">Baked Fresh, <em>Delivered Right</em></h2></div>
-    <div class="feat-grid">
-      <div class="fcard reveal"><div class="ftitle">Custom Celebration Cakes</div><div class="fdesc">Birthdays, weddings, anniversaries — every event gets a uniquely crafted masterpiece.</div></div>
-      <div class="fcard reveal rd1"><div class="ftitle">Same-Day Baking</div><div class="fdesc">Order by 10am and receive fresh-baked goods at your doorstep that same afternoon.</div></div>
-      <div class="fcard reveal rd2"><div class="ftitle">100% Natural</div><div class="fdesc">No preservatives, no artificial colours — just real, wholesome ingredients you can taste.</div></div>
+    <div class="sec-head reveal">
+      <div class="sec-tag">✦ Our Promise</div>
+      <h2 class="sec-title">Baked Fresh, <em>Delivered Right</em></h2>
+    </div>
+   <div class="feat-grid">
+ 
+  <!-- Card 1: Custom Celebration Cakes — cake/layers icon -->
+  <div class="fcard reveal">
+    <div class="fcard-inner">
+      <div class="ficon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+          fill="none" stroke="#C07828" stroke-width="1.6"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="15" width="18" height="7" rx="2"/>
+          <rect x="5" y="9"  width="14" height="7" rx="2"/>
+          <rect x="7" y="4"  width="10" height="6" rx="2"/>
+          <line x1="12" y1="1" x2="12" y2="4"/>
+          <circle cx="12" cy="1" r="1.2" fill="#C07828" stroke="none"/>
+        </svg>
+      </div>
+      <div class="ftitle">Custom Celebration Cakes</div>
+      <div class="fdesc">Birthdays, weddings, anniversaries — every event gets a uniquely crafted masterpiece.</div>
     </div>
   </div>
+ 
+  <!-- Card 2: Same-Day Baking — clock/timer icon -->
+  <div class="fcard reveal rd1">
+    <div class="fcard-inner">
+      <div class="ficon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+          fill="none" stroke="#C07828" stroke-width="1.6"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="13" r="8"/>
+          <polyline points="12 9 12 13 15 15"/>
+          <path d="M5 3L2 6M22 6l-3-3"/>
+        </svg>
+      </div>
+      <div class="ftitle">Same-Day Baking</div>
+      <div class="fdesc">Order by 10am and receive fresh-baked goods at your doorstep that same afternoon.</div>
+    </div>
+  </div>
+ 
+  <!-- Card 3: 100% Natural — leaf/organic icon -->
+  <div class="fcard reveal rd2">
+    <div class="fcard-inner">
+      <div class="ficon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+          fill="none" stroke="#C07828" stroke-width="1.6"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 22c1.25-1.25 2.5-3 2.5-5.5C4.5 11 8 7 13 6c4-.8 7 .5 8.5 2-1 4-4 7.5-8.5 8.5-2.4.5-4.5-.2-6-1.5"/>
+          <path d="M2 22s2-6 6-9"/>
+        </svg>
+      </div>
+      <div class="ftitle">100% Natural</div>
+      <div class="fdesc">No preservatives, no artificial colours — just real, wholesome ingredients you can taste.</div>
+    </div>
+  </div>
+ 
+</div>
 </section>
 
-<div class="nl"><div class="nl-inner reveal"><h2>Stay Sweet, <em>Stay Fresh</em></h2><p>Exclusive offers, seasonal recipes &amp; new arrivals straight to your inbox.</p><div class="nl-form"><input type="email" placeholder="Enter your email address…"><button>Subscribe</button></div></div></div>
+<div class="nl">
+  <div class="nl-inner reveal">
+    <h2>Stay Sweet, <em>Stay Fresh</em></h2>
+    <p>Exclusive offers, seasonal recipes &amp; new arrivals straight to your inbox.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="Enter your email address…">
+      <button>Subscribe</button>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="foot-logo" href="index.html">Baker's <span>Fresh</span></a>
+         <a class="logo" href="index.html">
+    <img src="Images/logo-light.png" alt="Baker's Fresh" class="logo-img logo-img--light">
+    <img src="Images/logo-dark.png"  alt="Baker's Fresh" class="logo-img logo-img--dark">
+  </a>
+       
         <p>Freshly baked cakes &amp; pastries crafted with love for your special celebrations in Hyderabad.</p>
       </div>
       <div class="foot-col"><h5>Quicklinks</h5><ul>
@@ -138,15 +231,65 @@
         <li><a href="service-detail.html">Daily Bakes</a></li>
         <li><a href="service-detail.html">Corporate Gifting</a></li>
       </ul></div>
-      <div class="foot-col"><h5>Contact</h5><ul>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Banjara Hills, Hyderabad</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>+91 96768 43210</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@bakersfresh.com</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Sat 8am–9pm</a></li>
-      </ul></div>
+       <div class="foot-col">
+  <h5>Contact</h5>
+  <ul>
+ 
+    <li>
+      <a>
+        <span class="foot-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </span>
+        Banjara Hills, Hyderabad
+      </a>
+    </li>
+ 
+    <li>
+      <a>
+        <span class="foot-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/>
+          </svg>
+        </span>
+        +91 96768 43210
+      </a>
+    </li>
+ 
+    <li>
+      <a>
+        <span class="foot-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </span>
+        info@bakersfresh.com
+      </a>
+    </li>
+ 
+    <li>
+      <a>
+        <span class="foot-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </span>
+        Mon–Sat 8am–9pm
+      </a>
+    </li>
+ 
+  </ul>
+</div>
     </div>
-    <div class="foot-bottom"><span>© 2026 Baker's Fresh. All rights reserved.</span><span>Made with ♥ in Hyderabad</span></div>
-  </div>
+    <div class="foot-bottom">
+      <span>© 2026 Baker's Fresh. All rights reserved.</span>
+      <span>Made with ♥ in Hyderabad</span>
+    </div>
+  
 </footer>
 
 <script src="js/global.js"></script>

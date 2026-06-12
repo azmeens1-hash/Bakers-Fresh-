@@ -7,15 +7,28 @@
   document.documentElement.setAttribute('data-theme', theme);
   document.documentElement.setAttribute('dir', dir);
 })();
-
-function syncBtns() {
-  const theme = document.documentElement.getAttribute('data-theme');
-  const dir   = document.documentElement.getAttribute('dir');
-  const tb = document.getElementById('theme-btn');
-  const rb = document.getElementById('rtl-btn');
-  if (tb) tb.textContent = theme === 'dark' ? '☀️' : '🌙';
-  if (rb) rb.textContent = dir   === 'rtl'  ? 'LTR' : 'RTL';
+function toggleTheme() {
+  var html   = document.documentElement;
+  var isDark = html.getAttribute('data-theme') === 'dark';
+  var next   = isDark ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('bf-theme', next);
+  syncThemeIcon(next);
 }
+
+function syncThemeIcon(theme) {
+  var moon = document.getElementById('icon-moon');
+  var sun  = document.getElementById('icon-sun');
+  if (!moon || !sun) return;
+  if (theme === 'dark') {
+    moon.style.display = 'none';
+    sun.style.display  = 'block';
+  } else {
+    moon.style.display = 'block';
+    sun.style.display  = 'none';
+  }
+}
+
 
 function toggleTheme() {
   const html = document.documentElement;
@@ -91,3 +104,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const pw = document.getElementById('password');
   if (pw) pw.addEventListener('input', () => checkStrength(pw.value));
 });
+function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('email');
+      const pw    = document.getElementById('pw');
+      const btn   = document.getElementById('login-btn');
+      if (!(validateField(email) & validateField(pw))) {
+        showMsg('Please fill in all required fields correctly.', 'error');
+        return;
+      }
+      btn.textContent = 'Signing in…';
+      btn.classList.add('loading');
+      setTimeout(() => {
+        btn.textContent = '✓ Signed In!';
+        btn.style.background = '#2A7A4A';
+        showMsg('Welcome back! Redirecting…', 'success');
+        setTimeout(() => {
+          btn.textContent = 'Sign In ✦';
+          btn.style.background = '';
+          btn.classList.remove('loading');
+          showMsg('', '');
+        }, 3000);
+      }, 1400);
+    }

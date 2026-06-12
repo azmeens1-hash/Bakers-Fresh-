@@ -14,7 +14,11 @@
 <body >
 
 <nav id="nav">
-  <a class="logo" href="index.html">Baker's <span>Fresh</span></a>
+  <a class="logo" href="index.html">
+  <img src="Images/logo-light.png" alt="Baker's Fresh" class="logo-img logo-img--light">
+  <img src="Images/logo-dark.png"  alt="Baker's Fresh" class="logo-img logo-img--dark">
+</a>
+  
   <ul class="nav-links">
 
     <li class="has-drop">
@@ -34,7 +38,19 @@
   </ul>
 
   <div class="nav-r">
-    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">🌙</button>
+    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">
+  <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+   
     <button class="rtl-btn"  id="rtl-btn"   onclick="toggleRTL()"   title="RTL / LTR">RTL</button>
     <a href="login.html" class="btn btn-primary btn-sm">Login</a>
     <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
@@ -58,15 +74,36 @@
   <a href="login.html" class="btn btn-primary btn-sm">Login</a>
 </div>
 
-<div class="ph"><div class="ph-bg" style="background-image:url('Images/hero image.jpg')"></div><div class="ph-inner"><div class="crumb"><span class="cl" onclick="location.href='index.html'">Home</span><span>›</span><span>About</span></div><h1 class="ph-title">Our <em>Sweet</em> Story</h1><p class="ph-sub">A decade of baking love, one cake at a time — from a tiny kitchen to Hyderabad's most beloved artisan bakery.</p></div></div>
-
+<div class="ph">
+  <div class="ph-bg" style="background-image:url('Images/hero image.jpg')"></div>
+  <div class="ph-inner">
+ 
+    <h1 class="ph-title">Our <em>Sweet</em> Story</h1>
+ 
+    <p class="ph-sub">A decade of baking love, one cake at a time — from a tiny kitchen in Banjara Hills to Hyderabad's most beloved artisan bakery. Every layer tells a story. Every celebration deserves perfection.</p>
+ 
+    <div class="ph-pills">
+      <div class="ph-pill"><span class="ph-pill-n">500+</span><span class="ph-pill-l">Happy Families</span></div>
+      <div class="ph-pill"><span class="ph-pill-n">10k+</span><span class="ph-pill-l">Cakes Delivered</span></div>
+      <div class="ph-pill"><span class="ph-pill-n">4.9★</span><span class="ph-pill-l">Google Rating</span></div>
+    </div>
+ 
+    <div class="ph-btns">
+      <a href="contact.html" class="btn btn-primary btn-lg">Order a Cake</a>
+      <a href="services.html" class="btn btn-outline-white btn-lg">Our Services →</a>
+    </div>
+ 
+  </div>
+</div>
+  </div>
+</div>
 <section class="sec">
   <div class="wrap">
     <div class="about-story">
       <div class="about-imgs reveal">
         <img src="Images/mission.jpg" alt="Bakery" class="aimg-main" loading="lazy">
         <img src="Images/about.jpg" alt="Baking" class="aimg-sm" loading="lazy">
-        <div class="a-badge"><b>10</b><small>Years of Baking</small></div>
+        <div class="a-badge"><b>10+</b><small>Years of Baking</small></div>
       </div>
       <div class="about-txt reveal rd1">
         <div class="sec-tag">✦ Our Story</div>
@@ -123,7 +160,10 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="foot-logo" href="index.html">Baker's <span>Fresh</span></a>
+        <a class="logo" href="index.html">
+    <img src="Images/logo-light.png" alt="Baker's Fresh" class="logo-img logo-img--light">
+    <img src="Images/logo-dark.png"  alt="Baker's Fresh" class="logo-img logo-img--dark">
+  </a>
         <p>Freshly baked cakes &amp; pastries crafted with love for your special celebrations in Hyderabad.</p>
        </div>
       <div class="foot-col"><h5>Quicklinks</h5><ul><li><a href="index.html">Home I</a></li>
@@ -139,12 +179,59 @@
           <li><a href="service-detail.html">Corporate Gifting</a></li>
         </ul>
       </div>
-       <div class="foot-col"><h5>Contact</h5><ul>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Banjara Hills, Hyderabad</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>+91 96768 43210</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@bakersfresh.com</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Sat 8am–9pm</a></li>
-      </ul></div>
+       <div class="foot-col">
+  <h5>Contact</h5>
+  <ul>
+ 
+    <li>
+      <a>
+        <span class="foot-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </span>
+        Banjara Hills, Hyderabad
+      </a>
+    </li>
+ 
+    <li>
+      <a>
+        <span class="foot-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/>
+          </svg>
+        </span>
+        +91 96768 43210
+      </a>
+    </li>
+ 
+    <li>
+      <a>
+        <span class="foot-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </span>
+        info@bakersfresh.com
+      </a>
+    </li>
+ 
+    <li>
+      <a>
+        <span class="foot-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </span>
+        Mon–Sat 8am–9pm
+      </a>
+    </li>
+ 
+  </ul>
+</div>
     </div>
     <div class="foot-bottom"><span>© 2026 Baker's Fresh. All rights reserved.</span><span>Made with ♥ in Hyderabad</span></div>
   </div>

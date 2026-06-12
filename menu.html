@@ -14,9 +14,12 @@
 </head>
 <body>
 
-<!-- ── NAV ──────────────────────────────────── -->
+
 <nav id="nav">
-  <a class="logo" href="index.html">Baker's <span>Fresh</span></a>
+  <a class="logo" href="index.html">
+    <img src="Images/logo-light.png" alt="Baker's Fresh" class="logo-img logo-img--light">
+    <img src="Images/logo-dark.png"  alt="Baker's Fresh" class="logo-img logo-img--dark">
+  </a>
   <ul class="nav-links">
     <li class="has-drop">
       <a href="index.html">Home</a>
@@ -33,55 +36,66 @@
     <li><a href="dashboard.html">Dashboard</a></li>
   </ul>
   <div class="nav-r">
-    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">🌙</button>
-    <button class="rtl-btn"  id="rtl-btn"   onclick="toggleRTL()"   title="RTL / LTR">RTL</button>
+    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">
+      <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+    <button class="rtl-btn" id="rtl-btn" onclick="toggleRTL()" title="RTL / LTR">RTL</button>
     <a href="login.html" class="btn btn-primary btn-sm">Login</a>
     <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ── MOBILE NAV ───────────────────────────── -->
+
 <div class="mob-nav" id="mob-nav">
   <button class="mob-dd-toggle" onclick="toggleMobDrop(this)">Home <span class="mob-dd-chevron">▼</span></button>
   <div class="mob-dropdown">
-    <a href="index.html"  onclick="closeMob()">Home I</a>
-    <a href="home2.html"  onclick="closeMob()">Home II</a>
+    <a href="index.html"   onclick="closeMob()">Home I</a>
+    <a href="home2.html"   onclick="closeMob()">Home II</a>
   </div>
-  <a href="about.html"    onclick="closeMob()">About</a>
-  <a href="services.html" onclick="closeMob()">Services</a>
-  <a href="menu.html"     onclick="closeMob()" class="act">Menu &amp; Pricing</a>
-  <a href="blog.html"     onclick="closeMob()">Blog</a>
-  <a href="contact.html"  onclick="closeMob()">Contact</a>
-  <a href="dashboard.html"onclick="closeMob()">Dashboard</a>
+  <a href="about.html"     onclick="closeMob()">About</a>
+  <a href="services.html"  onclick="closeMob()">Services</a>
+  <a href="menu.html"      onclick="closeMob()" class="act">Menu &amp; Pricing</a>
+  <a href="blog.html"      onclick="closeMob()">Blog</a>
+  <a href="contact.html"   onclick="closeMob()">Contact</a>
+  <a href="dashboard.html" onclick="closeMob()">Dashboard</a>
   <a href="login.html" class="btn btn-primary btn-sm">Login</a>
 </div>
 
-<!-- ── PAGE HERO ─────────────────────────────── -->
 <div class="ph">
-  <div class="ph-bg" style="background-image:url('https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=1800&q=80')"></div>
+  <div class="ph-bg" style="background-image:url('Images/menu.jpg')"></div>
   <div class="ph-inner">
-    <div class="crumb">
-      <span class="cl" onclick="location.href='index.html'">Home</span>
-      <span>›</span>
-      <span>Menu &amp; Pricing</span>
-    </div>
     <h1 class="ph-title">Menu &amp; <em>Pricing</em></h1>
-    <p class="ph-sub">Every item crafted fresh daily — transparent pricing, no hidden surprises.</p>
+    <p class="ph-sub">From showstopping wedding tiers to flaky morning croissants — every item baked fresh in our Hyderabad kitchen, priced honestly with nothing hidden.</p>
+    <div class="ph-pills">
+      <div class="ph-pill"><span class="ph-pill-n">48+</span><span class="ph-pill-l">Menu Items</span></div>
+      <div class="ph-pill"><span class="ph-pill-n">100%</span><span class="ph-pill-l">Fresh Daily</span></div>
+      <div class="ph-pill"><span class="ph-pill-n">4.9★</span><span class="ph-pill-l">Avg Rating</span></div>
+    </div>
+    <div class="ph-btns">
+      <a href="contact.html" class="btn btn-primary btn-lg">Place an Order</a>
+      <a href="services.html" class="btn btn-outline-white btn-lg">Our Services →</a>
+    </div>
   </div>
 </div>
 
-<!-- ── MAIN SECTION ──────────────────────────── -->
 <section class="sec">
   <div class="wrap">
 
-    <!-- Section header -->
     <div class="sec-head reveal">
       <div class="sec-tag">✦ Browse Our Full Menu</div>
       <h2 class="sec-title">Fresh from Our <em>Kitchen</em></h2>
       <p class="sec-sub">Filter by category — all items made fresh each day with premium ingredients.</p>
     </div>
 
-    <!-- Filter tabs -->
     <div class="menu-tabs reveal">
       <button class="mtab on"  onclick="mTab(this,'all')">All Items</button>
       <button class="mtab"     onclick="mTab(this,'cakes')">Celebration Cakes</button>
@@ -93,7 +107,6 @@
    
     <div class="mcat show" id="mc-all">
 
-      <!-- Celebration Cakes -->
       <div class="mcat-title reveal"><span></span> Celebration Cakes</div>
       <p class="mcat-sub reveal">Handcrafted for birthdays, weddings, anniversaries and every milestone worth celebrating.</p>
       <div class="mgrid">
@@ -106,7 +119,7 @@
           <div class="mcard-body"><div class="mitem-name">Fresh Strawberry Gâteau</div><div class="mitem-desc">Light vanilla sponge layered with Chantilly cream and seasonal strawberries — delicate and irresistible.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹899</div><div class="mprice-note">500g · 1kg from ₹1,499</div></div><button class="madd">+</button></div></div>
         </div>
         <div class="mcard reveal rd2">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/white velvet.jpg" alt="Wedding" loading="lazy"><span class="mbadge premium">Premium</span></div>
+          <div class="mcard-iw"><img class="mcard-img" src="Images/white velvet.jpg" alt="Wedding" loading="lazy"></div>
           <div class="mcard-body"><div class="mitem-name">White Velvet Wedding Cake</div><div class="mitem-desc">Elegant multi-tier white velvet with champagne buttercream, edible florals and personalised topper.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹4,999</div><div class="mprice-note">2-tier · custom tiers available</div></div><button class="madd">+</button></div></div>
         </div>
         <div class="mcard reveal">
@@ -118,12 +131,11 @@
           <div class="mcard-body"><div class="mitem-name">Rose Gold Anniversary</div><div class="mitem-desc">Romantic rose gold drip cake with edible gold accents, fresh roses and custom inscription.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹2,299</div><div class="mprice-note">1kg · 2kg from ₹3,799</div></div><button class="madd">+</button></div></div>
         </div>
         <div class="mcard reveal rd2">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/redvelvet.jpg" alt="Red Velvet" loading="lazy"><span class="mbadge veg">Eggless</span></div>
+          <div class="mcard-iw"><img class="mcard-img" src="Images/redvelvet.jpg" alt="Red Velvet" loading="lazy"></div>
           <div class="mcard-body"><div class="mitem-name">Classic Red Velvet</div><div class="mitem-desc">Velvety red sponge with tangy cream cheese frosting — available in regular and eggless variations.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹999</div><div class="mprice-note">500g · 1kg from ₹1,699</div></div><button class="madd">+</button></div></div>
         </div>
       </div>
 
-      <!-- Pastries & Daily Bakes -->
       <div class="mcat-title reveal"><span></span> Pastries &amp; Daily Bakes</div>
       <p class="mcat-sub reveal">Baked every morning — available for pickup from 8am or doorstep delivery by 11am.</p>
       <div class="mgrid">
@@ -140,7 +152,7 @@
           <div class="mcard-body"><div class="mitem-name">Almond Croissant</div><div class="mitem-desc">Day-old croissants soaked in rum syrup, filled with almond frangipane and topped with flaked almonds.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹149</div><div class="mprice-note">per piece · 4-pack ₹549</div></div><button class="madd">+</button></div></div>
         </div>
         <div class="mcard reveal">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/cookie.jpg" alt="Cookie" loading="lazy"><span class="mbadge veg">Veg</span></div>
+          <div class="mcard-iw"><img class="mcard-img" src="Images/cookie.jpg" alt="Cookie" loading="lazy"></div>
           <div class="mcard-body"><div class="mitem-name">Brown Butter Choc Chip Cookie</div><div class="mitem-desc">Giant bakery-style cookies with browned butter, Valrhona chocolate chunks and flaky sea salt.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹129</div><div class="mprice-note">per piece · box of 6 ₹699</div></div><button class="madd">+</button></div></div>
         </div>
         <div class="mcard reveal rd1">
@@ -148,26 +160,18 @@
           <div class="mcard-body"><div class="mitem-name">Morning Pastry Box</div><div class="mitem-desc">Curated box of 6 assorted pastries — 2 croissants, 2 pain au chocolat and 2 seasonal pastries.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹549</div><div class="mprice-note">box of 6 items</div></div><button class="madd">+</button></div></div>
         </div>
         <div class="mcard reveal rd2">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/muffin.jpg" alt="Muffin" loading="lazy"><span class="mbadge veg">Eggless</span></div>
+          <div class="mcard-iw"><img class="mcard-img" src="Images/muffin.jpg" alt="Muffin" loading="lazy"></div>
           <div class="mcard-body"><div class="mitem-name">Blueberry Streusel Muffin</div><div class="mitem-desc">Jumbo muffins bursting with fresh blueberries, topped with a buttery streusel crumble.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹149</div><div class="mprice-note">per piece · 4-pack ₹549</div></div><button class="madd">+</button></div></div>
         </div>
       </div>
 
-      <!-- Pricing table -->
       <div class="price-section reveal">
         <div class="price-section-title">Cake Size &amp; <em>Pricing Guide</em></div>
         <p class="price-section-sub">Base prices for standard flavours. Custom designs, premium toppings and special ingredients may affect the final price.</p>
         <div class="stable-wrap">
           <table class="stable">
             <thead>
-              <tr>
-                <th>Size / Weight</th>
-                <th>Serves</th>
-                <th>Standard</th>
-                <th>Theme Cake</th>
-                <th>Premium</th>
-                <th>Wedding / Multi-tier</th>
-              </tr>
+              <tr><th>Size / Weight</th><th>Serves</th><th>Standard</th><th>Theme Cake</th><th>Premium</th><th>Wedding / Multi-tier</th></tr>
             </thead>
             <tbody>
               <tr><td>500g (6")</td><td>4–6 people</td><td class="tp">₹699–₹899</td><td class="tp">₹999–₹1,499</td><td class="tp">₹1,299–₹1,699</td><td style="color:var(--text3)">—</td></tr>
@@ -182,7 +186,6 @@
         </div>
       </div>
 
-      <!-- Party Packages sub-section -->
       <div class="packages-section">
         <div class="sec-head reveal">
           <div class="sec-tag">✦ Value Packages</div>
@@ -207,7 +210,6 @@
             </div>
             <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;display:flex">Order Package</a>
           </div>
-
           <div class="pkg featured reveal rd1">
             <div class="pkg-name">Wedding Celebration</div>
             <div class="pkg-sub">Our most popular wedding package for a truly unforgettable day</div>
@@ -225,7 +227,6 @@
             </div>
             <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;display:flex">Order Package</a>
           </div>
-
           <div class="pkg reveal rd2">
             <div class="pkg-name">Corporate Delight</div>
             <div class="pkg-sub">Branded treats for office events, launches &amp; team celebrations</div>
@@ -244,17 +245,13 @@
             <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;display:flex">Order Package</a>
           </div>
         </div>
-      </div><!-- /packages-section -->
+      </div>
 
-      <!-- Seasonal banner -->
+    
       <div class="seasonal reveal">
         <div class="seasonal-txt">
           <h3>Summer <em>Mango Special</em></h3>
           <p>This season only — our legendary Alphonso Mango Mousse Cake is back! Fresh Ratnagiri Alphonso pulp layered with delicate vanilla sponge and mango jelly. Available April–June 2026 only.</p>
-          <div class="seasonal-price-box">
-            <div class="spb-label">Starting from</div>
-            <div class="spb-price">₹1,299</div>
-          </div>
           <a href="contact.html" class="btn btn-primary" style="display:inline-flex">Order Seasonal Cake</a>
         </div>
         <img src="Images/strawberry.jpg" alt="Seasonal Mango Cake" class="seasonal-img" loading="lazy">
@@ -262,38 +259,18 @@
 
     </div>
 
-   
+  
     <div class="mcat" id="mc-cakes">
       <div class="mcat-title reveal"><span></span> Celebration Cakes</div>
       <p class="mcat-sub reveal">Handcrafted for birthdays, weddings, anniversaries and every milestone worth celebrating.</p>
       <div class="mgrid">
-        <div class="mcard reveal">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/chocolate dream.jpg" alt="Chocolate" loading="lazy"><span class="mbadge popular">Popular</span></div>
-          <div class="mcard-body"><div class="mitem-name">Classic Chocolate Dream</div><div class="mitem-desc">Rich Belgian chocolate sponge with dark ganache, cocoa curls and silky buttercream finish.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹799</div><div class="mprice-note">500g · 1kg from ₹1,299</div></div><button class="madd">+</button></div></div>
-        </div>
-        <div class="mcard reveal rd1">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/strawberry.jpg" alt="Strawberry" loading="lazy"><span class="mbadge new-item">New</span></div>
-          <div class="mcard-body"><div class="mitem-name">Fresh Strawberry Gâteau</div><div class="mitem-desc">Light vanilla sponge layered with Chantilly cream and seasonal strawberries — delicate and irresistible.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹899</div><div class="mprice-note">500g · 1kg from ₹1,499</div></div><button class="madd">+</button></div></div>
-        </div>
-        <div class="mcard reveal rd2">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/white velvet.jpg" alt="Wedding" loading="lazy"><span class="mbadge premium">Premium</span></div>
-          <div class="mcard-body"><div class="mitem-name">White Velvet Wedding Cake</div><div class="mitem-desc">Elegant multi-tier white velvet with champagne buttercream, edible florals and personalised topper.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹4,999</div><div class="mprice-note">2-tier · custom tiers available</div></div><button class="madd">+</button></div></div>
-        </div>
-        <div class="mcard reveal">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/rainbow.jpg" alt="Birthday" loading="lazy"><span class="mbadge popular">Popular</span></div>
-          <div class="mcard-body"><div class="mitem-name">Rainbow Birthday Burst</div><div class="mitem-desc">Vibrant rainbow-layered vanilla sponge with funfetti buttercream — a showstopper for any age.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹1,499</div><div class="mprice-note">1kg · 2kg from ₹2,499</div></div><button class="madd">+</button></div></div>
-        </div>
-        <div class="mcard reveal rd1">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/anniversary.jpg" alt="Anniversary" loading="lazy"></div>
-          <div class="mcard-body"><div class="mitem-name">Rose Gold Anniversary</div><div class="mitem-desc">Romantic rose gold drip cake with edible gold accents, fresh roses and custom inscription.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹2,299</div><div class="mprice-note">1kg · 2kg from ₹3,799</div></div><button class="madd">+</button></div></div>
-        </div>
-        <div class="mcard reveal rd2">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/redvelvet.jpg" alt="Red Velvet" loading="lazy"><span class="mbadge veg">Eggless</span></div>
-          <div class="mcard-body"><div class="mitem-name">Classic Red Velvet</div><div class="mitem-desc">Velvety red sponge with tangy cream cheese frosting — available in regular and eggless variations.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹999</div><div class="mprice-note">500g · 1kg from ₹1,699</div></div><button class="madd">+</button></div></div>
-        </div>
+        <div class="mcard reveal"><div class="mcard-iw"><img class="mcard-img" src="Images/chocolate dream.jpg" alt="Chocolate" loading="lazy"><span class="mbadge popular">Popular</span></div><div class="mcard-body"><div class="mitem-name">Classic Chocolate Dream</div><div class="mitem-desc">Rich Belgian chocolate sponge with dark ganache, cocoa curls and silky buttercream finish.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹799</div><div class="mprice-note">500g · 1kg from ₹1,299</div></div><button class="madd">+</button></div></div></div>
+        <div class="mcard reveal rd1"><div class="mcard-iw"><img class="mcard-img" src="Images/strawberry.jpg" alt="Strawberry" loading="lazy"><span class="mbadge new-item">New</span></div><div class="mcard-body"><div class="mitem-name">Fresh Strawberry Gâteau</div><div class="mitem-desc">Light vanilla sponge layered with Chantilly cream and seasonal strawberries — delicate and irresistible.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹899</div><div class="mprice-note">500g · 1kg from ₹1,499</div></div><button class="madd">+</button></div></div></div>
+        <div class="mcard reveal rd2"><div class="mcard-iw"><img class="mcard-img" src="Images/white velvet.jpg" alt="Wedding" loading="lazy"><span class="mbadge premium">Premium</span></div><div class="mcard-body"><div class="mitem-name">White Velvet Wedding Cake</div><div class="mitem-desc">Elegant multi-tier white velvet with champagne buttercream, edible florals and personalised topper.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹4,999</div><div class="mprice-note">2-tier · custom tiers available</div></div><button class="madd">+</button></div></div></div>
+        <div class="mcard reveal"><div class="mcard-iw"><img class="mcard-img" src="Images/rainbow.jpg" alt="Birthday" loading="lazy"><span class="mbadge popular">Popular</span></div><div class="mcard-body"><div class="mitem-name">Rainbow Birthday Burst</div><div class="mitem-desc">Vibrant rainbow-layered vanilla sponge with funfetti buttercream — a showstopper for any age.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹1,499</div><div class="mprice-note">1kg · 2kg from ₹2,499</div></div><button class="madd">+</button></div></div></div>
+        <div class="mcard reveal rd1"><div class="mcard-iw"><img class="mcard-img" src="Images/anniversary.jpg" alt="Anniversary" loading="lazy"></div><div class="mcard-body"><div class="mitem-name">Rose Gold Anniversary</div><div class="mitem-desc">Romantic rose gold drip cake with edible gold accents, fresh roses and custom inscription.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹2,299</div><div class="mprice-note">1kg · 2kg from ₹3,799</div></div><button class="madd">+</button></div></div></div>
+        <div class="mcard reveal rd2"><div class="mcard-iw"><img class="mcard-img" src="Images/redvelvet.jpg" alt="Red Velvet" loading="lazy"><span class="mbadge veg">Eggless</span></div><div class="mcard-body"><div class="mitem-name">Classic Red Velvet</div><div class="mitem-desc">Velvety red sponge with tangy cream cheese frosting — available in regular and eggless variations.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹999</div><div class="mprice-note">500g · 1kg from ₹1,699</div></div><button class="madd">+</button></div></div></div>
       </div>
-
-      <!-- Pricing table repeated in cakes panel -->
       <div class="price-section reveal">
         <div class="price-section-title">Cake Size &amp; <em>Pricing Guide</em></div>
         <p class="price-section-sub">Base prices for standard flavours. Custom designs, premium toppings and special ingredients may affect the final price.</p>
@@ -314,109 +291,68 @@
       </div>
     </div>
 
-  
+    
     <div class="mcat" id="mc-pastries">
       <div class="mcat-title reveal"><span></span> Pastries &amp; Daily Bakes</div>
       <p class="mcat-sub reveal">Baked every morning — available for pickup from 8am or doorstep delivery by 11am.</p>
       <div class="mgrid">
-        <div class="mcard reveal">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/butter croissant.jpg" alt="Croissant" loading="lazy"><span class="mbadge popular">Daily Fave</span></div>
-          <div class="mcard-body"><div class="mitem-name">Classic Butter Croissant</div><div class="mitem-desc">Authentic French laminated dough with 27 layers of imported butter — shatteringly flaky, golden perfection.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹99</div><div class="mprice-note">per piece · 6-pack ₹549</div></div><button class="madd">+</button></div></div>
-        </div>
-        <div class="mcard reveal rd1">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/sourdough.jpg" alt="Sourdough" loading="lazy"></div>
-          <div class="mcard-body"><div class="mitem-name">Artisan Sourdough Loaf</div><div class="mitem-desc">24h long-fermented sourdough with crisp open crumb — baked fresh every Tuesday and Friday.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹399</div><div class="mprice-note">800g loaf</div></div><button class="madd">+</button></div></div>
-        </div>
-        <div class="mcard reveal rd2">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/almond cake.jpg" alt="Almond" loading="lazy"><span class="mbadge new-item">New</span></div>
-          <div class="mcard-body"><div class="mitem-name">Almond Croissant</div><div class="mitem-desc">Day-old croissants soaked in rum syrup, filled with almond frangipane and topped with flaked almonds.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹149</div><div class="mprice-note">per piece · 4-pack ₹549</div></div><button class="madd">+</button></div></div>
-        </div>
-        <div class="mcard reveal">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/cookie.jpg" alt="Cookie" loading="lazy"><span class="mbadge veg">Veg</span></div>
-          <div class="mcard-body"><div class="mitem-name">Brown Butter Choc Chip Cookie</div><div class="mitem-desc">Giant bakery-style cookies with browned butter, Valrhona chocolate chunks and flaky sea salt.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹129</div><div class="mprice-note">per piece · box of 6 ₹699</div></div><button class="madd">+</button></div></div>
-        </div>
-        <div class="mcard reveal rd1">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/cupcake.jpg" alt="Pastry Box" loading="lazy"></div>
-          <div class="mcard-body"><div class="mitem-name">Morning Pastry Box</div><div class="mitem-desc">Curated box of 6 assorted pastries — 2 croissants, 2 pain au chocolat and 2 seasonal pastries.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹549</div><div class="mprice-note">box of 6 items</div></div><button class="madd">+</button></div></div>
-        </div>
-        <div class="mcard reveal rd2">
-          <div class="mcard-iw"><img class="mcard-img" src="Images/muffin.jpg" alt="Muffin" loading="lazy"><span class="mbadge veg">Eggless</span></div>
-          <div class="mcard-body"><div class="mitem-name">Blueberry Streusel Muffin</div><div class="mitem-desc">Jumbo muffins bursting with fresh blueberries, topped with a buttery streusel crumble.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹149</div><div class="mprice-note">per piece · 4-pack ₹549</div></div><button class="madd">+</button></div></div>
-        </div>
+        <div class="mcard reveal"><div class="mcard-iw"><img class="mcard-img" src="Images/butter croissant.jpg" alt="Croissant" loading="lazy"><span class="mbadge popular">Daily Fave</span></div><div class="mcard-body"><div class="mitem-name">Classic Butter Croissant</div><div class="mitem-desc">Authentic French laminated dough with 27 layers of imported butter — shatteringly flaky, golden perfection.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹99</div><div class="mprice-note">per piece · 6-pack ₹549</div></div><button class="madd">+</button></div></div></div>
+        <div class="mcard reveal rd1"><div class="mcard-iw"><img class="mcard-img" src="Images/sourdough.jpg" alt="Sourdough" loading="lazy"></div><div class="mcard-body"><div class="mitem-name">Artisan Sourdough Loaf</div><div class="mitem-desc">24h long-fermented sourdough with crisp open crumb — baked fresh every Tuesday and Friday.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹399</div><div class="mprice-note">800g loaf</div></div><button class="madd">+</button></div></div></div>
+        <div class="mcard reveal rd2"><div class="mcard-iw"><img class="mcard-img" src="Images/almond cake.jpg" alt="Almond" loading="lazy"><span class="mbadge new-item">New</span></div><div class="mcard-body"><div class="mitem-name">Almond Croissant</div><div class="mitem-desc">Day-old croissants soaked in rum syrup, filled with almond frangipane and topped with flaked almonds.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹149</div><div class="mprice-note">per piece · 4-pack ₹549</div></div><button class="madd">+</button></div></div></div>
+        <div class="mcard reveal"><div class="mcard-iw"><img class="mcard-img" src="Images/cookie.jpg" alt="Cookie" loading="lazy"><span class="mbadge veg">Veg</span></div><div class="mcard-body"><div class="mitem-name">Brown Butter Choc Chip Cookie</div><div class="mitem-desc">Giant bakery-style cookies with browned butter, Valrhona chocolate chunks and flaky sea salt.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹129</div><div class="mprice-note">per piece · box of 6 ₹699</div></div><button class="madd">+</button></div></div></div>
+        <div class="mcard reveal rd1"><div class="mcard-iw"><img class="mcard-img" src="Images/cupcake.jpg" alt="Pastry Box" loading="lazy"></div><div class="mcard-body"><div class="mitem-name">Morning Pastry Box</div><div class="mitem-desc">Curated box of 6 assorted pastries — 2 croissants, 2 pain au chocolat and 2 seasonal pastries.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹549</div><div class="mprice-note">box of 6 items</div></div><button class="madd">+</button></div></div></div>
+        <div class="mcard reveal rd2"><div class="mcard-iw"><img class="mcard-img" src="Images/muffin.jpg" alt="Muffin" loading="lazy"><span class="mbadge veg">Eggless</span></div><div class="mcard-body"><div class="mitem-name">Blueberry Streusel Muffin</div><div class="mitem-desc">Jumbo muffins bursting with fresh blueberries, topped with a buttery streusel crumble.</div><div class="mitem-foot"><div class="mprice-wrap"><div class="mprice">₹149</div><div class="mprice-note">per piece · 4-pack ₹549</div></div><button class="madd">+</button></div></div></div>
       </div>
-    </div><!-- /mc-pastries -->
+    </div>
 
-   
+  
     <div class="mcat" id="mc-packages">
       <div class="mcat-title reveal"><span></span> Party Packages</div>
       <p class="mcat-sub reveal">Perfect bundles for birthdays, weddings and celebrations — more value, less stress.</p>
       <div class="pkg-grid">
         <div class="pkg reveal">
-          <div class="pkg-name">Birthday Essentials</div>
-          <div class="pkg-sub">Perfect for intimate birthday celebrations with friends &amp; family</div>
-          <div class="pkg-price">₹2,499</div>
-          <div class="pkg-pnote">Complete package · serves 12–15</div>
+          <div class="pkg-name">Birthday Essentials</div><div class="pkg-sub">Perfect for intimate birthday celebrations with friends &amp; family</div>
+          <div class="pkg-price">₹2,499</div><div class="pkg-pnote">Complete package · serves 12–15</div>
           <div class="pkg-div"></div>
           <div class="pkg-feats">
-            <div class="pf yes">1 kg Custom Birthday Cake</div>
-            <div class="pf yes">12 Assorted Cupcakes</div>
-            <div class="pf yes">Custom name &amp; message</div>
-            <div class="pf yes">Candles &amp; cake knife</div>
-            <div class="pf yes">Eco gift box &amp; ribbon</div>
-            <div class="pf no">Multi-tier cake</div>
-            <div class="pf no">Floral decorations</div>
+            <div class="pf yes">1 kg Custom Birthday Cake</div><div class="pf yes">12 Assorted Cupcakes</div>
+            <div class="pf yes">Custom name &amp; message</div><div class="pf yes">Candles &amp; cake knife</div>
+            <div class="pf yes">Eco gift box &amp; ribbon</div><div class="pf no">Multi-tier cake</div><div class="pf no">Floral decorations</div>
           </div>
           <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;display:flex">Order Package</a>
         </div>
         <div class="pkg featured reveal rd1">
-          <div class="pkg-name">Wedding Celebration</div>
-          <div class="pkg-sub">Our most popular wedding package for a truly unforgettable day</div>
-          <div class="pkg-price">₹14,999</div>
-          <div class="pkg-pnote">Complete package · serves 60–80</div>
+          <div class="pkg-name">Wedding Celebration</div><div class="pkg-sub">Our most popular wedding package for a truly unforgettable day</div>
+          <div class="pkg-price">₹14,999</div><div class="pkg-pnote">Complete package · serves 60–80</div>
           <div class="pkg-div"></div>
           <div class="pkg-feats">
-            <div class="pf yes">3-Tier Custom Wedding Cake</div>
-            <div class="pf yes">50 Wedding Favour Cookies</div>
-            <div class="pf yes">Free design consultation</div>
-            <div class="pf yes">Fresh edible florals</div>
-            <div class="pf yes">Premium personalised topper</div>
-            <div class="pf yes">Temperature-controlled delivery</div>
+            <div class="pf yes">3-Tier Custom Wedding Cake</div><div class="pf yes">50 Wedding Favour Cookies</div>
+            <div class="pf yes">Free design consultation</div><div class="pf yes">Fresh edible florals</div>
+            <div class="pf yes">Premium personalised topper</div><div class="pf yes">Temperature-controlled delivery</div>
             <div class="pf yes">On-site setup assistance</div>
           </div>
           <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;display:flex">Order Package</a>
         </div>
         <div class="pkg reveal rd2">
-          <div class="pkg-name">Corporate Delight</div>
-          <div class="pkg-sub">Branded treats for office events, launches &amp; team celebrations</div>
-          <div class="pkg-price">₹4,999</div>
-          <div class="pkg-pnote">Starting price · scales with team size</div>
+          <div class="pkg-name">Corporate Delight</div><div class="pkg-sub">Branded treats for office events, launches &amp; team celebrations</div>
+          <div class="pkg-price">₹4,999</div><div class="pkg-pnote">Starting price · scales with team size</div>
           <div class="pkg-div"></div>
           <div class="pkg-feats">
-            <div class="pf yes">Logo-branded cake (2 kg)</div>
-            <div class="pf yes">30 branded cookie favours</div>
-            <div class="pf yes">Custom packaging &amp; labels</div>
-            <div class="pf yes">Bulk order discounts available</div>
-            <div class="pf yes">Pan-Hyderabad delivery</div>
-            <div class="pf no">On-site setup</div>
-            <div class="pf no">Edible florals</div>
+            <div class="pf yes">Logo-branded cake (2 kg)</div><div class="pf yes">30 branded cookie favours</div>
+            <div class="pf yes">Custom packaging &amp; labels</div><div class="pf yes">Bulk order discounts available</div>
+            <div class="pf yes">Pan-Hyderabad delivery</div><div class="pf no">On-site setup</div><div class="pf no">Edible florals</div>
           </div>
           <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;display:flex">Order Package</a>
         </div>
       </div>
-    </div><!-- /mc-packages -->
+    </div>
 
    
     <div class="mcat" id="mc-seasonal">
-      <div class="mcat-title reveal"><span></span> Seasonal Specials</div>
-      <p class="mcat-sub reveal">Limited-time creations using the finest seasonal produce — available while stocks last.</p>
       <div class="seasonal reveal">
         <div class="seasonal-txt">
           <h3>Summer <em>Mango Special</em></h3>
           <p>This season only — our legendary Alphonso Mango Mousse Cake is back! Fresh Ratnagiri Alphonso pulp layered with delicate vanilla sponge and mango jelly. Available April–June 2026 only.</p>
-          <div class="seasonal-price-box">
-            <div class="spb-label">Starting from</div>
-            <div class="spb-price">₹1,299</div>
-          </div>
           <a href="contact.html" class="btn btn-primary" style="display:inline-flex">Order Seasonal Cake</a>
         </div>
         <img src="Images/strawberry.jpg" alt="Seasonal Mango Cake" class="seasonal-img" loading="lazy">
@@ -426,7 +362,7 @@
   </div>
 </section>
 
-<!-- ── NEWSLETTER ─────────────────────────────── -->
+
 <div class="nl">
   <div class="nl-inner reveal">
     <h2>Get <em>Seasonal Menus</em></h2>
@@ -439,21 +375,20 @@
 </div>
 
 
- 
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="foot-logo" href="index.html">Baker's <span>Fresh</span></a>
+        <a class="logo" href="index.html">
+    <img src="Images/logo-light.png" alt="Baker's Fresh" class="logo-img logo-img--light">
+    <img src="Images/logo-dark.png"  alt="Baker's Fresh" class="logo-img logo-img--dark">
+  </a>
         <p>Freshly baked cakes &amp; pastries crafted with love for your special celebrations in Hyderabad.</p>
       </div>
       <div class="foot-col"><h5>Quicklinks</h5><ul>
-        <li><a href="index.html">Home I</a></li>
-        <li><a href="home2.html">Home II</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="menu.html">Menu &amp; Pricing</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html">Home I</a></li><li><a href="home2.html">Home II</a></li>
+        <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+        <li><a href="menu.html">Menu &amp; Pricing</a></li><li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul></div>
       <div class="foot-col"><h5>Services</h5><ul>
@@ -465,10 +400,10 @@
         <li><a href="service-detail.html">Corporate Gifting</a></li>
       </ul></div>
       <div class="foot-col"><h5>Contact</h5><ul>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Banjara Hills, Hyderabad</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>+91 96768 43210</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@bakersfresh.com</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Sat 8am–9pm</a></li>
+        <li><a><span class="foot-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Banjara Hills, Hyderabad</a></li>
+        <li><a><span class="foot-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg></span>+91 96768 43210</a></li>
+        <li><a><span class="foot-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>info@bakersfresh.com</a></li>
+        <li><a><span class="foot-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>Mon–Sat 8am–9pm</a></li>
       </ul></div>
     </div>
     <div class="foot-bottom"><span>© 2026 Baker's Fresh. All rights reserved.</span><span>Made with ♥ in Hyderabad</span></div>

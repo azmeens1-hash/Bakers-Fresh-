@@ -10,9 +10,14 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/contact.css">
 </head>
-<body >
+<body>
+
+
 <nav id="nav">
-  <a class="logo" href="index.html">Baker's <span>Fresh</span></a>
+  <a class="logo" href="index.html">
+    <img src="Images/logo-light.png" alt="Baker's Fresh" class="logo-img logo-img--light">
+    <img src="Images/logo-dark.png"  alt="Baker's Fresh" class="logo-img logo-img--dark">
+  </a>
   <ul class="nav-links">
     <li class="has-drop">
       <a href="index.html">Home</a>
@@ -29,12 +34,24 @@
     <li><a href="dashboard.html">Dashboard</a></li>
   </ul>
   <div class="nav-r">
-    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">🌙</button>
+    <button class="icon-btn" id="theme-btn" onclick="toggleTheme()" title="Dark / Light">
+      <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
     <button class="rtl-btn" id="rtl-btn" onclick="toggleRTL()" title="RTL / LTR">RTL</button>
     <a href="login.html" class="btn btn-primary btn-sm">Login</a>
     <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
 
 <div class="mob-nav" id="mob-nav">
   <button class="mob-dd-toggle" onclick="toggleMobDrop(this)">Home <span class="mob-dd-chevron">▼</span></button>
@@ -42,31 +59,82 @@
     <a href="index.html" onclick="closeMob()">Home I</a>
     <a href="home2.html" onclick="closeMob()">Home II</a>
   </div>
-  <a href="about.html" onclick="closeMob()">About</a>
-  <a href="services.html" onclick="closeMob()">Services</a>
-  <a href="menu.html" onclick="closeMob()">Menu &amp; Pricing</a>
-  <a href="blog.html" onclick="closeMob()">Blog</a>
-  <a href="contact.html" onclick="closeMob()" class="act">Contact</a>
+  <a href="about.html"     onclick="closeMob()">About</a>
+  <a href="services.html"  onclick="closeMob()">Services</a>
+  <a href="menu.html"      onclick="closeMob()">Menu &amp; Pricing</a>
+  <a href="blog.html"      onclick="closeMob()">Blog</a>
+  <a href="contact.html"   onclick="closeMob()" class="act">Contact</a>
   <a href="dashboard.html" onclick="closeMob()">Dashboard</a>
   <a href="login.html" class="btn btn-primary btn-sm">Login</a>
 </div>
 
-<div class="ph"><div class="ph-bg" style="background-image:url('Images/cake 2.jpg')"></div><div class="ph-inner"><div class="crumb"><span class="cl" onclick="location.href='index.html'">Home</span><span>›</span><span>Contact</span></div><h1 class="ph-title">Let's Create <em>Together</em></h1><p class="ph-sub">Order a custom cake or simply say hello — we'd love to bring your celebration vision to life.</p></div></div>
+
+<div class="ph">
+  <div class="ph-bg" style="background-image:url('Images/cake 2.jpg')"></div>
+  <div class="ph-inner">
+
+    <h1 class="ph-title">Let's Create <em>Together</em></h1>
+    <p class="ph-sub">Order a custom cake or simply say hello — we'd love to bring your celebration vision to life, freshly baked with love in Hyderabad.</p>
+
+    
+    <div class="ph-pills">
+      <div class="ph-pill">
+        <span class="ph-pill-n">24h</span>
+        <span class="ph-pill-l">Response Time</span>
+      </div>
+      <div class="ph-pill">
+        <span class="ph-pill-n">500+</span>
+        <span class="ph-pill-l">Happy Customers</span>
+      </div>
+      <div class="ph-pill">
+        <span class="ph-pill-n">100%</span>
+        <span class="ph-pill-l">Custom Orders</span>
+      </div>
+    </div>
+
+    
+    <div class="ph-btns">
+      <a href="#contact-form" class="btn btn-primary btn-lg">Send a Message</a>
+      <a href="menu.html" class="btn btn-outline-white btn-lg">View Menu →</a>
+    </div>
+
+  </div>
+</div>
+
 
 <section class="sec">
   <div class="wrap">
     <div class="contact-grid">
+
+     
       <div class="reveal">
         <div class="sec-tag">✦ Get In Touch</div>
-        <div class="contact-info"><h2>We'd Love to <em>Hear</em> From You</h2><p>Whether you're planning a birthday, wedding, or simply want a box of fresh croissants — we're here, ready to make it special.</p></div>
-        <div class="ci"><div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div><div class="ci-txt"><h5>Our Bakery</h5><p>Plot 42, Road 12, Banjara Hills, Hyderabad 500034</p></div></div>
-        <div class="ci"><div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div class="ci-txt"><h5>Call Us</h5><p>+91 96768 43210</p></div></div>
-        <div class="ci"><div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="ci-txt"><h5>Email</h5><p>info@bakersfresh.com</p></div></div>
-        <div class="ci"><div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div class="ci-txt"><h5>Working Hours</h5><p>Monday – Saturday: 8:00 AM – 9:00 PM<br>Sunday: 9:00 AM – 6:00 PM</p></div></div>
+        <div class="contact-info">
+          <h2>We'd Love to <em>Hear</em> From You</h2>
+          <p>Whether you're planning a birthday, wedding, or simply want a box of fresh croissants — we're here, ready to make it special.</p>
+        </div>
+        <div class="ci">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <div class="ci-txt"><h5>Our Bakery</h5><p>Plot 42, Road 12, Banjara Hills, Hyderabad 500034</p></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="ci-txt"><h5>Call Us</h5><p>+91 96768 43210</p></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="ci-txt"><h5>Email</h5><p>info@bakersfresh.com</p></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
+          <div class="ci-txt"><h5>Working Hours</h5><p>Monday – Saturday: 8:00 AM – 9:00 PM<br>Sunday: 9:00 AM – 6:00 PM</p></div>
+        </div>
       </div>
-      <div class="c-form reveal rd1">
+
+     
+      <div class="c-form reveal rd1" id="contact-form">
         <h3><em>Send Us</em> a Message</h3>
-        <form id="contact-form" novalidate>
+        <form id="cf" novalidate>
           <div class="form-row">
             <div class="fg"><label>First Name *</label><input type="text" placeholder="Your first name" required></div>
             <div class="fg"><label>Last Name *</label><input type="text" placeholder="Your last name" required></div>
@@ -74,23 +142,51 @@
           <div class="fg"><label>Email Address *</label><input type="email" placeholder="your@email.com" required></div>
           <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
           <div class="fg"><label>Occasion Type</label>
-            <select><option value="">Select occasion…</option><option>Birthday Cake</option><option>Wedding Cake</option><option>Anniversary Cake</option><option>Custom Theme Cake</option><option>Daily Pastries</option><option>Corporate Order</option><option>General Enquiry</option></select>
+            <select>
+              <option value="">Select occasion…</option>
+              <option>Birthday Cake</option>
+              <option>Wedding Cake</option>
+              <option>Anniversary Cake</option>
+              <option>Custom Theme Cake</option>
+              <option>Daily Pastries</option>
+              <option>Corporate Order</option>
+              <option>General Enquiry</option>
+            </select>
           </div>
           <div class="form-row">
             <div class="fg"><label>Event Date</label><input type="date"></div>
-            <div class="fg"><label>Budget Range</label><select><option value="">Select budget…</option><option>Under ₹1,000</option><option>₹1,000 – ₹3,000</option><option>₹3,000 – ₹7,000</option><option>₹7,000 – ₹15,000</option><option>₹15,000+</option></select></div>
+            <div class="fg"><label>Budget Range</label>
+              <select>
+                <option value="">Select budget…</option>
+                <option>Under ₹1,000</option>
+                <option>₹1,000 – ₹3,000</option>
+                <option>₹3,000 – ₹7,000</option>
+                <option>₹7,000 – ₹15,000</option>
+                <option>₹15,000+</option>
+              </select>
+            </div>
           </div>
           <div class="fg"><label>Tell Us About Your Dream Cake *</label><textarea placeholder="Describe your cake — theme, colours, size, flavours, special requirements…" required></textarea></div>
           <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%;justify-content:center;padding:15px">Send Message ✦</button>
         </form>
-        <div class="form-success" id="form-success"><h4>✓ Message Sent Successfully!</h4><p>Thank you! We'll get back to you within 24 hours to discuss your order.</p></div>
+        <div class="form-success" id="form-success">
+          <h4>✓ Message Sent Successfully!</h4>
+          <p>Thank you! We'll get back to you within 24 hours to discuss your order.</p>
+        </div>
+      </div>
+
+    </div>
+
+   
+    <div class="map-section">
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2983733722577!2d78.44792!3d17.41938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb977a04000001%3A0x1234567890abcdef!2sBanjara%20Hills%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1712345678901" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Baker's Fresh Location"></iframe>
       </div>
     </div>
-    <div class="map-section"><div class="map-wrap">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2983733722577!2d78.44792!3d17.41938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb977a04000001%3A0x1234567890abcdef!2sBanjara%20Hills%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1712345678901" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Baker's Fresh Location"></iframe>
-    </div></div>
+
   </div>
 </section>
+
 
 <footer>
   <div class="wrap">
@@ -117,15 +213,19 @@
         <li><a href="service-detail.html">Corporate Gifting</a></li>
       </ul></div>
       <div class="foot-col"><h5>Contact</h5><ul>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Banjara Hills, Hyderabad</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>+91 96768 43210</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@bakersfresh.com</a></li>
-        <li><a><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Mon–Sat 8am–9pm</a></li>
+        <li><a><span class="foot-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Banjara Hills, Hyderabad</a></li>
+        <li><a><span class="foot-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg></span>+91 96768 43210</a></li>
+        <li><a><span class="foot-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>info@bakersfresh.com</a></li>
+        <li><a><span class="foot-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C07828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>Mon–Sat 8am–9pm</a></li>
       </ul></div>
     </div>
-    <div class="foot-bottom"><span>© 2026 Baker's Fresh. All rights reserved.</span><span>Made with ♥ in Hyderabad</span></div>
+    <div class="foot-bottom">
+      <span>© 2026 Baker's Fresh. All rights reserved.</span>
+      <span>Made with ♥ in Hyderabad</span>
+    </div>
   </div>
 </footer>
+
 <script src="js/global.js"></script>
 <script src="js/contact.js"></script>
 </body>

@@ -69,3 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initAddButtons();
   initTableRows();
 });
+function mTabByName(cat) {
+ 
+  const btn = document.querySelector(`.mtab[onclick*="'${cat}'"]`);
+  if (btn) mTab(btn, cat);
+ 
+
+  document.querySelectorAll('.ph-qpill').forEach(p => p.classList.remove('active'));
+  const activePill = document.querySelector(`.ph-qpill[onclick*="'${cat}'"]`);
+  if (activePill) activePill.classList.add('active');
+}
+ 
+function scrollToMenu() {
+  const sec = document.querySelector('.sec');
+  if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
