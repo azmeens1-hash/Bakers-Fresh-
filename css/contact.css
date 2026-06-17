@@ -135,6 +135,7 @@
 [data-theme="dark"] .map-wrap iframe {
   filter: invert(90%) hue-rotate(180deg) brightness(0.85) contrast(0.9);
 }
+
 footer {
   background:#1C0F06;
   padding: 64px 0 0;
@@ -156,7 +157,7 @@ footer {
   font-size: 1.48rem; font-weight: 800;
   color: #E89A4D; display: inline-block; margin-bottom: 14px;
 }
-.foot-logo span { font-style: italic; color: #D4A853; }
+.foot-logo span { font-style: italic; color:#D4A853; }
 .foot-brand p { font-size: .79rem; line-height: 1.85; color: rgba(255,255,255,.72); }
 
 .foot-col h5 {
@@ -196,8 +197,6 @@ footer {
   flex-wrap: wrap; gap: 8px; padding: 22px 0;
   border-top: 1px solid #C07828; font-size: .72rem; color: rgba(255,255,255,.50);
 }
-
-
 
 @media (min-width: 1280px) {
   .ham        { display: none !important; }
