@@ -125,6 +125,14 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .logo-img--dark  { display: none; }
 [data-theme="dark"] .logo-img--light { display: none; }
 [data-theme="dark"] .logo-img--dark  { display: block; }
+
+/* Footer always shows the same logo image regardless of theme, since
+   the footer background is solid black in both light and dark mode.
+   The dark-variant logo file is used here (typically light-colored
+   artwork suited for a dark background) so it stays visible without
+   needing a separate theme-based swap like the nav has. */
+footer .logo-img--light { display: none; }
+footer .logo-img--dark  { display: block; }
 .logo {
   font-family: 'Playfair Display', serif;
   font-size: 1.52rem;
@@ -283,7 +291,14 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .mob-dropdown a { padding: 10px 10px 10px 26px; border: none; font-size: .76rem; color: var(--text2); transition: color .2s, padding-inline-start .2s; }
 .mob-dropdown a:hover { color: #C07828; padding-inline-start: 32px; }
 
-
+/* ══════════════════════════════════════════════════════
+   PAGE HERO (.ph)
+   ──────────────────────────────────────────────────────
+   ≥ 1280px  →  75vh / 600px min
+   1024–1279 →  70vh / 540px min
+   640–1023  →  65vh / 460px min
+   < 640     →  58vh / 380px min  (was 44vh / 260px)
+══════════════════════════════════════════════════════ */
 .ph {
   position: relative;
   height: 75vh;
@@ -326,6 +341,7 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
   max-width: 540px; line-height: 1.78;
 }
 
+/* ── STATS BAR ── */
 .stats-bar {
   display: grid; grid-template-columns: repeat(4,1fr);
   background: var(--surface);
@@ -346,7 +362,7 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 }
 .stat-l { font-size: .67rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text3); }
 
-
+/* ── PROMO ── */
 .promo {
   background: linear-gradient(125deg, #C07828 0%, #E09040 100%);
   padding: 32px 48px; display: flex; align-items: center;
@@ -367,6 +383,7 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 }
 .code-copy:hover { background: rgba(255,255,255,.4); }
 
+/* ── FEATURE CARDS ── */
 .feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 26px; }
 .fcard {
   padding: 36px 28px; border-radius: 22px; text-align: center;
@@ -389,6 +406,7 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .ftitle { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 9px; }
 .fdesc  { font-size: .82rem; color: var(--text3); line-height: 1.75; }
 
+/* ── CTA FULL WIDTH ── */
 .cta-fw { position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden; }
 .cta-fw-bg { position: absolute; inset: 0; background: url('Images/cta-cake.jpg') center/cover; }
 .cta-fw-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg,rgba(10,4,0,.93) 0%,rgba(10,4,0,.65) 100%); }
@@ -399,45 +417,61 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 .cta-inner p { font-size: .9rem; color: rgba(255,255,255,.72); line-height: 1.85; margin-bottom: 30px; max-width: 420px; }
 .cta-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
+/* ── NEWSLETTER ── */
 .nl { background: linear-gradient(125deg,#C07828 0%,#9A5F18 100%); padding: 76px 0; text-align: center; }
 .nl-inner { max-width: 540px; margin: 0 auto; padding: 0 24px; }
-.nl-inner h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.nl-inner h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color:#fff; margin-bottom: 10px; }
 .nl-inner h2 em { font-style: italic; }
-.nl-inner p { color: rgba(255,255,255,.78); font-size: .9rem; margin-bottom: 26px; }
-.nl-form { display: flex; border-radius: 100px; overflow: hidden; background: #fff; max-width: 400px; margin: 0 auto; }
-.nl-form input { flex: 1; padding: 13px 20px; border: none; outline: none; font-size: .85rem; color: #1C0F06; background: transparent; }
+.nl-inner p { color:#fff; font-size: .9rem; margin-bottom: 26px; }
+.nl-form { display: flex; border-radius: 100px;overflow: hidden; background: #fff; max-width: 400px; margin: 0 auto; }
+.nl-form input { flex: 1; padding: 13px 20px; border:none; outline:none; font-size: .85rem; color:#1C0F06; background: transparent; }
 .nl-form input::placeholder { color: #9A7A60; }
 .nl-form button { padding: 0 24px; background: #C07828; border: none; color: #fff; font-size: .73rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; transition: background .2s; white-space: nowrap; }
 .nl-form button:hover { background: #9A5F18; }
 
-footer { background: var(--bg2); padding: 64px 0 0; }
+/* ── FOOTER ──
+   Background stays the brand orange→brown gradient in BOTH themes
+   (by design — see chat). Because the gradient itself doesn't change
+   with theme, the text on top of it uses its own fixed light palette
+   instead of --text/--text2/--text3, which are tuned for light-on-light
+   or dark-on-dark surfaces and would lose contrast here either way.
+   A thin top border and subtle shadow are added in dark mode only, to
+   help the warm footer read as a separate region against the very dark
+   page background instead of looking like a stray bright block. */
+footer {
+  background: #000000;
+  padding: 64px 0 0;
+}
+[data-theme="dark"] footer {
+  background: #000000;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
 .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 48px; }
-.foot-logo { font-family: 'Playfair Display', serif; font-size: 1.48rem; font-weight: 800; color: #C07828; display: inline-block; margin-bottom: 14px; }
-.foot-logo span { font-style: italic; color: var(--text); }
-.foot-brand p { font-size: .79rem; line-height: 1.85; color: var(--text3); }
-.foot-col h5 { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 600; color: #C07828; margin-bottom: 16px; }
+.foot-logo { font-family: 'Playfair Display', serif; font-size: 1.48rem; font-weight: 800; color: #E89A4D; display: inline-block; margin-bottom: 14px; }
+.foot-logo span { font-style: italic; color: #fff; }
+.foot-brand p { font-size: .79rem; line-height: 1.85; color: rgba(255,255,255,.72); }
+.foot-col h5 { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 600; color: #E89A4D; margin-bottom: 16px; }
 .foot-col ul { display: flex; flex-direction: column; gap: 8px; }
-.foot-col a { font-size: .79rem; color: var(--text3); transition: color .2s; display: inline-flex; align-items: center; gap: 0; }
-.foot-col a:hover { color: #C07828; }
+.foot-col a { font-size: .79rem; color: rgba(255,255,255,.72); transition: color .2s; display: inline-flex; align-items: center; gap: 0; }
+.foot-col a:hover { color: #E89A4D; }
 .foot-icon {
   width: 30px; height: 30px; border-radius: 8px;
-  background: rgba(192,120,40,.12); border: 1px solid rgba(212,168,83,.25);
+  background: rgba(232,154,77,.14); border: 1px solid rgba(232,154,77,.28);
   display: inline-flex; align-items: center; justify-content: center;
   flex-shrink: 0; margin-right: 10px;
   transition: background .25s, border-color .25s, transform .25s;
 }
-.foot-col a:hover .foot-icon { background: #C07828; border-color: #C07828; transform: scale(1.1); }
-.foot-icon svg { stroke: #C07828; transition: stroke .25s; }
-.foot-col a:hover .foot-icon svg { stroke: #fff; }
+.foot-col a:hover .foot-icon { background: #E89A4D; border-color: #E89A4D; transform: scale(1.1); }
+.foot-icon svg { stroke: #E89A4D; transition: stroke .25s; }
+.foot-col a:hover .foot-icon svg { stroke: #1C0F06; }
 .foot-bottom {
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 8px; padding: 22px 0;
-  border-top: 1px solid var(--border); font-size: .72rem; color: var(--text3);
+  border-top: 1px solid rgba(255,255,255,.12); font-size: .72rem; color: rgba(255,255,255,.50);
 }
-[data-theme="dark"] .foot-bottom { border-top-color: rgba(255,255,255,.10); color: rgba(255,255,255,.30); }
 
 
-
+/* ── ANIMATIONS ── */
 @keyframes slideUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
 @keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
 @keyframes sPulse  { 0%,100% { opacity:.5; transform:scaleY(1); } 50% { opacity:1; transform:scaleY(1.35); } }
@@ -449,6 +483,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
 .rd3 { transition-delay: .3s; }
 .rd4 { transition-delay: .4s; }
 
+/* ── RTL ── */
 [dir="rtl"] .steps::before { transform: scaleX(-1); }
 [dir="rtl"] .val:hover     { transform: translateX(-4px); }
 [dir="rtl"] .feat-row:hover{ transform: translateX(-4px); }
@@ -457,6 +492,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
 
 
 
+/* ── ≥ 1280px ── */
 @media (min-width: 1280px) {
   #nav { padding: 0 52px; }
   .nav-links a { padding: 7px 16px; font-size: .74rem; }
@@ -467,7 +503,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .ph-sub        { font-size: .95rem; max-width: 580px; }
 }
 
-
+/* ── 1024px – 1279px ── */
 @media (min-width: 1024px) and (max-width: 1279px) {
   #nav { padding: 0 32px; }
   .nav-links { gap: 0; }
@@ -479,7 +515,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .ph-title      { font-size: clamp(2.2rem, 4.5vw, 3.6rem); }
 }
 
-
+/* ── 640px – 1023px ── */
 @media (min-width: 769px) and (max-width: 1023px) {
   
   #nav { padding: 0 22px; }
@@ -496,7 +532,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .ph-sub        { font-size: .88rem; max-width: 480px; }
 }
 
-
+/* ── ≥ 769px: show desktop nav ── */
 @media (min-width: 769px) {
   .ham        { display: none!important; }
   .nav-links  { display: flex !important; }
@@ -504,7 +540,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .rtl-btn    { display: flex !important; }
 }
 
-
+/* ── ≤ 768px: mobile ── */
 @media (max-width: 768px) {
   .nav-links { display: none !important; }
   .ham { display: flex !important; }
@@ -523,13 +559,13 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   #nav { padding: 0 18px; }
 }
 
-
+/* ── < 640px ── */
 @media (max-width: 639px) {
   .ph            { height: 58vh; min-height: 380px; padding-bottom: 40px; }
   .ph-title      { font-size: clamp(1.8rem, 7vw, 2.6rem); }
   .ph-sub        { font-size: .82rem; max-width: 100%; }
 
-
+  /* newsletter — horizontal pill, scaled for small screens (matches menu.css) */
   .nl            { padding: 48px 0; }
   .nl-inner      { padding: 0 20px; max-width: 100%; }
   .nl-inner h2   { font-size: 1.6rem; }
@@ -566,7 +602,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
     cursor: pointer;
   }
 
- 
+  /* center footer */
   footer              { padding: 48px 0 0; }
   .foot-grid          { grid-template-columns: 1fr; gap: 28px; text-align: center; }
   .foot-brand         { display: flex; flex-direction: column; align-items: center; }
@@ -578,7 +614,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
   .foot-bottom        { flex-direction: column; align-items: center; text-align: center; gap: 6px; }
 }
 
-
+/* ── ≤ 400px ── */
 @media (max-width: 400px) {
   footer       { padding: 44px 0 0; }
   .foot-grid   { gap: 20px; }

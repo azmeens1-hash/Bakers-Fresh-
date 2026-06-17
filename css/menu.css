@@ -1,7 +1,7 @@
 
 
 
-.ph { min-height: 110vh; align-items: flex-end; padding-bottom: 64px; }
+.ph { min-height: 110vh; align-items:center; padding-bottom: 64px;justify-content: center; }
 .ph-bg::after {
   background: linear-gradient(to top, rgba(10,4,0,.92) 0%, rgba(10,4,0,.52) 55%, rgba(10,4,0,.14) 100%);
 }
@@ -104,7 +104,7 @@
 .stable tr:hover td { background: var(--surface); }
 .stable tr:last-child td { border-bottom: none; }
 .stable td:first-child { font-weight: 600; color: var(--text); }
-.tp { font-family: 'Playfair Display', serif; font-weight: 700; color: #C07828; font-size: .93rem; }
+.tp { font-family: 'Playfair Display', serif; font-weight: 100; color: #C07828; font-size: .93rem; }
 
 
 .packages-section { margin-top: 60px; }
@@ -154,33 +154,68 @@
 .seasonal-txt h3 em { font-style: italic; color: #D4A853; }
 .seasonal-txt p     { font-size: .86rem; color: rgba(255,255,255,.7); line-height: 1.8; margin: 0 0 20px; }
 .seasonal-img       { width: 210px; height: 175px; border-radius: 15px; object-fit: cover; flex-shrink: 0; }
+footer {
+  background:#1C0F06;
+  padding: 64px 0 0;
+}
+[data-theme="dark"] footer {
+  background: #1C0F06;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
 
+.foot-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  padding-bottom: 48px;
+}
 
-footer { background: var(--bg2); padding: 64px 0 0; }
-.foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 48px; }
-.foot-logo { font-family: 'Playfair Display', serif; font-size: 1.48rem; font-weight: 800; color: #C07828; display: inline-block; margin-bottom: 14px; }
-.foot-logo span { font-style: italic; color: var(--text); }
-.foot-brand p { font-size: .79rem; line-height: 1.85; color: var(--text3); }
-.foot-col h5 { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 600; color: #C07828; margin-bottom: 16px; }
+.foot-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.48rem; font-weight: 800;
+  color: #E89A4D; display: inline-block; margin-bottom: 14px;
+}
+.foot-logo span { font-style: italic; color: #D4A853; }
+.foot-brand p { font-size: .79rem; line-height: 1.85; color: rgba(255,255,255,.72); }
+
+.foot-col h5 {
+  font-family: 'Playfair Display', serif;
+  font-size: .9rem; font-weight: 600;
+  color: #E89A4D; margin-bottom: 16px;
+}
 .foot-col ul { display: flex; flex-direction: column; gap: 8px; }
-.foot-col a { font-size: .79rem; color: var(--text3); transition: color .2s; display: inline-flex; align-items: center; gap: 0; }
-.foot-col a:hover { color: #C07828; }
+
+
+.foot-col a {
+  font-size: .79rem; color: rgba(255,255,255,.72);
+  transition: color .2s;
+  display: inline-flex; align-items: center; gap: 0;
+}
+.foot-col a:hover { color: #E89A4D; }
+
+
 .foot-icon {
   width: 30px; height: 30px; border-radius: 8px;
-  background: rgba(192,120,40,.12); border: 1px solid rgba(212,168,83,.25);
+  background: rgba(232,154,77,.14);
+  border: 1px solid rgba(232,154,77,.28);
   display: inline-flex; align-items: center; justify-content: center;
   flex-shrink: 0; margin-right: 10px;
   transition: background .25s, border-color .25s, transform .25s;
 }
-.foot-col a:hover .foot-icon { background: #C07828; border-color: #C07828; transform: scale(1.1); }
-.foot-icon svg { stroke: #C07828; transition: stroke .25s; }
-.foot-col a:hover .foot-icon svg { stroke: #fff; }
+.foot-col a:hover .foot-icon {
+  background: #E89A4D;
+  border-color: #E89A4D;
+  transform: scale(1.1);
+}
+.foot-icon svg { stroke: #E89A4D; transition: stroke .25s; }
+.foot-col a:hover .foot-icon svg { stroke: #1C0F06; }
+
 .foot-bottom {
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 8px; padding: 22px 0;
-  border-top: 1px solid var(--border); font-size: .72rem; color: var(--text3);
+  border-top: 1px solid #C07828; font-size: .72rem; color: rgba(255,255,255,.50);
 }
-[data-theme="dark"] .foot-bottom { border-top-color: rgba(255,255,255,.10); color: rgba(255,255,255,.30); }
+
 
 
 
@@ -314,6 +349,7 @@ footer { background: var(--bg2); padding: 64px 0 0; }
 .btn-lg     { padding: 13px 26px; font-size: .77rem; }
 .btn-sm     { padding: 8px 16px; font-size: .68rem; }
   .ph { min-height: 100svh; padding-bottom: 40px; align-items: center; }
+  .ph-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .ph-title { font-size: clamp(1.9rem, 8.5vw, 2.7rem); line-height: 1.08; margin-bottom: 12px; }
   .ph-sub { font-size: .86rem; margin-bottom: 22px; }
   .ph-pills { gap: 10px; margin-bottom: 26px; }
