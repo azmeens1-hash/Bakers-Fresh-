@@ -102,17 +102,16 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
   height: 70px;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 40px;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid var(--glass-border);
+  background: var(--surface);
+
+  border-bottom: 1px solid var(--surface);
   border-top: 1px solid rgba(255,255,255,.18);
   box-shadow: var(--glass-shadow);
   transition: background .4s ease, box-shadow .3s ease, border-color .4s ease;
   overflow: visible;
 }
 #nav.stuck {
-  background: var(--glass-bg);
+  background: var(--surface);
   box-shadow: 0 12px 40px rgba(0,0,0,.14), 0 1px 0 rgba(255,255,255,.5) inset;
   border-bottom-color: rgba(192,120,40,.28);
 }
@@ -121,18 +120,23 @@ button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
   width: auto;
   display: block;
 }
-/* Show light logo by default, dark logo in dark mode */
+
+/* Nav logo: show light-variant (dark "Fresh" text) artwork by
+   default on the light surface nav bar, swap to dark-variant
+   (white "Fresh" text) in dark mode. */
 .logo-img--dark  { display: none; }
 [data-theme="dark"] .logo-img--light { display: none; }
 [data-theme="dark"] .logo-img--dark  { display: block; }
 
-/* Footer always shows the same logo image regardless of theme, since
-   the footer background is solid black in both light and dark mode.
-   The dark-variant logo file is used here (typically light-colored
-   artwork suited for a dark background) so it stays visible without
-   needing a separate theme-based swap like the nav has. */
-footer .logo-img--light { display: none; }
-footer .logo-img--dark  { display: block; }
+/* Footer logo: footer background is never a light surface (solid
+   black in dark mode, orange/brown gradient in light mode), so the
+   footer always shows the dark-variant artwork (white "Fresh" text)
+   regardless of site theme. */
+ .logo-img--dark  { display: none; }
+[data-theme="dark"] .logo-img--light { display: none; }
+[data-theme="dark"] .logo-img--dark  { display: block; }
+
+
 .logo {
   font-family: 'Playfair Display', serif;
   font-size: 1.52rem;
@@ -144,10 +148,7 @@ footer .logo-img--dark  { display: block; }
   flex-shrink: 0;
   position: relative;
   z-index: 1;
- 
-
 }
-
 
 .logo span { font-style: italic; color: var(--text); }
 
@@ -254,9 +255,8 @@ footer .logo-img--dark  { display: block; }
 
 .mob-nav {
   display: none; position: fixed; top: 70px; left: 8px; right: 8px;
-  border-radius: 18px; background: var(--glass-mob);
-  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
+  border-radius: 18px; background: var(--surface);
+  border: 1px solid var(--border);
   box-shadow: 0 16px 48px rgba(0,0,0,.18), 0 1px 0 rgba(255,255,255,.5) inset;
   flex-direction: column; z-index: 999; padding: 10px 20px 18px; overflow: hidden;
 }
@@ -293,11 +293,6 @@ footer .logo-img--dark  { display: block; }
 
 /* ══════════════════════════════════════════════════════
    PAGE HERO (.ph)
-   ──────────────────────────────────────────────────────
-   ≥ 1280px  →  75vh / 600px min
-   1024–1279 →  70vh / 540px min
-   640–1023  →  65vh / 460px min
-   < 640     →  58vh / 380px min  (was 44vh / 260px)
 ══════════════════════════════════════════════════════ */
 .ph {
   position: relative;
@@ -429,46 +424,55 @@ footer .logo-img--dark  { display: block; }
 .nl-form button { padding: 0 24px; background: #C07828; border: none; color: #fff; font-size: .73rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; transition: background .2s; white-space: nowrap; }
 .nl-form button:hover { background: #9A5F18; }
 
-/* ── FOOTER ──
-   Background stays the brand orange→brown gradient in BOTH themes
-   (by design — see chat). Because the gradient itself doesn't change
-   with theme, the text on top of it uses its own fixed light palette
-   instead of --text/--text2/--text3, which are tuned for light-on-light
-   or dark-on-dark surfaces and would lose contrast here either way.
-   A thin top border and subtle shadow are added in dark mode only, to
-   help the warm footer read as a separate region against the very dark
-   page background instead of looking like a stray bright block. */
 footer {
-  background: #000000;
+  background:linear-gradient(#EAD8C2,#C07828);
   padding: 64px 0 0;
 }
 [data-theme="dark"] footer {
-  background: #000000;
+  background: #1C0F06;
   border-top: 1px solid rgba(255,255,255,.08);
 }
 .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 48px; }
-.foot-logo { font-family: 'Playfair Display', serif; font-size: 1.48rem; font-weight: 800; color: #E89A4D; display: inline-block; margin-bottom: 14px; }
-.foot-logo span { font-style: italic; color: #fff; }
-.foot-brand p { font-size: .79rem; line-height: 1.85; color: rgba(255,255,255,.72); }
-.foot-col h5 { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 600; color: #E89A4D; margin-bottom: 16px; }
+.foot-logo { font-family: 'Playfair Display', serif; font-size: 1.48rem; font-weight: 800; color: #ffffff; display: inline-block; margin-bottom: 14px; }
+.foot-logo span { font-style: italic; color: #1C0F06; }
+
+.foot-brand p { font-size: .79rem; line-height: 1.85; color: #120A03; }
+.foot-col h5 { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 600; color:#C07828; margin-bottom: 16px; }
 .foot-col ul { display: flex; flex-direction: column; gap: 8px; }
-.foot-col a { font-size: .79rem; color: rgba(255,255,255,.72); transition: color .2s; display: inline-flex; align-items: center; gap: 0; }
-.foot-col a:hover { color: #E89A4D; }
+.foot-col a { font-size: .79rem; color: #120A03; transition: color .2s; display: inline-flex; align-items: center; gap: 0; }
+.foot-col a:hover { color: var(--bg);}
 .foot-icon {
   width: 30px; height: 30px; border-radius: 8px;
-  background: rgba(232,154,77,.14); border: 1px solid rgba(232,154,77,.28);
+  background: rgba(192,120,40,.12); border: 1px solid #C07828; 
   display: inline-flex; align-items: center; justify-content: center;
   flex-shrink: 0; margin-right: 10px;
   transition: background .25s, border-color .25s, transform .25s;
 }
-.foot-col a:hover .foot-icon { background: #E89A4D; border-color: #E89A4D; transform: scale(1.1); }
-.foot-icon svg { stroke: #E89A4D; transition: stroke .25s; }
-.foot-col a:hover .foot-icon svg { stroke: #1C0F06; }
+.foot-col a:hover .foot-icon { background: #EAD8C2; border-color: #fff; transform: scale(1.1); }
+.foot-icon svg { stroke: #fff; transition: stroke .25s; }
+.foot-col a:hover .foot-icon svg { stroke: #C07828; }
 .foot-bottom {
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 8px; padding: 22px 0;
-  border-top: 1px solid rgba(255,255,255,.12); font-size: .72rem; color: rgba(255,255,255,.50);
+  border-top: 1px solid rgba(255,255,255,.22); font-size: .72rem; color:#120A03;
 }
+
+[data-theme="dark"] .foot-logo { color: #E89A4D; }
+[data-theme="dark"] .foot-logo span { color: #fff; }
+[data-theme="dark"] .foot-brand p { color: rgba(255,255,255,.72); }
+[data-theme="dark"] .foot-col h5 { color: #E89A4D; }
+[data-theme="dark"] .foot-col a { color: rgba(255,255,255,.72); }
+[data-theme="dark"] .foot-col a:hover { color: #E89A4D; }
+[data-theme="dark"] .foot-icon {
+  background: rgba(232,154,77,.14); border-color: rgba(232,154,77,.28);
+}
+[data-theme="dark"] .foot-col a:hover .foot-icon { background: #E89A4D; border-color: #E89A4D; }
+[data-theme="dark"] .foot-icon svg { stroke: #E89A4D; }
+[data-theme="dark"] .foot-col a:hover .foot-icon svg { stroke: #1C0F06; }
+[data-theme="dark"] .foot-bottom {
+  border-top-color: rgba(255,255,255,.12); color: rgba(255,255,255,.50);
+}
+
 
 
 /* ── ANIMATIONS ── */
@@ -488,9 +492,6 @@ footer {
 [dir="rtl"] .val:hover     { transform: translateX(-4px); }
 [dir="rtl"] .feat-row:hover{ transform: translateX(-4px); }
 [dir="rtl"] .ci:hover      { transform: translateX(-5px); }
-
-
-
 
 /* ── ≥ 1280px ── */
 @media (min-width: 1280px) {
@@ -517,12 +518,10 @@ footer {
 
 /* ── 640px – 1023px ── */
 @media (min-width: 769px) and (max-width: 1023px) {
-  
   #nav { padding: 0 22px; }
   .nav-links { gap: 0; }
   .nav-links a { padding: 6px 8px; font-size: .64rem; }
   .wrap { padding: 0 24px; }
-  
 }
 
 @media (min-width: 640px) and (max-width: 1023px) {
@@ -565,7 +564,6 @@ footer {
   .ph-title      { font-size: clamp(1.8rem, 7vw, 2.6rem); }
   .ph-sub        { font-size: .82rem; max-width: 100%; }
 
-  /* newsletter — horizontal pill, scaled for small screens (matches menu.css) */
   .nl            { padding: 48px 0; }
   .nl-inner      { padding: 0 20px; max-width: 100%; }
   .nl-inner h2   { font-size: 1.6rem; }
@@ -602,7 +600,6 @@ footer {
     cursor: pointer;
   }
 
-  /* center footer */
   footer              { padding: 48px 0 0; }
   .foot-grid          { grid-template-columns: 1fr; gap: 28px; text-align: center; }
   .foot-brand         { display: flex; flex-direction: column; align-items: center; }
