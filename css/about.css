@@ -16,7 +16,7 @@
   font-weight: 800; color: #fff; line-height: 1.08; margin-bottom: 16px;
 }
 .ph-title em { font-style: italic; color: #D4A853; }
-.ph-sub { max-width: 580px; font-size: .95rem; color: rgba(255,255,255,.75); line-height: 1.85; margin-bottom: 28px; }
+.ph-sub { max-width: 580px; font-size: .95rem; color:#fff; line-height: 1.85; margin-bottom: 28px; }
 
 .ph-pills { display: flex; gap: 14px; margin-bottom: 32px; align-items: center; }
 .ph-pill {
@@ -28,7 +28,7 @@
 }
 .ph-pill:hover { background: rgba(192,120,40,.25); border-color: rgba(212,168,83,.5); }
 .ph-pill-n { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 800; color: #D4A853; line-height: 1; margin-bottom: 4px; }
-.ph-pill-l { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.65); }
+.ph-pill-l { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: #fff; }
 
 .ph-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn-outline-white { background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.65); color: #fff; }

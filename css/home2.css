@@ -119,7 +119,7 @@
 
 
 footer {
-  background:linear-gradient(#FDF7F0,#C07828);
+  background:#f8e9d6;
   padding: 64px 0 0;
 }
 [data-theme="dark"] footer {
@@ -133,7 +133,7 @@ footer {
 .foot-col h5 { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 600; color:#C07828; margin-bottom: 16px; }
 .foot-col ul { display: flex; flex-direction: column; gap: 8px; }
 .foot-col a { font-size: .79rem; color: #120A03; transition: color .2s; display: inline-flex; align-items: center; gap: 0; }
-.foot-col a:hover { color: var(--bg);}
+.foot-col a:hover { color:#C07828;}
 .foot-icon {
   width: 30px; height: 30px; border-radius: 8px;
   background: rgba(192,120,40,.12); border: 1px solid #C07828; 
@@ -141,13 +141,13 @@ footer {
   flex-shrink: 0; margin-right: 10px;
   transition: background .25s, border-color .25s, transform .25s;
 }
-.foot-col a:hover .foot-icon { background: #EAD8C2; border-color: #fff; transform: scale(1.1); }
-.foot-icon svg { stroke: #fff; transition: stroke .25s; }
+.foot-col a:hover .foot-icon { background: #EAD8C2; border-color: #C07828; transform: scale(1.1); }
+.foot-icon svg { stroke: #C07828; transition: stroke .25s; }
 .foot-col a:hover .foot-icon svg { stroke: #C07828; }
 .foot-bottom {
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 8px; padding: 22px 0;
-  border-top: 1px solid rgba(255,255,255,.22); font-size: .72rem; color:#120A03;
+  border-top: 1px solid var(--shadow); font-size: .72rem; color:#120A03;
 }
 
 [data-theme="dark"] .foot-logo { color: #E89A4D; }

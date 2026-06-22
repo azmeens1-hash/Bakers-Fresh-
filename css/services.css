@@ -10,12 +10,12 @@
 .ph-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-  font-weight: 800; color: #fff; line-height: 1.08; margin-bottom: 16px;
+  font-weight: 800; color: rgba(255,255,255,.75); line-height: 1.08; margin-bottom: 16px;
 }
 .ph-title em { font-style: italic; color: #D4A853; }
 .ph-sub {
   max-width: 560px; font-size: .95rem;
-  color: rgba(255,255,255,.75); line-height: 1.85; margin-bottom: 28px;
+  color: #fff; line-height: 1.85; margin-bottom: 28px;
 }
 
 
@@ -32,7 +32,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.45rem; font-weight: 800; color: #D4A853; line-height: 1; margin-bottom: 4px;
 }
-.ph-pill-l { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.65); }
+.ph-pill-l { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: #fff; }
 
 
 .ph-btns { display: flex; gap: 14px; flex-wrap: wrap; }
